@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
-def ViewBW(original, BW, ny, text):
-        """
+def viewBW(original, BW, ny, text):
+    """
     Viser bildene ved siden av hverandre.
     
     Original, svart-hvit og glattet
@@ -17,7 +17,7 @@ def ViewBW(original, BW, ny, text):
     text     : text
                Tittelen på bildet som er anvendt
     """
-    plt.figure(figsize = (20, 10))
+    plt.figure(figsize=(20,10))
     plt.subplot(131)    
     plt.imshow(original, plt.cm.gray)
     plt.title('Originalbilde')
