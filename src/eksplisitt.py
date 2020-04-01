@@ -29,4 +29,8 @@ def eksplisitt(u, alpha=0.25, h=0, n=1000):
                           u[1:-1, :-2]+
                           u[1:-1, 2:]-
                           4*u[1:-1, 1:-1])
+        u[:, 0] = u[:, 1]      # Neumann randbetingelse
+        u[:, -1] = u[:, -2]    #
+        u[0, :] = u[1, :]      #
+        u[-1, :] = u[-2 , :]   #
     return u
