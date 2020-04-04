@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def viewBW(original, BW, ny, text):
+def viewBW(original, ny1, BW, ny2, text):
     """
     Viser bildene ved siden av hverandre.
     
@@ -17,19 +17,27 @@ def viewBW(original, BW, ny, text):
     text     : text
                Tittelen på bildet som er anvendt
     """
-    plt.figure(figsize=(20,10))
+    plt.figure(figsize=(16, 8))
     plt.subplot(131)    
     plt.imshow(original, plt.cm.gray)
     plt.title('Originalbilde')
     plt.axis('off')
     
     plt.subplot(132)
+    plt.imshow(ny1, plt.cm.gray)
+    plt.title(text)
+    plt.axis('off')
+    
+    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    
+    plt.figure(figsize=(16, 8))
+    plt.subplot(131)    
     plt.imshow(BW, plt.cm.gray)
     plt.title('Gråskala')
     plt.axis('off')
     
-    plt.subplot(133)
-    plt.imshow(ny, plt.cm.gray)
+    plt.subplot(132)
+    plt.imshow(ny2, plt.cm.gray)
     plt.title(text)
     plt.axis('off')
 
