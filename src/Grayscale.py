@@ -23,8 +23,23 @@ def grayscale(file):
     return gray 
 
 def rgb2gray(file):
+    """
+    Konverterer bildet til gråtoner
+
+    Løser de likningen med de ulike fargekanalene
+
+    Parameters
+    ---------
+    file : picture
+        Bildet som skal konverteres til gråtoner
+
+    Returns
+    Picture:
+        Kopi av originalbildet i gråtoner
+    -------
+    """
     pic =  imageio.imread(file)
     r, g, b = pic[:,:,0], pic[:,:,1], pic[:,:,2]
-    gray = 0.2989 * r + 0.5870 * g + 0.1140 * b
+    gray = (0.2989 * r + 0.5870 * g + 0.1140 * b) / 255
 
     return gray
