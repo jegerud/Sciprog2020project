@@ -6,7 +6,7 @@ def view(original, ny1, BW, ny2, text):
     
     Original, svart-hvit og glattet
 
-    Paramters
+    Parameters
     ---------
     original : Bildefil
                Pathen til filen der original bildet befinner seg uten andvending
@@ -49,9 +49,9 @@ def viewInpaint(original, mask, ny, text, rgb):
     """
     Viser bildene ved siden av hverandre.
     
-    Original, svart-hvit og inpainted
+    Original, masken og inpainted
 
-    Paramters
+    Parameters
     ---------
     original : Bildefil
                Pathen til filen der original bildet befinner seg uten andvending
@@ -75,10 +75,8 @@ def viewInpaint(original, mask, ny, text, rgb):
     plt.axis('off')
     
     plt.subplot(132)
-    if rgb:
-        plt.imshow(mask)
-    else:
-        plt.imshow(mask, plt.cm.gray)
+    plt.imshow(mask)
+    plt.imshow(mask, plt.cm.gray)
     plt.title('Mask')
     plt.axis('off')
     
