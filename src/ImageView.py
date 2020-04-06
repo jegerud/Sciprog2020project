@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def viewBW(original, ny1, BW, ny2, text):
+def view(original, ny1, BW, ny2, text):
     """
     Viser bildene ved siden av hverandre.
     
@@ -10,10 +10,12 @@ def viewBW(original, ny1, BW, ny2, text):
     ---------
     original : Bildefil
                Pathen til filen der original bildet befinner seg uten andvending
+    ny1       : Bildefil
+                Bildet som har blitt anvendt
     BW       : Bildefil
                Pathen til filen der svart-hvit bildet befinner seg
     ny       : Bildefil
-               Bildet som har blit anvendt
+               Bildet som har blitt anvendt i svart-hvitt
     text     : text
                Tittelen på bildet som er anvendt
     """
@@ -42,3 +44,39 @@ def viewBW(original, ny1, BW, ny2, text):
     plt.axis('off')
 
     plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+
+def viewInpaint(original, mask, ny, text):
+    """
+    Viser bildene ved siden av hverandre.
+    
+    Original, svart-hvit og glattet
+
+    Paramters
+    ---------
+    original : Bildefil
+               Pathen til filen der original bildet befinner seg uten andvending
+    BW       : Bildefil
+               Masken til bildet
+    ny       : Bildefil
+               Bildet som har blitt anvendt
+    text     : text
+               Tittelen på bildet som er anvendt
+    """
+    plt.figure(figsize = (20, 10))
+    plt.subplot(131)    
+    plt.imshow(original, plt.cm.gray)
+    plt.title('Originalbilde')
+    plt.axis('off')
+    
+    plt.subplot(132)
+    plt.imshow(mask, plt.cm.gray)
+    plt.title('Mask')
+    plt.axis('off')
+    
+    plt.subplot(133)
+    plt.imshow(ny, plt.cm.gray)
+    plt.title(text)
+    plt.axis('off')
+
+    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    
