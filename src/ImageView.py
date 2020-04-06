@@ -45,36 +45,48 @@ def view(original, ny1, BW, ny2, text):
 
     plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
 
-def viewInpaint(original, mask, ny, text):
+def viewInpaint(original, mask, ny, text, rgb):
     """
     Viser bildene ved siden av hverandre.
     
-    Original, svart-hvit og glattet
+    Original, svart-hvit og inpainted
 
     Paramters
     ---------
     original : Bildefil
                Pathen til filen der original bildet befinner seg uten andvending
-    BW       : Bildefil
+    mask       : Bildefil
                Masken til bildet
     ny       : Bildefil
                Bildet som har blitt anvendt
     text     : text
                Tittelen på bildet som er anvendt
+    rgb      : bool
+               Fargebilde/gråtone
+    
     """
     plt.figure(figsize = (20, 10))
-    plt.subplot(131)    
-    plt.imshow(original, plt.cm.gray)
+    plt.subplot(131)
+    if rgb:
+        plt.imshow(original)
+    else:
+        plt.imshow(original, plt.cm.gray)
     plt.title('Originalbilde')
     plt.axis('off')
     
     plt.subplot(132)
-    plt.imshow(mask, plt.cm.gray)
+    if rgb:
+        plt.imshow(mask)
+    else:
+        plt.imshow(mask, plt.cm.gray)
     plt.title('Mask')
     plt.axis('off')
     
     plt.subplot(133)
-    plt.imshow(ny, plt.cm.gray)
+    if rgb:
+        plt.imshow(ny)
+    else:
+        plt.imshow(ny, plt.cm.gray)
     plt.title(text)
     plt.axis('off')
 
