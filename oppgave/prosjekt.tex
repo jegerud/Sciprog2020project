@@ -26,9 +26,10 @@
 \section{Metoden i generelle trekk}
 
 En rekke problemer i bildebehandling kan løses med en teknikk som kalles «Poisson Image Editing»~\cite{Perez:03}. Metoden går i korthet ut på at man representerer bildet man ønsker å komme frem til som en funksjon $u : \Omega \to C$, der $\Omega \subset \mathbb{R}^2$ er det rektangulære området hvor bildet er definert, og $C$ er fargerommet, vanligvis $C = [0, 1]$ for gråtonebilder og $C = [0, 1]^3$ for fargebilder. Bildet $u(x, y)$ fremkommer som en løsning av Poisson-ligningen
-$$
-\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \equiv \nabla^2 u = h,
-$$
+\begin{equation}
+  \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \equiv \nabla^2 u = h,
+  \label{eq:poisson}
+\end{equation}
 der randverdier på $\partial\Omega$ og funksjonen $h : \Omega \to \mathbb{R}^{\dim(C)}$ spesifiseres avhengig av hvilket problem som skal løses. Randverdiene er av Dirichlet- eller Neumann-typen.
 
 En måte å løse Poisson-ligningen på er å iterere seg frem til løsningen vha. såkalt gradientnedstigning («gradient descent»). I praksis gjøres dette ved å innføre en kunstig tidsparameter og la løsningen utvikle seg mot konvergens:
@@ -102,6 +103,7 @@ mosaic[1::2, 1::2] = u[1::2, 1::2, 2]  # B-kanal
 Oppgaven til en demosaicing-algoritme er å rekonstruere et fargebilde ut av en slik gråtonemosaikk. Én måte å gjøre dette på, er å først flytte informasjonen som finnes i mosaikken over i de rette kanalene i et fargebilde, for deretter å «inpaint-e» den manglende informasjonen vha. inpaintingsmetoden beskrevet over. Det må da altså lages en $\Omega_i$ for hver kanal som definerer pixlene som skal fylles inn.
 
 \subsection{Sømløs kloning}
+\label{sec:kloning}
 
 Noen ganger ønsker man av ymse grunner å kunne flytte en del av et bilde inn i et annet bilde på en slik måte at det ikke blir synlige overganger der objektet er limt inn. Dette kalles gjerne sømløs kloning. Hvis vi kaller originalbildet det skal klones inn i for $u_0$, og bildet som det skal klones inn fra for $u_1$, kan dette formuleres som et Poisson-problem: Finn $u$ slik at $u = u_0$ for $x \not\in \Omega_i$ og $\nabla^2 u = \nabla^2 u_1$ i $\Omega_i$. Dette kan altså gjøres ved å sette $h = \nabla^2 u_1$ og løse~(\ref{eq:diffusjon}) i $\Omega_i$ med Diriclet-betingelsen $u = u_0$ på $\partial\Omega_i$. Også her må man huske å klippe slik at $u \in [0, 1]$.
 
@@ -133,6 +135,7 @@ Når man så har fått et slik HDR-bilde støter man på et nytt problem, nemlig
 Noen ganger ønsker man å glatte et bilde uten å gjøre kantene i bildet uskarpe. Dette kan gjøres ved å innføre en posisjonsavhengig diffusjonsparameter $D : \Omega \to [0, 1]$, der D = 0 gir null diffusjon/glatting og $D = 1$ gir full glatting. Diffusjonsparameteren kan f.eks. beregnes fra gradienten til bildet som
 \begin{equation}
   D(x, y) = \frac{1}{1 + \kappa ||\nabla u_0(x, y)||^2}\,,
+  \label{eq:diffparam}
 \end{equation}
 med $\kappa$ som en passende valgt konstant.
 Diffusjonsligningen~(\ref{eq:diffusjon}) endres da til
@@ -144,6 +147,32 @@ og løses for $\Omega$ med f.eks. Dirichletbetingelsen $u(x, y) = u_0(x, y)$ på
 
 Denne utvidede modellen kan også på forskjellig vis brukes til å forbedre oppførselen av flere av de tidligere anvendelsene, så her åpnes et hav av nye muligheter\dots
 
+\subsection{Direkte løsning av Poisson-ligningen}
+\label{sec:poisson}
+
+For en del av anvendelsene er det mulig å løse Poisson-ligningen~(\ref{eq:poisson}) direkte uten å gå via diffusjonsligningen~(\ref{eq:diffusjon}). Dette gjelder for de anvendelsene der det ikke er nødvendig å begrense løsningen til et gitt intervall (f.eks. $[0, 1]$) for hver iterasjon. Dette gjøres rett og slett ved å diskretisere Laplace-operatoren som vanlig, og løse ligningssettet
+$$
+u_{i+1,j} +
+u_{i-1,j} +
+u_{i,j+1} +
+u_{i,j-1} -
+4 u_{i,j} = \Delta x^2 h_{i,j}
+$$
+for $u_{i,j}$. Dette forutsetter at ligningene skrives på matriseform. Denne teknikken kan brukes for anvendelsene glatting, inpainting, demosaicing og anonymisering, men ikke for kontrastforserkning, sømløs kloning, konvertering til gråtone eller visualisering av HDR-bilder.
+
+\subsection{Direkte løsning av kantbevarende glatting}
+\label{sec:direktekant}
+
+Det er også mulig å gjøre noe tilsvarende for kantbevarende glatting ved å løse ligningen
+$$
+\nabla\cdot(D\nabla u) - \lambda(u - u_0) = 0
+$$
+der $D$ er gitt av ligning~(\ref{eq:diffparam}). For å diskretisere denne, kan man bruke produktregelen på første ledd for å få ligningen over på formen
+$$
+\nabla D \cdot \nabla u + D\nabla^2 u - \lambda(u - u_0) = 0
+$$
+og diskretisere gradientene i første ledd med sentrerte differanser, og Laplacen i andre ledd som vanlig. Som for avsnitt~\ref{sec:poisson}, gir dette en matriseligning for $u_{i,j}$.
+
 \section{Oppgave}
 
 \subsection{Gjennomføring}
@@ -152,7 +181,7 @@ Prosjektet gjøres i grupper à 1–4 studenter. Én på gruppen lager en privat
 
 \subsection{Minimumsløsning}
 
-Implementer det eksplisitte skjemaet~(\ref{eq:eksplisitt}) og anvendelsene glatting (avsnitt~\ref{sec:glatting}), inpainting (avsnitt~\ref{sec:inpainting}) og kontrastforsterkning for gråtonebilder (avsnitt~\ref{sec:kontrastforsterkning}) beskrevet over. Beskriv problemstillingen, løsningen og resultater i form av eksempelbilder i en velformet rapport. Rapporten skal inneholde en lenke til det forkede repoet.
+Implementer det eksplisitte skjemaet~(\ref{eq:eksplisitt}) og anvendelsene glatting (avsnitt~\ref{sec:glatting}), inpainting (avsnitt~\ref{sec:inpainting}), kontrastforsterkning for gråtonebilder (avsnitt~\ref{sec:kontrastforsterkning}) og sømløs kloning (avsnitt~\ref{sec:kloning}) beskrevet over. Beskriv problemstillingen, løsningen og resultater i form av eksempelbilder i en velformet rapport. Rapporten skal inneholde en lenke til det forkede repoet.
 
 \subsection{Utvidelser}
 
@@ -161,6 +190,7 @@ Det er ubegrenset med muligheter for å utvide besvarelsen og dermed gjøre den 
 \item Implementer løsningen også for fargebilder (enkel liten   utvidelse).
 \item Implementer de øvrige anvendelsene beskrevet i avsnitt~\ref{sec:utvidelse_1}--\ref{sec:utvidelse_end} (de er   stort sett beskrevet i rekkefølge av økende kompleksitet).
 \item Implementer det implisitte numeriske skjemaet~(\ref{eq:implisitt}) vha. glisne matriser («sparse   matrices»)\footnote{\url{https://docs.scipy.org/doc/scipy/reference/sparse.html}} og prøv det for alle de implementerte anvendelsene.
+\item Implementer de direkte løsningene av Poisson-ligningen og kantbevarende glatting beskrevet i avsnittene~\ref{sec:poisson}--\ref{sec:direktekant}.
 \item Lag en applikasjon med grafisk brukergrensesnitt som gir   brukeren mulighet til å utføre alle de implementerte operasjonene   interaktivt. Bruk f.eks.   PyQt5.\footnote{\url{https://www.riverbankcomputing.com/software/pyqt/intro}}
 \end{itemize}
 
@@ -171,7 +201,7 @@ Ved vurderingen av prosjektoppgaven vil det bli lagt vekt på
 \item hvilke metoder som er implementert
   \begin{itemize}[noitemsep]
   \item gråtonebilder/fargebilder
-  \item eksplisitt/implisitt etc.
+  \item eksplisitt/implisitt/direkte etc.
   \item typer randverdier for $\partial\Omega$ og $\partial\Omega_i$
   \end{itemize}
 \item hvilke anvendelser som er implementert
@@ -211,7 +241,7 @@ Ved vurderingen av prosjektoppgaven vil det bli lagt vekt på
 
 \section{Innlevering}
 
-Rapporten innleverers som PDF i Inspera innen fredag 24. april 2020 kl. 1530. Rapporen \emph{skal} inneholde en lenke til GitLab-repoet. GitLab-repoet må minimum få leve til etter at sensuren er gitt (og lenger dersom man skal kunne klage på karakteren).
+Rapporten innleverers som PDF i Inspera innen fredag 15. mai 2020 kl. 1530. Rapporen \emph{skal} inneholde en lenke til GitLab-repoet. GitLab-repoet må minimum få leve til etter at sensuren er gitt (og lenger dersom man skal kunne klage på karakteren).
 
 \bibliographystyle{unsrt}
 \bibliography{prosjekt}
