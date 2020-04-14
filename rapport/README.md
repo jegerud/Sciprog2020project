@@ -1,4 +1,4 @@
-Endringer på rapporten kan sees her. 
-https://www.overleaf.com/project/5e79ce011d196b0001a8be32
+# imt3881-latex-report
 
-PDF legges inn ved prosjektes slutt.
+Rapporten for prosjektet, https://www.overleaf.com/3187956521gdzqqbmcxggg
+
