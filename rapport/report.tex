@@ -2,7 +2,10 @@
 
 \title{An NTNU Report \LaTeX{} Document Class}
 \shorttitle{An NTNU Report Document Class}
-\author{Community of Practice in Computer Science Education at NTNU}
+\author{Anders Kjelsrud \\
+        Casper F. Gulbrandsen \\
+		Kristian Jegerud \\ 
+		Norges Teknisk-Naturvitenskapelige Universitet }
 \shortauthor{CoPCSE$@$NTNU}
 \date{CC-BY \ntnureportdate}
 
@@ -11,15 +14,22 @@
 \begin{document}
 
 \begin{abstract}
-    The \texttt{ntnureport} document class is a customised version of the standard \LaTeX{} \texttt{article} document class. It can be used for shorter research and development reports, e.g., within courses, and is available in English (British and American) and Norwegian (Bokmål and Nynorsk). This document is meant to serve (i) as a description of the document class, (ii) as an example of how to use it, and (iii) as a report template.
+    Emnet IMT3881 Vitenskapelig Programmering kombinerer realfaglige teknikker og høynivå programmering, og 
+    gir studentene et innblikk i hvordan dette kan benyttes til å løse hverdagslige problemsstillinger. Et godt 
+    eksempel på dette er bildebehandling, hvor numeriske løsninger av differensiallikninger og ikkelineære algebraiske
+    likninger sammen med biblioteker fra Python kan benyttes til å behandle bilder. Hovedoppgaven vår har vært å
+    implementere ulike anvendelser for dette, både for fargebilder og gråtonebilder. Vi har også skrevet et lite
+    program med grafisk brukergrensesnitt (GUI) som viser eksempler på anvendelsene vi har implemntert. Ved å lese
+    denne rapporten får du innsikt i hvordan vi har jobbet, hvilke teknikker som er brukt og hvordan disse er
+    benyttet. All kildekoden ligger tilgjengelig på GitLab\cite{gitsource}. 
 \end{abstract}
 
-\input{chapters/1-introduction}
-\input{chapters/2-usage.tex}
+\input{chapters/1-introduction.tex}
+\input{chapters/2-task.tex}
 \input{chapters/3-structure.tex}
 \input{chapters/4-conclusion.tex}
 
-\printbibliography
+\printbibliography{report}
 
 \appendix
 
