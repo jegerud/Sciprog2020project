@@ -54,3 +54,18 @@ For research projects, the main task is to gain knew knowledge about something. 
 \subsection{Back Matter}
 
 Material that does not fit elsewhere, but that you would still like to share with the readers, can be put in appendices. See \cref{app:additional}.
+
+\subsection{Eksplisitt Løsning}
+Eksplisitt skjema:
+\begin{align}
+\frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t} &= \frac{1}{\Delta x^2}
+                                               (u^n_{i+1,j} +
+                                               u^n_{i-1,j} +
+                                               u^n_{i,j+1} +
+                                               u^n_{i,j-1} -4 
+                                               u^n_{i,j}) - h_{i,j} \newline
+\end{align}
+Setter $\alpha =\frac{\Delta t}{\Delta x^2}$
+\begin{align}
+  u^{n+1}_{i,j} =  u^n_{i,j} + \alpha (u^n_{i+1,j} + u^n_{i-1,j} + u^n_{i,j+1} + u^n_{i,j-1} -4u^n_{i,j}) - \Delta th_{i,j}
+\end{align}
