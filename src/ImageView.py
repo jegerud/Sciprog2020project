@@ -91,6 +91,16 @@ def viewInpaint(original, mask, ny, text, rgb):
     plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
 
 def singleView(image, title):
+    """
+    Viser bildet med tittel
+
+    Parameters
+    ---------
+    image : Bildefil
+               Pathen til filen der original bildet befinner seg
+    title     : text
+               Tittelen på bildet som er anvendt
+    """
     plt.figure(figsize = (20,10))
     plt.imshow(image)
     plt.title(title)
