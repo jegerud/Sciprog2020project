@@ -108,3 +108,39 @@ def singleView(image, title, gray=False):
         plt.imshow(image)
     plt.title(title)
     plt.axis('off')
+
+def viewDemosaic(original, mosaic, ny, text):
+    """
+    Viser bildene ved siden av hverandre.
+    
+    Original, masken og inpainted
+
+    Parameters
+    ---------
+    original : Bildefil
+               Pathen til filen der original bildet befinner seg uten andvending
+    mosaic   : Bildefil
+               Mosaicen til bildet
+    ny       : Bildefil
+               Bildet som har blitt demosaicet
+    text     : text
+               Tittelen på bildet som er anvendt
+
+    """
+    plt.figure(figsize = (20, 10))
+    plt.subplot(131)
+    plt.imshow(original)
+    plt.title('Originalbilde')
+    plt.axis('off')
+    
+    plt.subplot(132)
+    plt.imshow(mosaic, plt.cm.gray)
+    plt.title('Mosaic')
+    plt.axis('off')
+    
+    plt.subplot(133)
+    plt.imshow(ny)
+    plt.title(text)
+    plt.axis('off')
+
+    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
