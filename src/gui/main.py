@@ -4,6 +4,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
 
+sys.path.insert(0, '../')
+import imageio
+import numpy as np
+import matplotlib.pyplot as plt
+from Glatting import eksplisittGlatting
+import Grayscale as gray
+from PIL import Image
+
 class Home(QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
@@ -19,6 +27,9 @@ class Glatting(QMainWindow):
     def __init__(self):
         super(Glatting, self).__init__()
         uic.loadUi('glatting.ui', self)
+        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+
         self.adjuster.clicked.connect(self.showAdjuster)
         self.balls.clicked.connect(self.showBalls)
         self.fog.clicked.connect(self.showFog)
@@ -28,9 +39,12 @@ class Glatting(QMainWindow):
         self.stillife.clicked.connect(self.showStillife)
         self.trees.clicked.connect(self.showTrees)
         self.glattingKode.clicked.connect(self.showCode)
+        self.glattetGray.clicked.connect(self.blurGrayImage)
+        self.glattingOriginal.clicked.connect(self.setOriginal)
 
     def showAdjuster(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Adjuster/Adjuster_00032.png"))
+        self.path = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showBalls(self):
         self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Balls/Balls_00032.png"))
@@ -60,6 +74,21 @@ class Glatting(QMainWindow):
         code.setPlainText(text)
         self.dialog = ShowCode(text, title)
         self.dialog.show()
+
+    def setOriginal(self):
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+
+    def blurGrayImage(self):
+        orig_im =  gray.rgb2gray(self.path)
+        im =  gray.rgb2gray(self.path)
+        im = im + .05 * np.random.randn(* np.shape(im))
+        im = eksplisittGlatting(im, orig_im, self.konstant.value())
+
+        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
+        img = Image.fromarray(rescaled)
+        img.save('test.png')
+        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
+
 
 class ShowCode(QDialog):
     def __init__(self, text, title, parent=None):
