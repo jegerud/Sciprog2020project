@@ -14,26 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="infoTekst">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>150</y>
-      <width>631</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>**Tekst om prosjekt**</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="glattingTekst">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>230</y>
+      <x>260</x>
+      <y>160</y>
       <width>271</width>
-      <height>17</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -62,17 +49,199 @@
      <string>Vitenskapelig Programmering, Prosjekt 2020</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="openGlatting">
+   <widget class="QPushButton" name="openBlur">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>230</y>
-      <width>89</width>
+      <x>80</x>
+      <y>160</y>
+      <width>161</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
      <string>Glatting</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openContrast">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>240</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Kontrastforsterkning</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>240</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om kontrastforsterkning**</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_3">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>200</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om inpainting**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openInpainting">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>200</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Inpainting</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_4">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>280</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om kontrastforsterkning**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openDemosaicing">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>280</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Demosaicing</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_5">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>320</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om sømløs kloning**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openSeamless">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>320</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sømløs kloning</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_6">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>360</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om konvertering til gråtonebilder**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openGrayConvert">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>360</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Konverter til gråtone</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_7">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>400</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om anonymisering av ansikter**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openAnonymize">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>400</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Anonymisering</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_8">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>440</y>
+      <width>301</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>**Tekst om delvis svart/hvitt bilder**</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openBWEffect">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>440</y>
+      <width>161</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delvis svart/hvitt</string>
     </property>
    </widget>
   </widget>
