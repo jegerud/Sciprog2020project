@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="glattingOrigGray">
+  <widget class="QPushButton" name="contrastOrigGray">
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -65,7 +65,7 @@
     <string>Stillife</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="glattetColour">
+  <widget class="QPushButton" name="contrastColour">
    <property name="geometry">
     <rect>
      <x>470</x>
@@ -78,7 +78,7 @@
     <string>Forsterk</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="konstant">
+  <widget class="QDoubleSpinBox" name="constant">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -103,7 +103,7 @@
     <double>0.250000000000000</double>
    </property>
   </widget>
-  <widget class="QPushButton" name="glattingOriginal">
+  <widget class="QPushButton" name="contrastOriginal">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -190,7 +190,7 @@
     <string>Adjuster</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="glattingKode">
+  <widget class="QPushButton" name="contrastCode">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -229,7 +229,7 @@
     <string>Trees</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="glattetGray">
+  <widget class="QPushButton" name="contrastGray">
    <property name="geometry">
     <rect>
      <x>560</x>
@@ -242,7 +242,7 @@
     <string>Forsterk (grå)</string>
    </property>
   </widget>
-  <widget class="QLabel" name="kontrastBilde">
+  <widget class="QLabel" name="contrastImg">
    <property name="geometry">
     <rect>
      <x>270</x>
