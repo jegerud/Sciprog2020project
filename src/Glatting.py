@@ -21,7 +21,7 @@ def eksplisittGlatting(im, orig_im, k):
 	Et glattet bilde
     """
     image = im
-    iteration = 50
+    iteration = 20
     delta_t = 1 / iteration
     
     for i in range(iteration):
