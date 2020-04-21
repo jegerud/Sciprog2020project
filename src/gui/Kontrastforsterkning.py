@@ -14,12 +14,12 @@ from GlattingModul import eksplisittGlatting
 from Function import *
 from PIL import Image
 
-class Kontrastforsterkning(QMainWindow):
+class ContrastEnhancement(QMainWindow):
     def __init__(self):
-        super(Kontrastforsterkning, self).__init__()
+        super(ContrastEnhancement, self).__init__()
         uic.loadUi('UI/kontrastforsterkning.ui', self)
         self.path = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.kontrastBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
         self.adjuster.clicked.connect(self.showAdjuster)
         self.balls.clicked.connect(self.showBalls)
@@ -29,78 +29,83 @@ class Kontrastforsterkning(QMainWindow):
         self.ocean.clicked.connect(self.showOcean)
         self.stillife.clicked.connect(self.showStillife)
         self.trees.clicked.connect(self.showTrees)
+        self.contrastCode.clicked.connect(self.showCode)
+        self.contrastGray.clicked.connect(self.contrastGrayImage)
+        self.contrastOriginal.clicked.connect(self.setOriginal)
+        self.contrastColour.clicked.connect(self.contrastImage)
+        self.contrastOrigGray.clicked.connect(self.setGray)
 
     def showAdjuster(self):
         self.path = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showBalls(self):
         self.path = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showFog(self):
         self.path = "../../hdr-bilder/Fog/Fog_00128.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showGarden(self):
         self.path = "../../hdr-bilder/Garden/Garden_00004.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showMountains(self):
         self.path = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showOcean(self):
         self.path = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
     
     def showStillife(self):
         self.path = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def showTrees(self):
         self.path = "../../hdr-bilder/Tree/Tree_00064.png"
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/glatting.txt').read()
-        title = "Glatting kode"
+        text = open('codes/kontrastforsterkning.txt').read()
+        title = "Kontrastforsterkning Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title)
         self.dialog.show()
 
     def setOriginal(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
+        self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def setGray(self):
         im = gray.rgb2gray(self.path)
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
         img = Image.fromarray(rescaled)
-        img.save('test.png')
-        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
-        os.remove('test.png')
+        img.save('pic.png')
+        self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
+        os.remove('pic.png')
 
-    def blurImage(self):
+    def contrastImage(self):
         orig_im = imageio.imread(self.path).astype(float)/255 
         im = np.copy(orig_im)
         im = im + .05 * np.random.randn(* np.shape(im))
-        im = eksplisittGlatting(im, orig_im, self.konstant.value())
+        im = eksplisittGlatting(im, orig_im, self.constant.value())
 
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
         img = Image.fromarray(rescaled)
-        img.save('test.png')
-        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
-        os.remove('test.png')
+        img.save('pic.png')
+        self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
+        os.remove('pic.png')
 
-    def blurGrayImage(self):
+    def contrastGrayImage(self):
         orig_im =  gray.rgb2gray(self.path)
         im =  gray.rgb2gray(self.path)
         im = im + .05 * np.random.randn(* np.shape(im))
-        im = eksplisittGlatting(im, orig_im, self.konstant.value())
+        im = eksplisittGlatting(im, orig_im, self.constant.value())
 
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
         img = Image.fromarray(rescaled)
-        img.save('test.png')
-        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
-        os.remove('test.png')
+        img.save('pic.png')
+        self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
+        os.remove('pic.png')
