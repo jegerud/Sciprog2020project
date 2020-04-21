@@ -72,38 +72,28 @@ class Blur(QMainWindow):
         text = open('codes/glatting.txt').read()
         title = "Glatting kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title)
+        self.dialog = ShowCode(text, title, 700)
         self.dialog.show()
 
     def setOriginal(self):
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
 
     def setGray(self):
-        im = gray.rgb2gray(self.path)
-        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
-        img = Image.fromarray(rescaled)
-        img.save('pic.png')
-        self.blurImg.setPixmap(QtGui.QPixmap('pic.png'))
-        os.remove('pic.png')
+        self.showBlurImage(gray.rgb2gray(self.path))
 
     def blurImage(self):
         orig_im = imageio.imread(self.path).astype(float)/255 
         im = np.copy(orig_im)
         im = im + .05 * np.random.randn(* np.shape(im))
-        im = eksplisittGlatting(im, orig_im, self.constant.value())
-
-        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
-        img = Image.fromarray(rescaled)
-        img.save('pic.png')
-        self.blurImg.setPixmap(QtGui.QPixmap('pic.png'))
-        os.remove('pic.png')
+        self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()))
 
     def blurGrayImage(self):
         orig_im =  gray.rgb2gray(self.path)
         im =  gray.rgb2gray(self.path)
         im = im + .05 * np.random.randn(* np.shape(im))
-        im = eksplisittGlatting(im, orig_im, self.constant.value())
+        self.showBlurImage(im = eksplisittGlatting(im, orig_im, self.constant.value()))
 
+    def showBlurImage(self, im):
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
         img = Image.fromarray(rescaled)
         img.save('pic.png')
