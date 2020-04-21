@@ -6,6 +6,7 @@ import sys
 
 sys.path.insert(0, '../')
 import imageio
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Glatting import eksplisittGlatting
@@ -41,31 +42,40 @@ class Glatting(QMainWindow):
         self.glattingKode.clicked.connect(self.showCode)
         self.glattetGray.clicked.connect(self.blurGrayImage)
         self.glattingOriginal.clicked.connect(self.setOriginal)
+        self.glattetColour.clicked.connect(self.blurImage)
+        self.glattingOrigGray.clicked.connect(self.setGray)
 
     def showAdjuster(self):
         self.path = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showBalls(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Balls/Balls_00032.png"))
+        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showFog(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Fog/Fog_00128.png"))
+        self.path = "../../hdr-bilder/Fog/Fog_00128.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showGarden(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Garden/Garden_00004.png"))
+        self.path = "../../hdr-bilder/Garden/Garden_00004.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showMountains(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"))
+        self.path = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showOcean(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Ocean/Ocean_00256.png"))
+        self.path = "../../hdr-bilder/Ocean/Ocean_00256.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
     
     def showStillife(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/StillLife/StillLife_01024.png"))
+        self.path = "../../hdr-bilder/StillLife/StillLife_01024.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
     def showTrees(self):
-        self.glattingBilde.setPixmap(QtGui.QPixmap("../../hdr-bilder/Tree/Tree_00064.png"))
+        self.path = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -78,6 +88,26 @@ class Glatting(QMainWindow):
     def setOriginal(self):
         self.glattingBilde.setPixmap(QtGui.QPixmap(self.path))
 
+    def setGray(self):
+        im = gray.rgb2gray(self.path)
+        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
+        img = Image.fromarray(rescaled)
+        img.save('test.png')
+        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
+        os.remove('test.png')
+
+    def blurImage(self):
+        orig_im = imageio.imread(self.path).astype(float)/255 
+        im = np.copy(orig_im)
+        im = im + .05 * np.random.randn(* np.shape(im))
+        im = eksplisittGlatting(im, orig_im, self.konstant.value())
+
+        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
+        img = Image.fromarray(rescaled)
+        img.save('test.png')
+        self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
+        os.remove('test.png')
+
     def blurGrayImage(self):
         orig_im =  gray.rgb2gray(self.path)
         im =  gray.rgb2gray(self.path)
@@ -88,6 +118,7 @@ class Glatting(QMainWindow):
         img = Image.fromarray(rescaled)
         img.save('test.png')
         self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
+        os.remove('test.png')
 
 
 class ShowCode(QDialog):
