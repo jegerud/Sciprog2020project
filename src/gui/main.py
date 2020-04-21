@@ -9,7 +9,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Glatting import eksplisittGlatting
+from GlattingModul import eksplisittGlatting
 import Grayscale as gray
 from PIL import Image
 
@@ -119,7 +119,6 @@ class Glatting(QMainWindow):
         img.save('test.png')
         self.glattingBilde.setPixmap(QtGui.QPixmap('test.png'))
         os.remove('test.png')
-
 
 class ShowCode(QDialog):
     def __init__(self, text, title, parent=None):
