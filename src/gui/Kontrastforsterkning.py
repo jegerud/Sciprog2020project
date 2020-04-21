@@ -10,7 +10,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import Grayscale as gray
-from GlattingModul import eksplisittGlatting
 from KontrastforsterkningModul import eksplisittKontrast
 from Function import *
 from PIL import Image
@@ -73,36 +72,26 @@ class ContrastEnhancement(QMainWindow):
         text = open('codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title)
+        self.dialog = ShowCode(text, title, 700)
         self.dialog.show()
 
     def setOriginal(self):
         self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
     def setGray(self):
-        im = gray.rgb2gray(self.path)
-        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
-        img = Image.fromarray(rescaled)
-        img.save('pic.png')
-        self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
-        os.remove('pic.png')
+        self.showContrastImage(gray.rgb2gray(self.path))
 
     def contrastImage(self):
         orig_im = imageio.imread(self.path).astype(float)/255 
         im = np.copy(orig_im)
-        im = eksplisittKontrast(im, orig_im, self.constant.value())
-
-        rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
-        img = Image.fromarray(rescaled)
-        img.save('pic.png')
-        self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
-        os.remove('pic.png')
+        self.showContrastImage(eksplisittKontrast(im, orig_im, self.constant.value()))
 
     def contrastGrayImage(self):
         orig_im =  gray.rgb2gray(self.path)
         im =  gray.rgb2gray(self.path)
-        im = eksplisittKontrast(im, orig_im, self.constant.value())
+        self.showContrastImage(eksplisittKontrast(im, orig_im, self.constant.value()))
 
+    def showContrastImage(self, im):
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
         img = Image.fromarray(rescaled)
         img.save('pic.png')
