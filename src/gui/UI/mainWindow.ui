@@ -205,7 +205,7 @@
      <string>**Tekst om anonymisering av ansikter**</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="openAnonymize">
+   <widget class="QPushButton" name="openAnonymise">
     <property name="geometry">
      <rect>
       <x>80</x>
