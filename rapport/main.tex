@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{setup}
+
+\begin{document}
+\import{./}{title}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\mainmatter
+\import{./sections/}{Introduksjon}
+\import{./sections/}{Anonymisering}
+
+% Inserting bibliography
+\newpage
+\nocite{PCP,wiki:FaceDetection}
+\bibliography{references}
+\end{document}
+
