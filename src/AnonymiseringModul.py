@@ -3,9 +3,9 @@ import cv2
 import ImageView as iv
 import eksplisitt as eks
 import matplotlib.pyplot as plt
-%matplotlib inline
+import sys
 
-def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
+def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     """
     Oppdager et ansikt vendt mot kamera
    
