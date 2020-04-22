@@ -7,7 +7,7 @@ def eksplisitt(u, alpha=0.25, h=0, n=1000):
 
     Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
 
-    Paramters
+    Parameters
     ---------
     u : func
         Funksjonen som beskriver diffusjonslikningen
@@ -42,7 +42,7 @@ def eksplisittAnonym(u,u_0, alpha, n):
 
     Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
 
-    Paramters
+    Parameters
     ---------
     u : func
         Funksjonen som beskriver diffusjonslikningen
@@ -63,3 +63,27 @@ def eksplisittAnonym(u,u_0, alpha, n):
         u[0] = u_0[0]   #Dirichlet randbetingelser
         u[-1] = u_0[-1] #
     return u
+
+
+def Inpainting_mosaic(im, mask):
+    """
+    Inpainter et bilde med en maske
+
+    Parameters
+    ---------
+    im : numpu.ndarray
+        Bildet som skal inpaintes
+    mask : numpy array
+           Masken
+    Returns
+    -------
+    numpy.ndarray:
+        Det inpaintede bildet
+    """
+    im0 = np.copy(im)
+    im[im < 0] = 0                # klipp til lovlige verdier
+    im[im > 1] = 1
+    for i in range(25):
+        im=eksplisitt(im, n=1)  #løs
+        im[np.logical_not(mask)] = im0[np.logical_not(mask)]         #ja
+    return im
