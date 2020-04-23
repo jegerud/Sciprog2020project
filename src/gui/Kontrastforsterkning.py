@@ -10,7 +10,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import Grayscale as gray
-from KontrastforsterkningModul import eksplisittKontrast
+from Eksplisitt import eksplisittKontrast
 from Function import *
 from PIL import Image
 
@@ -72,7 +72,7 @@ class ContrastEnhancement(QMainWindow):
         text = open('codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 700)
+        self.dialog = ShowCode(text, title, 600, 750)
         self.dialog.show()
 
     def setOriginal(self):
