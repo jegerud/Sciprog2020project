@@ -3,7 +3,7 @@ from __future__ import division
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import eksplisitt as eks
+import Eksplisitt as eks
 import ImageView as imv
 import unittest
 
@@ -11,6 +11,20 @@ import os
 import colour
 from colour.plotting import *
 from colour_demosaicing import (demosaicing_CFA_Bayer_Menon2007, mosaicing_CFA_Bayer)
+
+
+def getMosaic(file):
+    im = imageio.imread(file)
+    im = im.astype(float) / 255
+
+    mosaic = np.zeros(im.shape[:2]) # Alloker plass
+    mosaic[ ::2, ::2] = im[ ::2, ::2, 0]   #R
+    mosaic[1::2, ::2] = im[1::2, ::2, 1]   #G
+    mosaic[ ::2, 1::2] = im[ ::2, 1::2, 1] #G
+    mosaic[1::2, 1::2] = im[1::2, 1::2, 2] #B
+
+    return mosaic
+
 
 def mosaicToRgb(file, view=False):
     im = imageio.imread(file)
@@ -45,8 +59,9 @@ def mosaicToRgb(file, view=False):
     
     if view:
         imv.viewDemosaic(im, mosaic, im_ed, "Demosaicing - Algorithm")
+    else:
+        return im_ed
 
-    return im_ed
 
 def packageDemo(file, view=False):
     original = colour.io.read_image(file)
@@ -58,4 +73,5 @@ def packageDemo(file, view=False):
 
     if view:
         imv.viewDemosaic(original, mosaic, new, "Demosaicing - Package")
-    return new
+    else:
+        return new
