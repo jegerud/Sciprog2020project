@@ -2,12 +2,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from Glatting import *
-from Inpainting import *
-from Kontrastforsterkning import *
-from Demosaicing import *
-from KonverteringGraatone import *
-from Anonymisering import *
+from Glatting import Blur
+from Inpainting import Inpaint
+from Kontrastforsterkning import ContrastEnhancement
+from Demosaicing import Demosaic
+from KonverteringGraatone import GrayscaleConvert
+from Anonymisering import AnonymiseFaces
+from Somlos import Seamless
 import sys
 
 class Home(QMainWindow):
@@ -40,9 +41,8 @@ class Home(QMainWindow):
         self.dialog.show()
 
     def onOpenSeamlessClicked(self):
-        #self.dialog = ()
-        #self.dialog.show()
-        return 0
+        self.dialog = Seamless()
+        self.dialog.show()
     
     def onOpenGrayscaleClicked(self):
         self.dialog = GrayscaleConvert()
