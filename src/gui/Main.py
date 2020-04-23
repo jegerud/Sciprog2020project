@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from Glatting import *
+from Inpainting import *
 from Kontrastforsterkning import *
 from Demosaicing import *
 from KonverteringGraatone import *
@@ -21,16 +22,14 @@ class Home(QMainWindow):
         self.openSeamless.clicked.connect(self.onOpenSeamlessClicked)
         self.openGrayConvert.clicked.connect(self.onOpenGrayscaleClicked)
         self.openAnonymise.clicked.connect(self.onOpenAnonymiseClicked)
-
     
     def onOpenBlurClicked(self):
         self.dialog = Blur()
         self.dialog.show()
     
     def onOpenInpaintingClicked(self):
-        #self.dialog = Glatting()
-        #self.dialog.show()
-        return 0
+        self.dialog = Inpainting()
+        self.dialog.show()
 
     def onOpenContrastClicked(self):
         self.dialog = ContrastEnhancement()
