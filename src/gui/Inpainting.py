@@ -9,7 +9,6 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-import Grayscale as gray
 from InpaintingModul import *
 from Function import *
 from PIL import Image
