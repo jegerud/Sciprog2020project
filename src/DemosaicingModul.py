@@ -26,16 +26,15 @@ def getMosaic(file):
     return mosaic
 
 
+def getMosaicPackage(file):
+    original = colour.io.read_image(file)
+    return mosaicing_CFA_Bayer(original) 
+
+
 def mosaicToRgb(file, view=False):
     im = imageio.imread(file)
     im = im.astype(float) / 255
-    
-    #lag mosaic
-    mosaic = np.zeros(im.shape[:2]) # Alloker plass
-    mosaic[ ::2, ::2] = im[ ::2, ::2, 0]   #R
-    mosaic[1::2, ::2] = im[1::2, ::2, 1]   #G
-    mosaic[ ::2, 1::2] = im[ ::2, 1::2, 1] #G
-    mosaic[1::2, 1::2] = im[1::2, 1::2, 2] #B
+    mosaic = getMosaic(file)
     
     #fyller inn i fargekanalene fra mosaic
     im_ed= np.zeros(im.shape)
@@ -63,9 +62,8 @@ def mosaicToRgb(file, view=False):
         return im_ed
 
 
-def packageDemo(file, view=False):
+def mosaicToRgbPackage(file, view=False):
     original = colour.io.read_image(file)
-
     mosaic = mosaicing_CFA_Bayer(original)
     new = demosaicing_CFA_Bayer_Menon2007(mosaic)
     new[new < 0] = 0
