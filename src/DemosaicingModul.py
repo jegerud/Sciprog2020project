@@ -27,8 +27,9 @@ def getMosaic(file):
 
 
 def getMosaicPackage(file):
-    original = colour.io.read_image(file)
-    return mosaicing_CFA_Bayer(original) 
+    im = imageio.imread(file)
+    im = im.astype(float) / 255
+    return mosaicing_CFA_Bayer(im) 
 
 
 def mosaicToRgb(file, view=False):
