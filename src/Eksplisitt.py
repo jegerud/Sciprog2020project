@@ -87,3 +87,64 @@ def Inpainting_mosaic(im, mask):
         im=eksplisitt(im, n=1)  #løs
         im[np.logical_not(mask)] = im0[np.logical_not(mask)]         #ja
     return im
+
+def eksplisittGlatting(im, orig_im, k):
+    """
+    Løser diffusjonslikningen
+
+    Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
+
+    Paramters
+    ---------
+    im : bildet
+        Bildet som skal glattes
+    orig_im : originalt bilde
+        Bild som ikke endres på
+    k : konstant
+        Styrer hvor mye bildet skal glattes
+    Returns
+    -------
+    im:
+	Et glattet bilde
+    """
+    image = im
+    iteration = 20
+    delta_t = 1 / iteration
+    
+    for i in range(iteration):
+        laplace = (image[0:-2, 1:-1] +
+            image[2:, 1:-1] +
+            image[1:-1, 0:-2] +
+            image[1:-1, 2:] -
+            4 * image[1:-1, 1:-1])
+        h = k*delta_t*(image[1:-1, 1:-1] - orig_im[1:-1, 1:-1])
+        image[1:-1, 1:-1] += .25 * (laplace - h)
+        image[:, 0] = image[:, 1]      # Neumann randbetingelse
+        image[:, -1] = image[:, -2]    
+        image[0, :] = image[1, :]      
+        image[-1, :] = image[-2 , :]   
+        image[image < 0] = 0           # klipp til lovlige verdier
+        im[im > 1] = 1
+    return im
+
+def eksplisittKontrast(im, orig_im, k):
+    image = im
+    for i in range(10):
+        laplace = (image[0:-2, 1:-1] +
+            image[2:, 1:-1] +
+            image[1:-1, 0:-2] +
+            image[1:-1, 2:] -
+            4 * image[1:-1, 1:-1])
+        h = k * (orig_im[0:-2, 1:-1] +
+            orig_im[2:, 1:-1] +
+            orig_im[1:-1, 0:-2] +
+            orig_im[1:-1, 2:] -
+            4 * orig_im[1:-1, 1:-1])
+        image[1:-1, 1:-1] += .25 * (laplace - h)
+        image[:, 0] = image[:, 1]      # Neumann randbetingelse
+        image[:, -1] = image[:, -2]    #
+        image[0, :] = image[1, :]      #
+        image[-1, :] = image[-2 , :]   #
+        image[image < 0] = 0                                 # klipp til lovlige verdier
+        image[image > 1] = 1
+    return image
