@@ -38,9 +38,9 @@ class Seamless(QMainWindow):
         self.imageTwoTwo.clicked.connect(partial(self.setImage, self.imgFour))
         self.imageThreeOne.clicked.connect(partial(self.setImage, self.imgOne))
         self.imageThreeTwo.clicked.connect(partial(self.setImage, self.imgSix))
-        self.seamlessOne.clicked.connect(self.seamlessImageOne)
-        #self.seamlessTwo.clicked.connect(self.seamlessImageTwo)
-        #self.seamlessThree.clicked.connect(self.seamlessImageThree)
+        self.seamlessOne.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
+        #self.seamlessTwo.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
+        #self.seamlessThree.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -54,17 +54,11 @@ class Seamless(QMainWindow):
         self.path = img
         self.seamlessImg.setPixmap(QtGui.QPixmap(img))
 
-    def seamlessImageOne(self):
+    def seamlessImage(self, img1, img2):
         if not self.imgOneReady:
             self.seamlessImageOne = seamless(self.imgOne, self.imgTwo)
             self.imgOneReady = True
         self.showImage(self.seamlessImageOne)
-        
-    def seamlessImageTwo(self):
-        self.showImage(self.seamlessImageTwo)
-
-    def seamlessImageThree(self):
-        self.showImage(self.seamlessImageThree)
 
     def showImage(self, im):
         im = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
