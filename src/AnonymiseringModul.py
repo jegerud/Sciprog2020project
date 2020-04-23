@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import ImageView as iv
-import eksplisitt as eks
+import Eksplisitt as eks
 import matplotlib.pyplot as plt
 import sys
 
