@@ -66,7 +66,7 @@ class GrayscaleConvert(QMainWindow):
         text = open('codes/grayscaleConvert.txt').read()
         title = "Konvertering til gråtone - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 800)
+        self.dialog = ShowCode(text, title, 600, 780)
         self.dialog.show()
 
     def setOriginal(self):
