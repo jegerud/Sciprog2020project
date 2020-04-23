@@ -90,7 +90,7 @@ def viewInpaint(original, mask, ny, text, rgb):
 
     plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
 
-def singleView(image, title, gray=False):
+def singleView(image, gray=False):
     """
     Viser bildet med tittel
 
@@ -106,7 +106,6 @@ def singleView(image, title, gray=False):
         plt.imshow(image, plt.cm.gray)
     else:
         plt.imshow(image)
-    plt.title(title)
     plt.axis('off')
 
 def viewDemosaic(original, mosaic, ny, text):
