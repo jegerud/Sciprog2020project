@@ -19,7 +19,6 @@ class AnonymiseFaces(QMainWindow):
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('UI/anonymisering.ui', self)
         self.path = "../../hdr-bilder/faces/lfc.jpeg"
-        self.faceCount = "2"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
         self.lena.clicked.connect(self.showLena)
@@ -42,7 +41,7 @@ class AnonymiseFaces(QMainWindow):
         text = open('codes/anonymisering.txt').read()
         title = "Anonymisering - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 650, 700)
+        self.dialog = ShowCode(text, title, 700, 900)
         self.dialog.show()
 
     def setOriginal(self):
@@ -50,11 +49,12 @@ class AnonymiseFaces(QMainWindow):
 
     def detectFaces(self):
         count, img = detectFace(self.path)
+        self.faceCount.setText(str(count))
         self.showFaces(img)
 
     def anonymiseFaces(self):
         count, img = blurFace(self.path)
-        print(count)
+        self.faceCount.setText(str(count))
         self.showFaces(img)
 
     def showFaces(self, im):
