@@ -20,8 +20,6 @@ def seamless(fra, til, view=False):
     im_ed=np.zeros((xlen, ylen))
     im_ed=im_from[xy1[0]:xy1[0]+xlen, xy1[1]:xy1[1]+ylen] #henter ut delen av bildet
                                                           #som skal klones
-    plt.figure()
-    plt.imshow(im_ed)
     alpha=.25
     laplace1 = (im_ed[0:-2, 1:-1] +
                im_ed[2:, 1:-1] +
