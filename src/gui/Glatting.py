@@ -72,7 +72,7 @@ class Blur(QMainWindow):
         text = open('codes/glatting.txt').read()
         title = "Glatting kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 700)
+        self.dialog = ShowCode(text, title, 600, 400)
         self.dialog.show()
 
     def setOriginal(self):
