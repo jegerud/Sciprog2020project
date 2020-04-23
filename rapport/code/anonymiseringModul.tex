@@ -1,0 +1,47 @@
+\begin{lstlisting}[language=Python]
+def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
+    """
+    Oppdager et ansikt vendt mot kamera
+   
+    Parameters + some explanation
+    ---------
+    file         : Bildefil
+                    Pathen til filen der original bildet befinner seg uten andvending
+    scaleFactor  : int
+                    Kompenserer i tilfelle noen ansikter er lenger unna kamera enn andre
+    minNeighbors : int
+                    ----
+    title        : text
+                    Tittelen til bildet som er anvendt
+    """
+    image = cv2.imread(file) #leser inn bildet
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+    #importerer haarscade biblioteket
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
+    faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors, minSize = (30,30))
+    for (x,y,w,h) in faces:
+        RoI = image[y:y+h, x:x+w]            #Region of Interest --> ansiktet
+        RoI = RoI.astype(dtype = float)
+        blur = eks.eksplisittAnonym(RoI,image[y:y+h, x:x+w], 0.25,250)               
+        image[y:y+h, x:x+w] = blur
+        
+    return len(faces), image
+    \end{lstlisting}
+
+ 
+\begin{lstlisting}[language=Python]  
+import AnonymiseringModul as anonym
+import ImageView as iv
+
+lena = '../hdr-bilder/faces/lena.png'
+family = '../hdr-bilder/faces/family.jpg'
+group = '../hdr-bilder/faces/group.jpg'
+
+antall, image = anonym.blurFace(lena)
+print(antall, "ansikt er registrert")   #teller opp antall ansikt funnet
+iv.singleView(image, "Lena")            #displayer bildet
+\end{lstlisting}
+
+
+    
