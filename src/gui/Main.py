@@ -14,7 +14,7 @@ class Home(QMainWindow):
         super(Home, self).__init__()
         uic.loadUi('UI/mainWindow.ui', self)
 
-        self.openGlatting.clicked.connect(self.onOpenGlattingClicked)
+        self.openBlur.clicked.connect(self.onOpenBlurClicked)
         self.openInpainting.clicked.connect(self.onOpenInpaintingClicked)
         self.openContrast.clicked.connect(self.onOpenContrastClicked)
         self.openDemosaicing.clicked.connect(self.onOpenDemosaicingClicked)
@@ -23,8 +23,8 @@ class Home(QMainWindow):
         self.openAnonymise.clicked.connect(self.onOpenAnonymiseClicked)
 
     
-    def onOpenGlattingClicked(self):
-        self.dialog = Glatting()
+    def onOpenBlurClicked(self):
+        self.dialog = Blur()
         self.dialog.show()
     
     def onOpenInpaintingClicked(self):
