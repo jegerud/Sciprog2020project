@@ -18,22 +18,22 @@ class AnonymiseFaces(QMainWindow):
     def __init__(self):
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('UI/anonymisering.ui', self)
-        self.path = "../../hdr-bilder/faces/lfc.jpeg"
+        self.path = "../../hdr-bilder/Faces/group.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
         self.lena.clicked.connect(self.showLena)
-        self.liverpool.clicked.connect(self.showLFC)
+        self.group1.clicked.connect(self.showGroup)
         self.anonymousCode.clicked.connect(self.showCode)
         self.anonymousOriginal.clicked.connect(self.setOriginal)
         self.anonymousFindFaces.clicked.connect(self.detectFaces)
         self.anonymousAnonymise.clicked.connect(self.anonymiseFaces)
 
     def showLena(self):
-        self.path = "../../hdr-bilder/faces/lena.png"
+        self.path = "../../hdr-bilder/Faces/lena.png"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
-    def showLFC(self):
-        self.path = "../../hdr-bilder/faces/lfc.jpeg"
+    def showGroup(self):
+        self.path = "../../hdr-bilder/Faces/group.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
     
     def showCode(self):
@@ -46,15 +46,16 @@ class AnonymiseFaces(QMainWindow):
 
     def setOriginal(self):
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
+        self.updateCount(0)
 
     def detectFaces(self):
         count, img = detectFace(self.path)
-        self.faceCount.setText(str(count))
+        self.updateCount(count)
         self.showFaces(img)
 
     def anonymiseFaces(self):
         count, img = blurFace(self.path)
-        self.faceCount.setText(str(count))
+        self.updateCount(count)
         self.showFaces(img)
 
     def showFaces(self, im):
@@ -63,3 +64,6 @@ class AnonymiseFaces(QMainWindow):
         img.save('pic.png')
         self.anonymiseImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def updateCount(self, count):
+        self.faceCount.setText(str(count))
