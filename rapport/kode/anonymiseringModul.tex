@@ -6,9 +6,9 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     Parameters + some explanation
     ---------
     file         : Bildefil
-                    Pathen til filen der original bildet befinner seg uten andvending
+                    Pathen til filen der originalbildet er
     scaleFactor  : int
-                    Kompenserer i tilfelle noen ansikter er lenger unna kamera enn andre
+                    Kompenserer i tilfelle noen ansikter er lenger unna enn andre
     minNeighbors : int
                     ----
     title        : text
@@ -19,7 +19,10 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
 
     #importerer haarscade biblioteket
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
-    faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors, minSize = (30,30))
+    faces = face_cascade.detectMultiScale(image,
+                                          scaleFactor,
+                                          minNeighbors,
+                                          minSize = (30,30))
     for (x,y,w,h) in faces:
         RoI = image[y:y+h, x:x+w]            #Region of Interest --> ansiktet
         RoI = RoI.astype(dtype = float)
@@ -29,7 +32,6 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     return len(faces), image
     \end{lstlisting}
 
- 
 \begin{lstlisting}[language=Python]  
 import AnonymiseringModul as anonym
 import ImageView as iv

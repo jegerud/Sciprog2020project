@@ -2,22 +2,24 @@
 \usepackage{setup}
 
 \begin{document}
-\import{./}{title}
+\import{./}{forside}
 
 \tableofcontents
-
 \listoffigures
-
 \listoftables
 
 \mainmatter
-\import{./sections/}{Introduksjon}
-\import{./sections/}{Anonymisering}
+\import{./seksjoner/}{1-Introduksjon}
+\import{./seksjoner/}{2-Oppgaven}
+\import{./seksjoner/}{3-Glatting}
+\import{./seksjoner/}{4-Inpainting}
+\import{./seksjoner/}{5-Kontrastforsterkning}
+\import{./seksjoner/}{6-Demosaicing}
+\import{./seksjoner/}{7-Sømløs kloning}
+\import{./seksjoner/}{8-Konvertering av fargebilder til gråtone}
+\import{./seksjoner/}{9-Anonymisering}
 
-
-% Inserting bibliography
 \newpage
-\nocite{PCP,wiki:FaceDetection}
-\bibliography{references}
+\bibliography{referanser}
 \end{document}
 
