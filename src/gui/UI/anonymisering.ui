@@ -65,13 +65,13 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>110</y>
+     <y>100</y>
      <width>191</width>
-     <height>221</height>
+     <height>291</height>
     </rect>
    </property>
    <property name="text">
-    <string>**Tekst om funksjonalitet**</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Finner ansiktene i bildet, og&lt;br/&gt;anonymiserer disse ansiktene&lt;br/&gt;ved å glatte disse områdene.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Velg mellom utvalg av bilder&lt;br/&gt;med ansikter til høyre. Se &lt;br/&gt;originalversjonen av bildet,&lt;br/&gt;finn ansiktene eller anonymiser&lt;br/&gt;disse ved hjelp av knappene &lt;br/&gt;nederst. Nede til høyre står&lt;br/&gt;det hvor mange ansikter som &lt;br/&gt;er oppdaget.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="group1">
@@ -87,7 +87,7 @@
     <string>Group 1</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="lena">
+  <widget class="QPushButton" name="obama">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -97,13 +97,13 @@
     </rect>
    </property>
    <property name="text">
-    <string>Lena</string>
+    <string>Obama</string>
    </property>
   </widget>
   <widget class="QPushButton" name="anonymousCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>390</y>
      <width>131</width>
      <height>25</height>
