@@ -19,12 +19,17 @@
      <rect>
       <x>260</x>
       <y>160</y>
-      <width>271</width>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om glatting**</string>
+     <string>Glatter ut og fjerner støy på bildet.</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -84,8 +89,13 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om kontrastforsterkning**</string>
+     <string>Øker kontrasten i bildet.</string>
     </property>
    </widget>
    <widget class="QLabel" name="glattingTekst_3">
@@ -93,12 +103,17 @@
      <rect>
       <x>260</x>
       <y>200</y>
-      <width>271</width>
+      <width>481</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om inpainting**</string>
+     <string>Rekonstruerer deler av bilde der informasjon mangler.</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openInpainting">
@@ -119,12 +134,17 @@
      <rect>
       <x>260</x>
       <y>280</y>
-      <width>271</width>
+      <width>361</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om kontrastforsterkning**</string>
+     <string>Rekonstruerer bildet ut i fra en gråtonemosaikk.</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openDemosaicing">
@@ -145,12 +165,17 @@
      <rect>
       <x>260</x>
       <y>320</y>
-      <width>271</width>
+      <width>301</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om sømløs kloning**</string>
+     <string>Limer et bilde sømløst inn i et annet bilde.</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openSeamless">
@@ -175,8 +200,13 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om konvertering til gråtonebilder**</string>
+     <string>Konverter et bilde til gråtone på to måter.</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openGrayConvert">
@@ -197,12 +227,17 @@
      <rect>
       <x>260</x>
       <y>400</y>
-      <width>301</width>
+      <width>331</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om anonymisering av ansikter**</string>
+     <string>Oppdager og anonymiserer ansikter på et bilde</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openAnonymise">
@@ -227,8 +262,13 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="text">
-     <string>**Tekst om delvis svart/hvitt bilder**</string>
+     <string>Gjør deler av et bilde om til gråtone</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openBWEffect">
