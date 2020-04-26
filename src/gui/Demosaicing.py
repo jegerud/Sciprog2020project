@@ -16,9 +16,8 @@ from PIL import Image
 class Demosaic(QMainWindow):
     def __init__(self):
         super(Demosaic, self).__init__()
-        uic.loadUi('UI/anonymisering.ui', self)
-        self.path = "../../hdr-bilder/faces/lfc.jpeg"
-        self.faceCount = "2"
+        uic.loadUi('UI/demosaicing.ui', self)
+        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
         self.demosaicImg.setPixmap(QtGui.QPixmap(self.path))
 
         self.adjuster.clicked.connect(self.showAdjuster)
@@ -74,7 +73,7 @@ class Demosaic(QMainWindow):
         text = open('codes/demosaicing.txt').read()
         title = "Demosaicing - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 650, 700)
+        self.dialog = ShowCode(text, title, 650, 800)
         self.dialog.show()
 
     def setOriginal(self):
@@ -82,18 +81,19 @@ class Demosaic(QMainWindow):
 
     def mosaic(self):
         mosaic = getMosaic(self.path)
-        self.showImage(img)
+        self.showImage(mosaic)
 
     def mosaicPackage(self):
         mosaic = getMosaicPackage(self.path)
+        self.showImage(mosaic)
 
     def demosaicImage(self):
         img = mosaicToRgb(self.path)
-        self.showFaces(img)
+        self.showImage(img)
 
     def demosaicImagePackage(self):
         img = mosaicToRgbPackage(self.path)
-        self.showFaces(img)
+        self.showImage(img)
 
     def showImage(self, im):
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
