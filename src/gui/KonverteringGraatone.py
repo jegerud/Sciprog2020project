@@ -72,10 +72,10 @@ class GrayscaleConvert(QMainWindow):
         self.grayImg.setPixmap(QtGui.QPixmap(self.path))
 
     def convertGrayEasy(self):
-        self.convertGray(gray.grayscale(self.path))
+        self.convertGray(grayscale(self.path))
 
     def convertGrayAdvanced(self):
-        self.convertGray(gray.rgb2gray(self.path))
+        self.convertGray(rgb2gray(self.path))
 
     def convertGray(self, im):
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
