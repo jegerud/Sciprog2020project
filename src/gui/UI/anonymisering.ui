@@ -149,7 +149,7 @@
    <property name="geometry">
     <rect>
      <x>750</x>
-     <y>350</y>
+     <y>360</y>
      <width>51</width>
      <height>21</height>
     </rect>
@@ -167,13 +167,78 @@
    <property name="geometry">
     <rect>
      <x>800</x>
-     <y>350</y>
+     <y>360</y>
      <width>21</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
     <string>0</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="group2">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>160</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Group 2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="group3">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>200</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Group 3</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="family1">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>240</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Family 1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="family2">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>280</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Family 2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="team">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>320</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Team</string>
    </property>
   </widget>
  </widget>
