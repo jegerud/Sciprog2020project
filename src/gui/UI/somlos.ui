@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
+    <width>779</width>
     <height>483</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="imageOneTwo">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>100</y>
      <width>91</width>
      <height>31</height>
@@ -29,7 +29,7 @@
   <widget class="QPushButton" name="seamlessOne">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>140</y>
      <width>91</width>
      <height>31</height>
@@ -42,7 +42,7 @@
   <widget class="QPushButton" name="imageOneOne">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>60</y>
      <width>91</width>
      <height>31</height>
@@ -55,7 +55,7 @@
   <widget class="QLabel" name="glattingOverskrift">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>20</y>
      <width>221</width>
      <height>61</height>
@@ -77,21 +77,21 @@
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>110</y>
-     <width>191</width>
+     <width>241</width>
      <height>221</height>
     </rect>
    </property>
    <property name="text">
-    <string>**Tekst om funksjonalitet**</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;En bit av bilde 2 limes inn i&lt;br/&gt;bilde 1, og forsøker å gjøre&lt;br/&gt;dette så sømløst som mulig.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Velg mellom tre forhåndsvalgte&lt;br/&gt;bildekombinasjoner til høyre.&lt;br/&gt;Se originalversjonen av bilde 1&lt;br/&gt;og bilde 2. Se den ferdige &lt;br/&gt;versjonen ved å klikke på&lt;br/&gt;&amp;quot;sy sammen&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="seamlessCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>390</y>
+     <x>30</x>
+     <y>410</y>
      <width>131</width>
      <height>25</height>
     </rect>
@@ -103,7 +103,7 @@
   <widget class="QLabel" name="seamlessImg">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>280</x>
      <y>60</y>
      <width>391</width>
      <height>371</height>
@@ -122,7 +122,7 @@
   <widget class="QPushButton" name="imageTwoTwo">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>230</y>
      <width>91</width>
      <height>31</height>
@@ -135,7 +135,7 @@
   <widget class="QPushButton" name="imageTwoOne">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>190</y>
      <width>91</width>
      <height>31</height>
@@ -148,7 +148,7 @@
   <widget class="QPushButton" name="seamlessTwo">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>270</y>
      <width>91</width>
      <height>31</height>
@@ -161,7 +161,7 @@
   <widget class="QPushButton" name="imageThreeTwo">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>360</y>
      <width>91</width>
      <height>31</height>
@@ -174,7 +174,7 @@
   <widget class="QPushButton" name="imageThreeOne">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>320</y>
      <width>91</width>
      <height>31</height>
@@ -187,7 +187,7 @@
   <widget class="QPushButton" name="seamlessThree">
    <property name="geometry">
     <rect>
-     <x>740</x>
+     <x>680</x>
      <y>400</y>
      <width>91</width>
      <height>31</height>
