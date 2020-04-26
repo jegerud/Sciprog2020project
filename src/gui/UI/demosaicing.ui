@@ -66,20 +66,20 @@
     <rect>
      <x>40</x>
      <y>110</y>
-     <width>191</width>
+     <width>231</width>
      <height>221</height>
     </rect>
    </property>
    <property name="text">
-    <string>**Tekst om funksjonalitet**</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Informasjonen i originalbildet &lt;br/&gt;legges over i en gråtonemosaikk,&lt;br/&gt;før det rekonstrueres ved hjelp&lt;br/&gt;av demosaicing.&lt;br/&gt;&lt;br/&gt;Velg til høyre hvilket bilde som&lt;br/&gt;skal brukes. Under bildet velges&lt;br/&gt;om man vil bruke egenskrevet&lt;br/&gt;kode, eller om man vil bruke&lt;br/&gt;kode med ferdige biblioteker.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="demosaicCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>390</y>
-     <width>131</width>
+     <width>111</width>
      <height>25</height>
     </rect>
    </property>
@@ -87,7 +87,7 @@
     <string>Vis kode</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="demosaicDemosaiced">
+  <widget class="QPushButton" name="demosaicDemosaic">
    <property name="geometry">
     <rect>
      <x>590</x>
@@ -221,6 +221,71 @@
    </property>
    <property name="text">
     <string>Ocean</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="demosaicDemosaicPackage">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>420</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Demosaiced</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="demosaicMosaicPackage">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>420</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gråtonemosaikk</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="demosaicOriginal2">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>420</y>
+     <width>151</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Original</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>390</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Uten pakker:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>420</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bruk av pakker:</string>
    </property>
   </widget>
  </widget>
