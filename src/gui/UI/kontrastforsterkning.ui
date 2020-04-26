@@ -155,13 +155,13 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>110</y>
-     <width>191</width>
+     <y>120</y>
+     <width>231</width>
      <height>221</height>
     </rect>
    </property>
    <property name="text">
-    <string>**Tekst om funksjonalitet**</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kontrasten i bildet blir økt. &lt;br/&gt;Dette gjøres ved hjelp av &lt;br/&gt;poisson-likningen&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom de ulike bildene&lt;br/&gt;til høyre. Se fargebilde eller &lt;br/&gt;gråtonebilde, eller øk kontrasten &lt;br/&gt;på farge- eller gråtonebildet &lt;br/&gt;ved hjelp av knappene under. &lt;br/&gt;Ved å sette verdien høyere vil&lt;br/&gt;konstrasten økes mer.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="balls">
@@ -193,7 +193,7 @@
   <widget class="QPushButton" name="contrastCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>390</y>
      <width>131</width>
      <height>25</height>
