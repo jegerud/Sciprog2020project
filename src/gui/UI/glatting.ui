@@ -154,11 +154,14 @@
      <x>40</x>
      <y>110</y>
      <width>191</width>
-     <height>221</height>
+     <height>241</height>
     </rect>
    </property>
    <property name="text">
-    <string>**Tekst om funksjonalitet**</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;høyere vil bildet bli mindre&lt;br/&gt;glattere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="balls">
@@ -190,7 +193,7 @@
   <widget class="QPushButton" name="blurCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>390</y>
      <width>131</width>
      <height>25</height>
