@@ -13,28 +13,39 @@ import Grayscale as gray
 from AnonymiseringModul import *
 from Function import *
 from PIL import Image
+from functools import partial
 
 class AnonymiseFaces(QMainWindow):
     def __init__(self):
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('UI/anonymisering.ui', self)
-        self.path = "../../hdr-bilder/Faces/group.jpg"
+        self.path = "../../hdr-bilder/Faces/group1.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.lena.clicked.connect(self.showLena)
-        self.group1.clicked.connect(self.showGroup)
+        self.imgObama = "../../hdr-bilder/Faces/obama.jpg"
+        self.imgGroup1 = "../../hdr-bilder/Faces/group1.jpg"
+        self.imgGroup2 = "../../hdr-bilder/Faces/group2.jpg"
+        self.imgGroup3 = "../../hdr-bilder/Faces/group3.jpg"
+        self.imgTeam = "../../hdr-bilder/Faces/team.jpg"
+        self.imgFamily = "../../hdr-bilder/Faces/family.jpg"
+        self.imgFamily2 = "../../hdr-bilder/Faces/family2.jpg"
+
+        self.obama.clicked.connect(partial(self.setImage, self.imgObama))
+        self.group1.clicked.connect(partial(self.setImage, self.imgGroup1))
+        self.group2.clicked.connect(partial(self.setImage, self.imgGroup2))
+        self.group3.clicked.connect(partial(self.setImage, self.imgGroup3))
+        self.team.clicked.connect(partial(self.setImage, self.imgTeam))
+        self.family1.clicked.connect(partial(self.setImage, self.imgFamily))
+        self.family2.clicked.connect(partial(self.setImage, self.imgFamily2))
         self.anonymousCode.clicked.connect(self.showCode)
         self.anonymousOriginal.clicked.connect(self.setOriginal)
         self.anonymousFindFaces.clicked.connect(self.detectFaces)
         self.anonymousAnonymise.clicked.connect(self.anonymiseFaces)
-
-    def showLena(self):
-        self.path = "../../hdr-bilder/Faces/lena.png"
-        self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def showGroup(self):
-        self.path = "../../hdr-bilder/Faces/group.jpg"
-        self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
+    
+    def setImage(self, img):
+        self.path = img
+        self.anonymiseImg.setPixmap(QtGui.QPixmap(img))
+        self.updateCount(0)
     
     def showCode(self):
         code = QPlainTextEdit()
