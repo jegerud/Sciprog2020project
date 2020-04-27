@@ -35,8 +35,7 @@ def eksplisitt(u, alpha=0.25, h=0, n=1000):
         u[-1, :] = u[-2 , :]   #
     return u
 
-
-def eksplisittAnonym(u,u_0, alpha, n):
+def eksplisittDirichlet(u,u_0, alpha=0.25, n=1000):
     """
     Løser diffusjonslikningen
 
@@ -85,7 +84,7 @@ def Inpainting_mosaic(im, mask):
     im[im > 1] = 1
     for i in range(25):
         im=eksplisitt(im, n=1)  #løs
-        im[np.logical_not(mask)] = im0[np.logical_not(mask)]         #ja
+        im[np.logical_not(mask)] = im0[np.logical_not(mask)] #ja
     return im
 
 def eksplisittGlatting(im, orig_im, k):
