@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
+from functools import partial
 
 sys.path.insert(0, '../')
 import imageio
@@ -19,11 +20,14 @@ class Inpainting(QMainWindow):
         uic.loadUi('UI/inpainting.ui', self)
         self.path = "../../hdr-bilder/Tree/Tree_00064.png"
         self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
+        self.imgOne = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgTwo = "../../hdr-bilder/Fog/Fog_00512.png"
+        self.imgThree = "../../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
 
         self.inpaintingCode.clicked.connect(self.showCode)
-        self.imageOne.clicked.connect(self.setImg1)
-        self.imageTwo.clicked.connect(self.setImg2)
-        self.imageThree.clicked.connect(self.setImg3)
+        self.imageOne.clicked.connect(partial(self.setImage, self.imgOne))
+        self.imageTwo.clicked.connect(partial(self.setImage, self.imgTwo))
+        self.imageThree.clicked.connect(partial(self.setImage, self.imgThree))
         self.maskOne.clicked.connect(self.showMask)
         self.maskTwo.clicked.connect(self.showMask)
         self.maskThree.clicked.connect(self.showMask)
@@ -39,23 +43,15 @@ class Inpainting(QMainWindow):
         self.dialog = ShowCode(text, title, 600, 720)
         self.dialog.show()
 
-    def setImg1(self):
-        self.path = "../../hdr-bilder/Tree/Tree_00064.png"
-        self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def setImg2(self):
-        self.path = "../../hdr-bilder/Fog/Fog_00512.png"
-        self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
-    
-    def setImg3(self):
-        self.path = "../../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
-        self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
+    def setImage(self, img):
+        self.path = img
+        self.inpaintImg.setPixmap(QtGui.QPixmap(img))
 
     def showMask(self):
         self.showImage(Inpaint(self.path, 2), False)
 
     def inpaint(self):
-        self.showImage(Inpaint_rgb(self.path, 3))
+        self.showImage(Inpaint(self.path, 3))
 
     def showImage(self, im, colour=True):
         if colour: 
