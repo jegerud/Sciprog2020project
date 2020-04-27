@@ -38,8 +38,31 @@ def rgb2gray(file):
         Kopi av originalbildet i gråtoner
     -------
     """
-    pic =  imageio.imread(file)
-    r, g, b = pic[:,:,0], pic[:,:,1], pic[:,:,2]
-    gray = (0.2989 * r + 0.5870 * g + 0.1140 * b) / 255
+    orig_im = imageio.imread(file)
+    gray_im = grayscale(file)
+    u0 = np.copy(gray_im)
+    orig_im = orig_im.astype(float)/255
 
-    return gray
+    dudx = np.zeros(gray_im.shape)
+    dudy = np.zeros(gray_im.shape)
+    dudx[1:-1, 1:-1] = u0[2:, 1:-1]-u0[1:-1, 1:-1]
+    dudy[1:-1, 1:-1] = u0[1:-1, 2:]-u0[1:-1, 1:-1]
+    gradient = dudx+dudy
+    g = abs(gradient)/np.sqrt(3)
+    retning = gradient*(orig_im[:,:,0] + orig_im[:,:,1] + orig_im[:,:,2])
+
+    alpha = .25
+    for i in range(2):
+        laplace = (u0[0:-2, 1:-1] +
+                   u0[2:, 1:-1] +
+                   u0[1:-1, 0:-2] +
+                   u0[1:-1, 2:] -
+                   4 * u0[1:-1, 1:-1])
+        u0[1:-1, 1:-1] += alpha * laplace - retning[1:-1, 1:-1]*g[1:-1, 1:-1]
+        u0[:, 0] = u0[:, 1]      # Neumann randbetingelser
+        u0[:, -1] = u0[:, -2]    
+        u0[0, :] = u0[1, :]      
+        u0[-1, :] = u0[-2 , :]   
+        u0[u0 < 0] = 0
+        u0[u0 > 1] = 1
+    return u0
