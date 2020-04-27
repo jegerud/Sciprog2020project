@@ -28,7 +28,7 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     for (x,y,w,h) in faces:
         RoI = image[y:y+h, x:x+w]                          #Region of Interest --> ansiktet
         RoI = RoI.astype(dtype = float)
-        blur = eks.eksplisittAnonym(RoI,image[y:y+h, x:x+w], 0.25,250)               
+        blur = eks.eksplisittDirichlet(RoI,image[y:y+h, x:x+w], 0.25,250)               
         image[y:y+h, x:x+w] = blur
         
     return len(faces), image
