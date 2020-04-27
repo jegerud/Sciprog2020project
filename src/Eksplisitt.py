@@ -147,3 +147,37 @@ def eksplisittKontrast(im, orig_im, k):
         image[image < 0] = 0                                 # klipp til lovlige verdier
         image[image > 1] = 1
     return image
+
+def eksplisittInpaint(image, mask, alpha=.25, n=100):
+    """
+    Løser diffusjonslikningen
+
+    Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
+
+    Parameters
+    ---------
+    u : func
+        Funksjonen som beskriver diffusjonslikningen
+    n : int
+        Antall tidspunkter
+    h : funksjon
+        Spesifiseres ut fra problemet
+    alpha : float
+        dt/dx**2
+
+    Returns
+    -------
+    numpy.ndarray:
+        Beregnede verdier for u
+    """
+    im = image
+    im0 = np.copy(im)
+
+    for i in range(n):
+        im[1:-1, 1:-1] += alpha * (im[:-2, 1:-1] +
+                                  im[2:, 1:-1] +
+                                  im[1:-1, :-2] +
+                                  im[1:-1, 2:] -
+                                  4 * im[1:-1, 1:-1])
+        im[mask == False] = im0[mask == False]
+    return im, im0
