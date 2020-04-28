@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from gui import AnonymiseGUI, BlurGUI, ContrastEnhancementGUI, ConvertGrayscaleGUI, DemosaicingGUI, InpaintingGUI, SeamlessGUI
+from gui import *
 import sys
 
 class Home(QMainWindow):
