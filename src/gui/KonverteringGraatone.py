@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 from Grayscale import *
 from Function import *
 from PIL import Image
+from functools import partial
 
 class GrayscaleConvert(QMainWindow):
     def __init__(self):
@@ -20,45 +21,29 @@ class GrayscaleConvert(QMainWindow):
         self.path = "../../hdr-bilder/Balls/Balls_00032.png"
         self.grayImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.adjuster.clicked.connect(self.showAdjuster)
-        self.balls.clicked.connect(self.showBalls)
-        self.mtTamW.clicked.connect(self.showMtTamW)
-        self.mtTamN.clicked.connect(self.showMtTamN)
-        self.ocean.clicked.connect(self.showOcean)
-        self.stillife.clicked.connect(self.showStillife)
-        self.trees.clicked.connect(self.showTrees)
+        self.imgOne = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.imgTwo = "../../hdr-bilder/Balls/Balls_00032.png"
+        self.imgThree = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgFour = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgFive = "../../hdr-bilder/Ocean/Ocean_00256.png"
+        self.imgSix = "../../hdr-bilder/StillLife/StillLife_01024.png"
+        self.imgSeven = "../../hdr-bilder/Tree/Tree_00064.png"
+
+        self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
+        self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
+        self.mtTamW.clicked.connect(partial(self.setImage, self.imgThree))
+        self.mtTamN.clicked.connect(partial(self.setImage, self.imgFour))
+        self.ocean.clicked.connect(partial(self.setImage, self.imgFive))
+        self.stillife.clicked.connect(partial(self.setImage, self.imgSix))
+        self.trees.clicked.connect(partial(self.setImage, self.imgSeven))
         self.grayCode.clicked.connect(self.showCode)
         self.grayOriginal.clicked.connect(self.setOriginal)
         self.grayEasy.clicked.connect(self.convertGrayEasy)
         self.grayAdvanced.clicked.connect(self.convertGrayAdvanced)
 
-    def showAdjuster(self):
-        self.path = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def showBalls(self):
-        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def showMtTamW(self):
-        self.path = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-    
-    def showMtTamN(self):
-        self.path = "../../hdr-bilder/MtTamWest/MtTamWest_00004.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def showOcean(self):
-        self.path = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-    
-    def showStillife(self):
-        self.path = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
-
-    def showTrees(self):
-        self.path = "../../hdr-bilder/Tree/Tree_00064.png"
-        self.grayImg.setPixmap(QtGui.QPixmap(self.path))
+    def setImage(self, img):
+        self.path = img
+        self.grayImg.setPixmap(QtGui.QPixmap(img))
     
     def showCode(self):
         code = QPlainTextEdit()
