@@ -17,18 +17,18 @@ from gui.FunctionGUI import ShowCode
 class ContrastEnhancement(QMainWindow):
     def __init__(self):
         super(ContrastEnhancement, self).__init__()
-        uic.loadUi('UI/kontrastforsterkning.ui', self)
-        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        uic.loadUi('gui/UI/contrastenhancement.ui', self)
+        self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgOne = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.imgTwo = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../../hdr-bilder/Garden/Garden_00004.png"
-        self.imgFive = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.imgSix = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.imgSeven = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.imgEight = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
+        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
+        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
+        self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
+        self.imgEight = "../hdr-bilder/Tree/Tree_00064.png"
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
@@ -50,8 +50,8 @@ class ContrastEnhancement(QMainWindow):
 
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/kontrastforsterkning.txt').read()
-        title = "Kontrastforsterkning Kode"
+        text = open('gui/codes/kontrastforsterkning.txt').read()
+        title = "Kontrastforsterkning - Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 750)
         self.dialog.show()

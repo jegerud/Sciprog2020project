@@ -17,18 +17,18 @@ from gui.FunctionGUI import ShowCode
 class Blur(QMainWindow):
     def __init__(self):
         super(Blur, self).__init__()
-        uic.loadUi('UI/glatting.ui', self)
-        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        uic.loadUi('gui/UI/blur.ui', self)
+        self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgOne = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.imgTwo = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../../hdr-bilder/Garden/Garden_00004.png"
-        self.imgFive = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.imgSix = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.imgSeven = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.imgEight = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
+        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
+        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
+        self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
+        self.imgEight = "../hdr-bilder/Tree/Tree_00064.png"
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
@@ -50,8 +50,8 @@ class Blur(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/glatting.txt').read()
-        title = "Glatting kode"
+        text = open('gui/codes/glatting.txt').read()
+        title = "Glatting - kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 400)
         self.dialog.show()

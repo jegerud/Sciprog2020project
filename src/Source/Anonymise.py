@@ -24,7 +24,7 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     image = cv2.imread(file) #leser inn bildet
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') #importerer haarscade biblioteket
+    face_cascade = cv2.CascadeClassifier('Source/haarcascade_frontalface_default.xml') #importerer haarscade biblioteket
     faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors, minSize = (30,30))
     for (x,y,w,h) in faces:
         RoI = image[y:y+h, x:x+w]                          #Region of Interest --> ansiktet
@@ -53,7 +53,7 @@ def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
     image = cv2.imread(file)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml') #importerer haarscade biblioteket
+    face_cascade = cv2.CascadeClassifier('Source/haarcascade_frontalface_default.xml') #importerer haarscade biblioteket
     faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors, minSize = (30,30))
     faces_rects = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors)
     

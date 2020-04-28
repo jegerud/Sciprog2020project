@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
-import Source.Grayscale as gray
+from Source.Grayscale import rgb2gray
 from Source.Anonymise import blurFace, detectFace
 from gui.FunctionGUI import ShowCode
 
@@ -18,17 +18,17 @@ from gui.FunctionGUI import ShowCode
 class AnonymiseFaces(QMainWindow):
     def __init__(self):
         super(AnonymiseFaces, self).__init__()
-        uic.loadUi('UI/anonymisering.ui', self)
-        self.path = "../../hdr-bilder/Faces/group1.jpg"
+        uic.loadUi('gui/UI/anonymise.ui', self)
+        self.path = "../hdr-bilder/Faces/group1.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgObama = "../../hdr-bilder/Faces/obama.jpg"
-        self.imgGroup1 = "../../hdr-bilder/Faces/group1.jpg"
-        self.imgGroup2 = "../../hdr-bilder/Faces/group2.jpg"
-        self.imgGroup3 = "../../hdr-bilder/Faces/group3.jpg"
-        self.imgTeam = "../../hdr-bilder/Faces/team.jpg"
-        self.imgFamily = "../../hdr-bilder/Faces/family.jpg"
-        self.imgFamily2 = "../../hdr-bilder/Faces/family2.jpg"
+        self.imgObama = "../hdr-bilder/Faces/obama.jpg"
+        self.imgGroup1 = "../hdr-bilder/Faces/group1.jpg"
+        self.imgGroup2 = "../hdr-bilder/Faces/group2.jpg"
+        self.imgGroup3 = "../hdr-bilder/Faces/group3.jpg"
+        self.imgTeam = "../hdr-bilder/Faces/team.jpg"
+        self.imgFamily = "../hdr-bilder/Faces/family.jpg"
+        self.imgFamily2 = "../hdr-bilder/Faces/family2.jpg"
 
         self.obama.clicked.connect(partial(self.setImage, self.imgObama))
         self.group1.clicked.connect(partial(self.setImage, self.imgGroup1))
@@ -49,7 +49,7 @@ class AnonymiseFaces(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/anonymisering.txt').read()
+        text = open('gui/codes/anonymisering.txt').read()
         title = "Anonymisering - Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 700, 900)

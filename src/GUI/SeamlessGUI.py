@@ -16,16 +16,16 @@ from gui.FunctionGUI import ShowCode
 class Seamless(QMainWindow):
     def __init__(self):
         super(Seamless, self).__init__()
-        uic.loadUi('UI/somlos.ui', self)
-        self.path = "../../hdr-bilder/Tree/Tree_00064.png"
+        uic.loadUi('gui/UI/seamless.ui', self)
+        self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.seamlessImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgOne = "../../hdr-bilder/Balls/Balls_00016.png"
-        self.imgTwo = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgOne = "../hdr-bilder/Balls/Balls_00016.png"
+        self.imgTwo = "../hdr-bilder/Tree/Tree_00064.png"
         self.imgThree = ""
-        self.imgFour = "../../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
+        self.imgFour = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
         self.imgFive = ""
-        self.imgSix = "../../hdr-bilder/MtTamWest/MtTamWest_00008.png"
+        self.imgSix = "../hdr-bilder/MtTamWest/MtTamWest_00008.png"
         self.imgOneReady = False
         self.imgTwoReady = False
         self.imgThreeReady = False
@@ -43,7 +43,7 @@ class Seamless(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/inpainting.txt').read()
+        text = open('gui/codes/inpainting.txt').read()
         title = "Inpainting - kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 720)

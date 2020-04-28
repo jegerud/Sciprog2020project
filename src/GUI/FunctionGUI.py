@@ -11,7 +11,7 @@ from PIL import Image
 class ShowCode(QMainWindow):
     def __init__(self, text, title, width, height, parent=None):
         super(ShowCode, self).__init__(parent)
-        uic.loadUi('UI/function.ui', self)
+        uic.loadUi('gui/UI/function.ui', self)
         self.setWindowTitle(title)
         self.setGeometry(500, 80, width, height)
         self.code.setText(text)

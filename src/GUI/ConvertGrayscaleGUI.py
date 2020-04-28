@@ -16,17 +16,17 @@ from gui.FunctionGUI import ShowCode
 class GrayscaleConvert(QMainWindow):
     def __init__(self):
         super(GrayscaleConvert, self).__init__()
-        uic.loadUi('UI/konverteringGraatone.ui', self)
-        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        uic.loadUi('gui/UI/convertgrayscale.ui', self)
+        self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.grayImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgOne = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.imgTwo = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.imgFour = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.imgFive = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.imgSix = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.imgSeven = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
+        self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgFour = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgFive = "../hdr-bilder/Ocean/Ocean_00256.png"
+        self.imgSix = "../hdr-bilder/StillLife/StillLife_01024.png"
+        self.imgSeven = "../hdr-bilder/Tree/Tree_00064.png"
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
@@ -46,7 +46,7 @@ class GrayscaleConvert(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/grayscaleConvert.txt').read()
+        text = open('gui/codes/grayscaleConvert.txt').read()
         title = "Konvertering til gråtone - Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 780)

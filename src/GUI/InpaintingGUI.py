@@ -16,12 +16,12 @@ from gui.FunctionGUI import ShowCode
 class Inpainting(QMainWindow):
     def __init__(self):
         super(Inpainting, self).__init__()
-        uic.loadUi('UI/inpainting.ui', self)
-        self.path = "../../hdr-bilder/Tree/Tree_00064.png"
+        uic.loadUi('gui/UI/inpainting.ui', self)
+        self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
-        self.imgOne = "../../hdr-bilder/Tree/Tree_00064.png"
-        self.imgTwo = "../../hdr-bilder/Fog/Fog_00512.png"
-        self.imgThree = "../../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
+        self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"
+        self.imgTwo = "../hdr-bilder/Fog/Fog_00512.png"
+        self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
 
         self.inpaintingCode.clicked.connect(self.showCode)
         self.imageOne.clicked.connect(partial(self.setImage, self.imgOne))
@@ -36,7 +36,7 @@ class Inpainting(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/inpainting.txt').read()
+        text = open('gui/codes/inpainting.txt').read()
         title = "Inpainting - kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 720)

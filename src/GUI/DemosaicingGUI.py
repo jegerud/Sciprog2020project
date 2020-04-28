@@ -16,18 +16,18 @@ from gui.FunctionGUI import *
 class Demosaic(QMainWindow):
     def __init__(self):
         super(Demosaic, self).__init__()
-        uic.loadUi('UI/demosaicing.ui', self)
-        self.path = "../../hdr-bilder/Balls/Balls_00032.png"
+        uic.loadUi('gui/UI/demosaicing.ui', self)
+        self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.demosaicImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgOne = "../../hdr-bilder/Adjuster/Adjuster_00032.png"
-        self.imgTwo = "../../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../../hdr-bilder/Garden/Garden_00004.png"
-        self.imgFive = "../../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
-        self.imgSix = "../../hdr-bilder/Ocean/Ocean_00256.png"
-        self.imgSeven = "../../hdr-bilder/StillLife/StillLife_01024.png"
-        self.imgEight = "../../hdr-bilder/Tree/Tree_00064.png"
+        self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
+        self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
+        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
+        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
+        self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
+        self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
+        self.imgEight = "../hdr-bilder/Tree/Tree_00064.png"
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
@@ -51,7 +51,7 @@ class Demosaic(QMainWindow):
     
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('codes/demosaicing.txt').read()
+        text = open('gui/codes/demosaicing.txt').read()
         title = "Demosaicing - Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 650, 800)
