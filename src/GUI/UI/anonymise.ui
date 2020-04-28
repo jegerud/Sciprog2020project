@@ -87,7 +87,7 @@
     <string>Group 1</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="obama">
+  <widget class="QPushButton" name="couple">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -97,7 +97,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Obama</string>
+    <string>Couple</string>
    </property>
   </widget>
   <widget class="QPushButton" name="anonymousCode">
@@ -202,7 +202,7 @@
     <string>Group 3</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="family1">
+  <widget class="QPushButton" name="family">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -212,10 +212,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Family 1</string>
+    <string>Family</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="family2">
+  <widget class="QPushButton" name="business">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -225,7 +225,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Family 2</string>
+    <string>Business</string>
    </property>
   </widget>
   <widget class="QPushButton" name="team">
