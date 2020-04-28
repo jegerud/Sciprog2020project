@@ -22,21 +22,21 @@ class AnonymiseFaces(QMainWindow):
         self.path = "../hdr-bilder/Faces/group1.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
 
-        self.imgObama = "../hdr-bilder/Faces/obama.jpg"
+        self.imgCouple = "../hdr-bilder/Faces/couple.jpg"
         self.imgGroup1 = "../hdr-bilder/Faces/group1.jpg"
         self.imgGroup2 = "../hdr-bilder/Faces/group2.jpg"
         self.imgGroup3 = "../hdr-bilder/Faces/group3.jpg"
         self.imgTeam = "../hdr-bilder/Faces/team.jpg"
         self.imgFamily = "../hdr-bilder/Faces/family.jpg"
-        self.imgFamily2 = "../hdr-bilder/Faces/family2.jpg"
+        self.imgBusiness = "../hdr-bilder/Faces/business.jpg"
 
-        self.obama.clicked.connect(partial(self.setImage, self.imgObama))
+        self.couple.clicked.connect(partial(self.setImage, self.imgCouple))
         self.group1.clicked.connect(partial(self.setImage, self.imgGroup1))
         self.group2.clicked.connect(partial(self.setImage, self.imgGroup2))
         self.group3.clicked.connect(partial(self.setImage, self.imgGroup3))
         self.team.clicked.connect(partial(self.setImage, self.imgTeam))
-        self.family1.clicked.connect(partial(self.setImage, self.imgFamily))
-        self.family2.clicked.connect(partial(self.setImage, self.imgFamily2))
+        self.family.clicked.connect(partial(self.setImage, self.imgFamily))
+        self.business.clicked.connect(partial(self.setImage, self.imgBusiness))
         self.anonymousCode.clicked.connect(self.showCode)
         self.anonymousOriginal.clicked.connect(self.setOriginal)
         self.anonymousFindFaces.clicked.connect(self.detectFaces)
