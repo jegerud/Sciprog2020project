@@ -94,14 +94,12 @@ def viewInpaint(original, mask, ny, text, rgb):
 
 def singleView(image, gray=False):
     """
-    Viser bildet med tittel
+    Viser bildet
 
     Parameters
     ---------
     image : Bildefil
                Pathen til filen der original bildet befinner seg
-    title     : text
-               Tittelen på bildet som er anvendt
     """
     plt.figure(figsize = (20,10))
     if(gray):
