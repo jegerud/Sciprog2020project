@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
 from Source.Demosaicing import *
-from gui.FunctionGUI import *
+from GUI.FunctionGUI import *
 
 class Demosaic(QMainWindow):
     def __init__(self):

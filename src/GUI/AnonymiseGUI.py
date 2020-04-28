@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, '../')
 from Source.Grayscale import rgb2gray
 from Source.Anonymise import blurFace, detectFace
-from gui.FunctionGUI import ShowCode
+from GUI.FunctionGUI import ShowCode
 
 
 class AnonymiseFaces(QMainWindow):

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
 from Source.Inpainting import Inpaint
-from gui.FunctionGUI import ShowCode
+from GUI.FunctionGUI import ShowCode
 
 class Inpainting(QMainWindow):
     def __init__(self):

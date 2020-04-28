@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
 from Source.Grayscale import rgb2gray
-from gui.FunctionGUI import ShowCode
+from GUI.FunctionGUI import ShowCode
 
 class GrayscaleConvert(QMainWindow):
     def __init__(self):

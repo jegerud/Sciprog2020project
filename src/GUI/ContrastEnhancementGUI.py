@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, '../')
 from Source.Grayscale import rgb2gray
 from Source.Eksplisitt import eksplisittKontrast
-from gui.FunctionGUI import ShowCode
+from GUI.FunctionGUI import ShowCode
 
 class ContrastEnhancement(QMainWindow):
     def __init__(self):
