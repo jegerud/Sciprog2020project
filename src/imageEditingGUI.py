@@ -2,19 +2,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from Glatting import Blur
-from Inpainting import Inpainting
-from Kontrastforsterkning import ContrastEnhancement
-from Demosaicing import Demosaic
-from KonverteringGraatone import GrayscaleConvert
-from Anonymisering import AnonymiseFaces
-from Somlos import Seamless
+from gui import *
 import sys
 
 class Home(QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
-        uic.loadUi('UI/mainWindow.ui', self)
+        uic.loadUi('gui/UI/mainWindow.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
 
         self.openBlur.clicked.connect(self.onOpenBlurClicked)
