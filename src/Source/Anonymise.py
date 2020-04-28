@@ -1,9 +1,10 @@
 import numpy as np
 import cv2
-import ImageView as iv
-import Eksplisitt as eks
 import matplotlib.pyplot as plt
 import sys
+sys.path.insert(0, '../')
+import Source.ImageView as iv
+import Source.Eksplisitt as eks
 
 def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     """

@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from gui import *
+from gui import AnonymiseGUI, BlurGUI, ContrastEnhancementGUI, ConvertGrayscaleGUI, DemosaicingGUI, InpaintingGUI, SeamlessGUI
 import sys
 
 class Home(QMainWindow):
@@ -20,31 +20,31 @@ class Home(QMainWindow):
         self.openAnonymise.clicked.connect(self.onOpenAnonymiseClicked)
     
     def onOpenBlurClicked(self):
-        self.dialog = Blur()
+        self.dialog = BlurGUI.Blur()
         self.dialog.show()
     
     def onOpenInpaintingClicked(self):
-        self.dialog = Inpainting()
+        self.dialog = InpaintingGUI.Inpainting()
         self.dialog.show()
 
     def onOpenContrastClicked(self):
-        self.dialog = ContrastEnhancement()
+        self.dialog = ContrastEnhancementGUI.ContrastEnhancement()
         self.dialog.show()
 
     def onOpenDemosaicingClicked(self):
-        self.dialog = Demosaic()
+        self.dialog = DemosaicingGUI.Demosaic()
         self.dialog.show()
 
     def onOpenSeamlessClicked(self):
-        self.dialog = Seamless()
+        self.dialog = SeamlessGUI.Seamless()
         self.dialog.show()
     
     def onOpenGrayscaleClicked(self):
-        self.dialog = GrayscaleConvert()
+        self.dialog = ConvertGrayscaleGUI.GrayscaleConvert()
         self.dialog.show()
 
     def onOpenAnonymiseClicked(self):
-        self.dialog = AnonymiseFaces()
+        self.dialog = AnonymiseGUI.AnonymiseFaces()
         self.dialog.show()
         
 

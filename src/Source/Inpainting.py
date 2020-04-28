@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import Eksplisitt as eks
-import Grayscale as gray
-import ImageView as imv
+import sys
+sys.path.insert(0, '../')
+import Source.Eksplisitt as eks
+import Source.Grayscale as gray
+import Source.ImageView as imv
 
 
 def Inpaint(file, ret=1, alpha=.25, n=100, colour=True):

@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import Eksplisitt as eks
-import ImageView as imv
+import sys
+sys.path.insert(0, '../')
+import Source.Eksplisitt as eks
+import Source.ImageView as imv
 
 def seamless(fra, til, view=False):
 
@@ -45,6 +47,6 @@ def seamless(fra, til, view=False):
     im_to[xy0[0]:xy0[0]+xlen, xy0[1]:xy0[1]+ylen] = im_ed
     
     if view:
-        imv.singleView(im_to, "Klonet Bilde")
+        imv.singleView(im_to, True)
     else:
         return im_to

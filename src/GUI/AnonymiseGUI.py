@@ -9,9 +9,9 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-import Grayscale as gray
-from AnonymiseringModul import *
-from Function import *
+import Source.Grayscale as gray
+from Source.Anonymise import blurFace, detectFace
+from FunctionGUI import ShowCode
 from PIL import Image
 from functools import partial
 
