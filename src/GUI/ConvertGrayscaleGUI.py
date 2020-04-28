@@ -2,17 +2,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import sys
-
-sys.path.insert(0, '../')
+from PIL import Image
+from functools import partial
 import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Grayscale import *
-from Function import *
-from PIL import Image
-from functools import partial
+import sys
+sys.path.insert(0, '../')
+from Source.Grayscale import rgb2gray
+from gui.FunctionGUI import ShowCode
 
 class GrayscaleConvert(QMainWindow):
     def __init__(self):

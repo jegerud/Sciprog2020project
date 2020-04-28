@@ -2,17 +2,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import sys
 from functools import partial
-
-sys.path.insert(0, '../')
+from PIL import Image
 import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from InpaintingModul import *
-from Function import *
-from PIL import Image
+import sys
+sys.path.insert(0, '../')
+from Source.Inpainting import Inpaint
+from gui.FunctionGUI import ShowCode
 
 class Inpainting(QMainWindow):
     def __init__(self):

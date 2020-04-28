@@ -1,16 +1,16 @@
 from __future__ import division
-
+from colour.plotting import *
+from colour_demosaicing import (demosaicing_CFA_Bayer_Menon2007, mosaicing_CFA_Bayer)
+import colour
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import Eksplisitt as eks
-import ImageView as imv
 import unittest
-
 import os
-import colour
-from colour.plotting import *
-from colour_demosaicing import (demosaicing_CFA_Bayer_Menon2007, mosaicing_CFA_Bayer)
+import sys
+sys.path.insert(0, '../')
+import Source.Eksplisitt as eks
+import Source.ImageView as imv
 
 
 def getMosaic(file):

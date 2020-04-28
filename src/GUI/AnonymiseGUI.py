@@ -2,18 +2,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import sys
-
-sys.path.insert(0, '../')
+from PIL import Image
+from functools import partial
 import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+sys.path.insert(0, '../')
 import Source.Grayscale as gray
 from Source.Anonymise import blurFace, detectFace
-from FunctionGUI import ShowCode
-from PIL import Image
-from functools import partial
+from gui.FunctionGUI import ShowCode
+
 
 class AnonymiseFaces(QMainWindow):
     def __init__(self):

@@ -2,18 +2,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-import sys
-
-sys.path.insert(0, '../')
+from PIL import Image
+from functools import partial
 import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-import Grayscale as gray
-from GlattingModul import eksplisittGlatting
-from Function import *
-from PIL import Image
-from functools import partial
+import sys
+sys.path.insert(0, '../')
+from Source.Grayscale import rgb2gray
+from Source.Blur import eksplisittGlatting
+from gui.FunctionGUI import ShowCode
 
 class Blur(QMainWindow):
     def __init__(self):
@@ -61,7 +60,7 @@ class Blur(QMainWindow):
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
 
     def setGray(self):
-        self.showBlurImage(gray.rgb2gray(self.path))
+        self.showBlurImage(rgb2gray(self.path))
 
     def blurImage(self):
         orig_im = imageio.imread(self.path).astype(float)/255 
@@ -70,8 +69,8 @@ class Blur(QMainWindow):
         self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()))
 
     def blurGrayImage(self):
-        orig_im =  gray.rgb2gray(self.path)
-        im =  gray.rgb2gray(self.path)
+        orig_im = rgb2gray(self.path)
+        im = rgb2gray(self.path)
         im = im + .05 * np.random.randn(* np.shape(im))
         self.showBlurImage(im = eksplisittGlatting(im, orig_im, self.constant.value()))
 
