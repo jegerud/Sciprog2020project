@@ -1,4 +1,4 @@
-def eksplisittKontrast(im, orig_im, k):
+def contrastEnhance(file, k, gray=False):
     """
     Løser diffusjonslikningen
 
@@ -7,33 +7,29 @@ def eksplisittKontrast(im, orig_im, k):
     Paramters
     ---------
     im : bildet
-        Bildet som skal kontrastforsterkes
+        Bildet som skal glattes
     orig_im : originalt bilde
         Bild som ikke endres på
     k : konstant
-        Styrer hvor mye kontrasten skal forsterkes
+        Styrer hvor mye bildet skal glattes
     Returns
     -------
     im:
-	Et kontrastforsterket bilde
+	Et glattet bilde
     """
-    image = im
-    for i in range(10):
-        laplace = (image[0:-2, 1:-1] +
-            image[2:, 1:-1] +
-            image[1:-1, 0:-2] +
-            image[1:-1, 2:] -
-            4 * image[1:-1, 1:-1])
-        h = k * (orig_im[0:-2, 1:-1] +
-            orig_im[2:, 1:-1] +
-            orig_im[1:-1, 0:-2] +
-            orig_im[1:-1, 2:] -
-            4 * orig_im[1:-1, 1:-1])
-        image[1:-1, 1:-1] += .25 * (laplace - h)
-        image[:, 0] = image[:, 1]      # Neumann randbetingelse
-        image[:, -1] = image[:, -2]    
-        image[0, :] = image[1, :]      
-        image[-1, :] = image[-2 , :]   
-        image[image < 0] = 0           # klipp til lovlige verdier
-        image[image > 1] = 1
-    return image
+    if gray:
+        u = rgb2gray(file)
+    else:
+        u = imageio.imread(file) / 255
+    
+    u0 = u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]
+
+    for i in range(30):
+        u[1:-1, 1:-1] += 0.25 * (u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]) - k * u0
+        u[:, 0] = u[:, 1]      # Neumann randbetingelse
+        u[:, -1] = u[:, -2]    #
+        u[0, :] = u[1, :]      #
+        u[-1, :] = u[-2 , :]   #
+        u[u < 0] = 0           # klipp til lovlige verdier
+        u[u > 1] = 1
+    return u
