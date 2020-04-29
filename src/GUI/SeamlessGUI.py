@@ -18,6 +18,7 @@ class Seamless(QMainWindow):
         super(Seamless, self).__init__()
         uic.loadUi('gui/UI/seamless.ui', self)
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
+        self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.seamlessImg.setPixmap(QtGui.QPixmap(self.path))
 
         self.imgOne = "../hdr-bilder/Balls/Balls_00016.png"

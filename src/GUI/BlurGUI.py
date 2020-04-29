@@ -18,6 +18,7 @@ class Blur(QMainWindow):
     def __init__(self):
         super(Blur, self).__init__()
         uic.loadUi('gui/UI/blur.ui', self)
+        self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
 

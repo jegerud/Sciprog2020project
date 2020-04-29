@@ -17,6 +17,7 @@ class Inpainting(QMainWindow):
     def __init__(self):
         super(Inpainting, self).__init__()
         uic.loadUi('gui/UI/inpainting.ui', self)
+        self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
         self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"

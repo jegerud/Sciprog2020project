@@ -7,12 +7,24 @@ from GUI import (AnonymiseGUI, BlurGUI, ContrastEnhancementGUI,
                 InpaintingGUI, SeamlessGUI)
 import sys
 
+if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+
+#if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
+#    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class Home(QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
         uic.loadUi('gui/UI/mainWindow.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+
+        #screen = app.primaryScreen()
+        #print('Screen: %s' % screen.name())
+        #size = screen.size()
+        #print('Size: %d x %d' % (size.width(), size.height()))
+        #rect = screen.availableGeometry()
+        #print('Available: %d x %d' % (rect.width(), rect.height()))
 
         self.openBlur.clicked.connect(self.onOpenBlurClicked)
         self.openInpainting.clicked.connect(self.onOpenInpaintingClicked)
@@ -49,7 +61,6 @@ class Home(QMainWindow):
     def onOpenAnonymiseClicked(self):
         self.dialog = AnonymiseGUI.AnonymiseFaces()
         self.dialog.show()
-        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -10,13 +10,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
-from Source.Grayscale import rgb2gray
+from Source.Grayscale import *
 from GUI.FunctionGUI import ShowCode
 
 class GrayscaleConvert(QMainWindow):
     def __init__(self):
         super(GrayscaleConvert, self).__init__()
         uic.loadUi('gui/UI/convertgrayscale.ui', self)
+        self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.grayImg.setPixmap(QtGui.QPixmap(self.path))
 
@@ -27,6 +28,7 @@ class GrayscaleConvert(QMainWindow):
         self.imgFive = "../hdr-bilder/Ocean/Ocean_00256.png"
         self.imgSix = "../hdr-bilder/StillLife/StillLife_01024.png"
         self.imgSeven = "../hdr-bilder/Tree/Tree_00064.png"
+        self.imgEigth = "../hdr-bilder/Faces/group1.jpg"
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
@@ -35,6 +37,7 @@ class GrayscaleConvert(QMainWindow):
         self.ocean.clicked.connect(partial(self.setImage, self.imgFive))
         self.stillife.clicked.connect(partial(self.setImage, self.imgSix))
         self.trees.clicked.connect(partial(self.setImage, self.imgSeven))
+        self.group.clicked.connect(partial(self.setImage, self.imgEigth))
         self.grayCode.clicked.connect(self.showCode)
         self.grayOriginal.clicked.connect(self.setOriginal)
         self.grayEasy.clicked.connect(self.convertGrayEasy)
