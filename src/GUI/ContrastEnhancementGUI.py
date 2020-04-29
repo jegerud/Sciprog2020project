@@ -46,7 +46,7 @@ class ContrastEnhancement(QMainWindow):
 
     def setImage(self, img):
         self.path = img
-        self.demosaicImg.setPixmap(QtGui.QPixmap(img))
+        self.contrastImg.setPixmap(QtGui.QPixmap(img))
 
     def showCode(self):
         code = QPlainTextEdit()
