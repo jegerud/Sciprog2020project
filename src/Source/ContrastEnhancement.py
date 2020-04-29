@@ -1,7 +1,12 @@
 import numpy as np
 import unittest
+import imageio
+import sys
+sys.path.insert(0, '../')
+from Source.Eksplisitt import eksplisitt
+from Source.Grayscale import grayscale
 
-def packageKontrast(im, orig_im, k):
+def contrastEnhance(file, k, gray=False):
     """
     Løser diffusjonslikningen
 
@@ -20,5 +25,19 @@ def packageKontrast(im, orig_im, k):
     im:
 	Et glattet bilde
     """
+    if gray:
+        u = grayscale(file)
+    else:
+        u = imageio.imread(file) / 255
     
-    return image
+    u0 = u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]
+
+    for i in range(30):
+        u[1:-1, 1:-1] += 0.25 * (u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]) - k * u0
+        u[:, 0] = u[:, 1]      # Neumann randbetingelse
+        u[:, -1] = u[:, -2]    #
+        u[0, :] = u[1, :]      #
+        u[-1, :] = u[-2 , :]   #
+        u[u < 0] = 0           # klipp til lovlige verdier
+        u[u > 1] = 1
+    return u
