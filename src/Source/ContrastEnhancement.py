@@ -4,7 +4,7 @@ import imageio
 import sys
 sys.path.insert(0, '../')
 from Source.Eksplisitt import eksplisitt
-from Source.Grayscale import grayscale
+from Source.Grayscale import rgb2gray
 
 def contrastEnhance(file, k, gray=False):
     """
@@ -26,7 +26,7 @@ def contrastEnhance(file, k, gray=False):
 	Et glattet bilde
     """
     if gray:
-        u = grayscale(file)
+        u = rgb2gray(file)
     else:
         u = imageio.imread(file) / 255
     
