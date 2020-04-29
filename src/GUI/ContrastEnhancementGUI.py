@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
 from Source.Grayscale import rgb2gray
-from Source.ContrastEnhancement import contrastEnhance
+from Source.ContrastEnhancement import *
 from GUI.FunctionGUI import ShowCode
 
 class ContrastEnhancement(QMainWindow):
@@ -56,7 +56,7 @@ class ContrastEnhancement(QMainWindow):
         text = open('gui/codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 500, 750)
+        self.dialog = ShowCode(text, title, 500, 850)
         self.dialog.show()
 
     def setOriginal(self):
