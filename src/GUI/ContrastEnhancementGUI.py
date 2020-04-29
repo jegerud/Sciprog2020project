@@ -86,8 +86,8 @@ class ContrastEnhancement(QMainWindow):
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
         if dimension == 1.5:
-            width = int(screenWidth / 1.9)
-            height = int(screenHeight / 2)
+            width = int(screenWidth / 1.73)
+            height = int(screenHeight / 2.25)
         else:
             width = int(screenWidth / 2.22222)
             height = int(screenHeight / 2.4)

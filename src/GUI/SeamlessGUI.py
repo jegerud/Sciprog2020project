@@ -73,8 +73,8 @@ class Seamless(QMainWindow):
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
         if dimension == 1.5:
-            width = int(screenWidth / 1.9)
-            height = int(screenHeight / 2)
+            width = int(screenWidth / 1.84)
+            height = int(screenHeight / 2.17)
         else:
             width = int(screenWidth / 2.3)
             height = int(screenHeight / 2.3)
