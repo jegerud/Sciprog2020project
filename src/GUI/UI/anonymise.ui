@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
+    <width>832</width>
     <height>483</height>
    </rect>
   </property>
@@ -16,11 +16,16 @@
   <widget class="QPushButton" name="anonymousFindFaces">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>410</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Finn ansikter</string>
@@ -29,11 +34,16 @@
   <widget class="QPushButton" name="anonymousOriginal">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>250</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Original</string>
@@ -43,9 +53,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>20</y>
+     <y>10</y>
      <width>761</width>
-     <height>61</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -65,23 +75,28 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>100</y>
-     <width>191</width>
+     <y>80</y>
+     <width>201</width>
      <height>291</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Finner ansiktene i bildet, og&lt;br/&gt;anonymiserer disse ansiktene&lt;br/&gt;ved å glatte disse områdene.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Velg mellom utvalg av bilder&lt;br/&gt;med ansikter til høyre. Se &lt;br/&gt;originalversjonen av bildet,&lt;br/&gt;finn ansiktene eller anonymiser&lt;br/&gt;disse ved hjelp av knappene &lt;br/&gt;nederst. Nede til høyre står&lt;br/&gt;det hvor mange ansikter som &lt;br/&gt;er oppdaget.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Finner ansiktene i bildet, og&lt;br/&gt;anonymiserer disse ansiktene&lt;br/&gt;ved å glatte disse områdene.&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Velg mellom utvalg av bilder&lt;br/&gt;med ansikter til høyre. Se &lt;br/&gt;originalversjonen av bildet,&lt;br/&gt;finn ansiktene eller anonymiser&lt;br/&gt;disse ved hjelp av knappene &lt;br/&gt;nederst. Nede til høyre står&lt;br/&gt;det hvor mange ansikter som &lt;br/&gt;er oppdaget.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="group1">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>120</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Group 1</string>
@@ -90,11 +105,16 @@
   <widget class="QPushButton" name="couple">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>80</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Couple</string>
@@ -109,6 +129,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Vis kode</string>
    </property>
@@ -116,11 +141,16 @@
   <widget class="QPushButton" name="anonymousAnonymise">
    <property name="geometry">
     <rect>
-     <x>590</x>
+     <x>570</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Anonymiser</string>
@@ -129,7 +159,7 @@
   <widget class="QLabel" name="anonymiseImg">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>250</x>
      <y>76</y>
      <width>471</width>
      <height>301</height>
@@ -148,7 +178,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>360</y>
      <width>51</width>
      <height>21</height>
@@ -156,7 +186,7 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>11</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
    <property name="text">
@@ -166,11 +196,16 @@
   <widget class="QLabel" name="faceCount">
    <property name="geometry">
     <rect>
-     <x>800</x>
+     <x>780</x>
      <y>360</y>
      <width>21</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>0</string>
@@ -179,11 +214,16 @@
   <widget class="QPushButton" name="group2">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>160</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Group 2</string>
@@ -192,11 +232,16 @@
   <widget class="QPushButton" name="group3">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>200</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Group 3</string>
@@ -205,11 +250,16 @@
   <widget class="QPushButton" name="family">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>240</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Family</string>
@@ -218,11 +268,16 @@
   <widget class="QPushButton" name="business">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>280</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Business</string>
@@ -231,11 +286,16 @@
   <widget class="QPushButton" name="team">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>730</x>
      <y>320</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Team</string>

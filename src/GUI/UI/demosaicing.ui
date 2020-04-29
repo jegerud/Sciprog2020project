@@ -22,6 +22,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Gråtonemosaikk</string>
    </property>
@@ -34,6 +39,11 @@
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Original</string>
@@ -70,6 +80,11 @@
      <height>221</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Informasjonen i originalbildet &lt;br/&gt;legges over i en gråtonemosaikk,&lt;br/&gt;før det rekonstrueres ved hjelp&lt;br/&gt;av demosaicing.&lt;br/&gt;&lt;br/&gt;Velg til høyre hvilket bilde som&lt;br/&gt;skal brukes. Under bildet velges&lt;br/&gt;om man vil bruke egenskrevet&lt;br/&gt;kode, eller om man vil bruke&lt;br/&gt;kode med ferdige biblioteker.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
@@ -83,6 +98,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Vis kode</string>
    </property>
@@ -95,6 +115,11 @@
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Demosaiced</string>
@@ -128,6 +153,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Adjuster</string>
    </property>
@@ -140,6 +170,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Garden</string>
@@ -154,6 +189,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Trees</string>
    </property>
@@ -166,6 +206,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Stillife</string>
@@ -180,6 +225,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Mountains</string>
    </property>
@@ -192,6 +242,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Balls</string>
@@ -206,6 +261,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Fog</string>
    </property>
@@ -218,6 +278,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Ocean</string>
@@ -232,6 +297,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Demosaiced</string>
    </property>
@@ -244,6 +314,11 @@
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Gråtonemosaikk</string>
@@ -258,6 +333,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Original</string>
    </property>
@@ -265,11 +345,16 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>180</x>
      <y>390</y>
-     <width>91</width>
+     <width>81</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Uten pakker:</string>
@@ -278,11 +363,16 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>170</x>
      <y>420</y>
-     <width>111</width>
+     <width>101</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Bruk av pakker:</string>

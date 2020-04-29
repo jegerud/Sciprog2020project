@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>863</width>
+    <width>898</width>
     <height>483</height>
    </rect>
   </property>
@@ -16,11 +16,16 @@
   <widget class="QPushButton" name="grayEasy">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>450</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Enkel</string>
@@ -29,11 +34,16 @@
   <widget class="QPushButton" name="mtTamW">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>160</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>MtTamW</string>
@@ -42,11 +52,16 @@
   <widget class="QPushButton" name="ocean">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>240</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Ocean</string>
@@ -55,11 +70,16 @@
   <widget class="QPushButton" name="stillife">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>280</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Stillife</string>
@@ -68,11 +88,16 @@
   <widget class="QPushButton" name="grayAdvanced">
    <property name="geometry">
     <rect>
-     <x>590</x>
+     <x>610</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Avansert</string>
@@ -81,11 +106,16 @@
   <widget class="QPushButton" name="grayOriginal">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>290</x>
      <y>390</y>
      <width>151</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Original</string>
@@ -94,7 +124,7 @@
   <widget class="QLabel" name="glattingOverskrift">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>20</y>
      <width>761</width>
      <height>61</height>
@@ -116,11 +146,16 @@
   <widget class="QPushButton" name="mtTamN">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>200</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>MtTamN</string>
@@ -129,11 +164,16 @@
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>110</y>
      <width>241</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Konverterer et fargebilde til&lt;br/&gt;gråtonebilde.&lt;br/&gt;&lt;br/&gt;Velg hvilket bilde som skal&lt;br/&gt;konverteres til høyre.&lt;br/&gt;&lt;br/&gt;Benytt deg av enten den enkle&lt;br/&gt;versjonen for gråtonekonvertering&lt;br/&gt;ved å klikke på &amp;quot;enkel&amp;quot;, eller bruk &lt;br/&gt;den litt mer sofistikerte versjonen&lt;br/&gt;ved å klikke på &amp;quot;avansert&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -142,11 +182,16 @@
   <widget class="QPushButton" name="balls">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>120</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Balls</string>
@@ -155,11 +200,16 @@
   <widget class="QPushButton" name="adjuster">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>80</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Adjuster</string>
@@ -168,11 +218,16 @@
   <widget class="QPushButton" name="grayCode">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>40</x>
      <y>390</y>
      <width>131</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Vis kode</string>
@@ -181,11 +236,16 @@
   <widget class="QPushButton" name="trees">
    <property name="geometry">
     <rect>
-     <x>750</x>
+     <x>770</x>
      <y>320</y>
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Trees</string>
@@ -194,7 +254,7 @@
   <widget class="QLabel" name="grayImg">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>290</x>
      <y>76</y>
      <width>471</width>
      <height>301</height>
@@ -208,6 +268,24 @@
    </property>
    <property name="scaledContents">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="group">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>360</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Group</string>
    </property>
   </widget>
  </widget>

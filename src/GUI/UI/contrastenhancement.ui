@@ -22,6 +22,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Gråtone</string>
    </property>
@@ -34,6 +39,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Garden</string>
@@ -48,6 +58,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Ocean</string>
    </property>
@@ -60,6 +75,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Stillife</string>
@@ -74,6 +94,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Forsterk</string>
    </property>
@@ -86,6 +111,11 @@
      <width>69</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="toolTipDuration">
     <number>-1</number>
@@ -112,6 +142,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Original</string>
    </property>
@@ -120,7 +155,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>30</y>
+     <y>20</y>
      <width>761</width>
      <height>61</height>
     </rect>
@@ -147,6 +182,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Mountains</string>
    </property>
@@ -159,6 +199,11 @@
      <width>231</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Kontrasten i bildet blir økt. &lt;br/&gt;Dette gjøres ved hjelp av &lt;br/&gt;poisson-likningen&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom de ulike bildene&lt;br/&gt;til høyre. Se fargebilde eller &lt;br/&gt;gråtonebilde, eller øk kontrasten &lt;br/&gt;på farge- eller gråtonebildet &lt;br/&gt;ved hjelp av knappene under. &lt;br/&gt;Ved å sette verdien høyere vil&lt;br/&gt;konstrasten økes mer.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -173,6 +218,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Balls</string>
    </property>
@@ -185,6 +235,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Adjuster</string>
@@ -199,6 +254,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Vis kode</string>
    </property>
@@ -211,6 +271,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Fog</string>
@@ -225,6 +290,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Trees</string>
    </property>
@@ -237,6 +307,11 @@
      <width>101</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Forsterk (grå)</string>

@@ -22,6 +22,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Maske</string>
    </property>
@@ -35,6 +40,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Inpaint</string>
    </property>
@@ -47,6 +57,11 @@
      <width>91</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Eksempel 1</string>
@@ -83,6 +98,11 @@
      <height>221</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Det legges på en maske på original-&lt;br/&gt;bildet som består av tre sorte &lt;br/&gt;firkanter. Deretter blir informasjonen&lt;br/&gt;i disse firkantene forsøkt gjenskapt&lt;br/&gt;ved hjelp av inpainting.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom tre eksempelbilder til&lt;br/&gt;høyre. Se masken som legges på, eller&lt;br/&gt;resultatet av inpaintingen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
@@ -95,6 +115,11 @@
      <width>131</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Vis kode</string>
@@ -128,6 +153,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Maske</string>
    </property>
@@ -140,6 +170,11 @@
      <width>91</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Eksempel 2</string>
@@ -154,6 +189,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Inpaint</string>
    </property>
@@ -166,6 +206,11 @@
      <width>91</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Maske</string>
@@ -180,6 +225,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Eksempel 3</string>
    </property>
@@ -192,6 +242,11 @@
      <width>91</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Inpaint</string>

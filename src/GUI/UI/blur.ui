@@ -22,6 +22,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Gråtone</string>
    </property>
@@ -34,6 +39,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Garden</string>
@@ -48,6 +58,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Ocean</string>
    </property>
@@ -60,6 +75,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Stillife</string>
@@ -74,6 +94,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Glatt</string>
    </property>
@@ -86,6 +111,11 @@
      <width>69</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="decimals">
     <number>1</number>
@@ -108,6 +138,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Original</string>
@@ -144,6 +179,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Mountains</string>
    </property>
@@ -156,6 +196,11 @@
      <width>191</width>
      <height>241</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;høyere vil bildet bli mindre&lt;br/&gt;glattere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -173,6 +218,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Balls</string>
    </property>
@@ -185,6 +235,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Adjuster</string>
@@ -199,6 +254,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Vis kode</string>
    </property>
@@ -211,6 +271,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Fog</string>
@@ -225,6 +290,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Trees</string>
    </property>
@@ -237,6 +307,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Glatt (grå)</string>

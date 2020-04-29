@@ -13,11 +13,14 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="glattingTekst">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>160</y>
       <width>321</width>
       <height>31</height>
@@ -25,7 +28,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -35,9 +38,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>80</x>
       <y>50</y>
-      <width>571</width>
+      <width>741</width>
       <height>61</height>
      </rect>
     </property>
@@ -57,11 +60,16 @@
    <widget class="QPushButton" name="openBlur">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>160</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Glatting</string>
@@ -70,11 +78,16 @@
    <widget class="QPushButton" name="openContrast">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>240</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Kontrastforsterkning</string>
@@ -83,7 +96,7 @@
    <widget class="QLabel" name="glattingTekst_2">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>240</y>
       <width>271</width>
       <height>31</height>
@@ -91,7 +104,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -101,7 +114,7 @@
    <widget class="QLabel" name="glattingTekst_3">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>200</y>
       <width>481</width>
       <height>31</height>
@@ -109,7 +122,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -119,11 +132,16 @@
    <widget class="QPushButton" name="openInpainting">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>200</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Inpainting</string>
@@ -132,7 +150,7 @@
    <widget class="QLabel" name="glattingTekst_4">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>280</y>
       <width>361</width>
       <height>31</height>
@@ -140,7 +158,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -150,11 +168,16 @@
    <widget class="QPushButton" name="openDemosaicing">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>280</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Demosaicing</string>
@@ -163,7 +186,7 @@
    <widget class="QLabel" name="glattingTekst_5">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>320</y>
       <width>301</width>
       <height>31</height>
@@ -171,7 +194,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -181,11 +204,16 @@
    <widget class="QPushButton" name="openSeamless">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>320</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Sømløs kloning</string>
@@ -194,7 +222,7 @@
    <widget class="QLabel" name="glattingTekst_6">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>360</y>
       <width>301</width>
       <height>31</height>
@@ -202,7 +230,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -212,11 +240,16 @@
    <widget class="QPushButton" name="openGrayConvert">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>360</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Konverter til gråtone</string>
@@ -225,7 +258,7 @@
    <widget class="QLabel" name="glattingTekst_7">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>400</y>
       <width>331</width>
       <height>31</height>
@@ -233,7 +266,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -243,11 +276,16 @@
    <widget class="QPushButton" name="openAnonymise">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>400</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Anonymisering</string>
@@ -256,7 +294,7 @@
    <widget class="QLabel" name="glattingTekst_8">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>230</x>
       <y>440</y>
       <width>301</width>
       <height>31</height>
@@ -264,7 +302,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
@@ -274,11 +312,16 @@
    <widget class="QPushButton" name="openBWEffect">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>50</x>
       <y>440</y>
       <width>161</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Delvis svart/hvitt</string>
