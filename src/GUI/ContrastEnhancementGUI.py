@@ -19,6 +19,7 @@ class ContrastEnhancement(QMainWindow):
         super(ContrastEnhancement, self).__init__()
         uic.loadUi('gui/UI/contrastenhancement.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Kontrastforsterkning')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)

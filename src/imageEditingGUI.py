@@ -18,6 +18,7 @@ class Home(QMainWindow):
         super(Home, self).__init__()
         uic.loadUi('gui/UI/mainWindow.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Poisson Bildebehandling')
         self.adjustScreen()
 
         self.openBlur.clicked.connect(self.onOpenBlurClicked)

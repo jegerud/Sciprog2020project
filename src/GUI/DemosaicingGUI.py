@@ -18,6 +18,7 @@ class Demosaic(QMainWindow):
         super(Demosaic, self).__init__()
         uic.loadUi('gui/UI/demosaicing.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Demosaicing')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.demosaicImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)

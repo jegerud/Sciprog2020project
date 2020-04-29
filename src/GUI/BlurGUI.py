@@ -19,6 +19,7 @@ class Blur(QMainWindow):
         super(Blur, self).__init__()
         uic.loadUi('gui/UI/blur.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Glatting')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)

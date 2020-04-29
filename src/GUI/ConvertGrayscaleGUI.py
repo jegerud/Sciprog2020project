@@ -18,6 +18,7 @@ class GrayscaleConvert(QMainWindow):
         super(GrayscaleConvert, self).__init__()
         uic.loadUi('gui/UI/convertgrayscale.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Konvertering til gråtone')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.grayImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)

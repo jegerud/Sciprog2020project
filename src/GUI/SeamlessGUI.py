@@ -19,6 +19,7 @@ class Seamless(QMainWindow):
         uic.loadUi('gui/UI/seamless.ui', self)
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Sømløs kloning')
         self.seamlessImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)
 

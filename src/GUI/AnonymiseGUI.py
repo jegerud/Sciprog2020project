@@ -20,6 +20,7 @@ class AnonymiseFaces(QMainWindow):
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('gui/UI/anonymise.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        self.setWindowTitle('Anonymisering')
         self.path = "../hdr-bilder/Faces/group1.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
         self.adjustScreen(app)
