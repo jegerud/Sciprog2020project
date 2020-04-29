@@ -15,12 +15,13 @@ from Source.Blur import eksplisittGlatting
 from GUI.FunctionGUI import ShowCode
 
 class Blur(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(Blur, self).__init__()
         uic.loadUi('gui/UI/blur.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.blurImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
@@ -54,7 +55,7 @@ class Blur(QMainWindow):
         text = open('gui/codes/glatting.txt').read()
         title = "Glatting - kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 600, 400)
+        self.dialog = ShowCode(text, title, 450, 400)
         self.dialog.show()
 
     def setOriginal(self):
@@ -81,3 +82,15 @@ class Blur(QMainWindow):
         img.save('pic.png')
         self.blurImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.22222)
+            height = int(screenHeight / 2.4)
+        self.setGeometry(520, 100, width, height)

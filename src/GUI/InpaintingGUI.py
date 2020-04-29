@@ -14,12 +14,14 @@ from Source.Inpainting import Inpaint
 from GUI.FunctionGUI import ShowCode
 
 class Inpainting(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(Inpainting, self).__init__()
         uic.loadUi('gui/UI/inpainting.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.inpaintImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
+
         self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"
         self.imgTwo = "../hdr-bilder/Fog/Fog_00512.png"
         self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
@@ -40,7 +42,7 @@ class Inpainting(QMainWindow):
         text = open('gui/codes/inpainting.txt').read()
         title = "Inpainting - kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 600, 720)
+        self.dialog = ShowCode(text, title, 570, 720)
         self.dialog.show()
 
     def setImage(self, img):
@@ -60,3 +62,15 @@ class Inpainting(QMainWindow):
         img.save('pic.png')
         self.inpaintImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.22222)
+            height = int(screenHeight / 2.2)
+        self.setGeometry(520, 100, width, height)

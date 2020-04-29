@@ -18,13 +18,7 @@ class Home(QMainWindow):
         super(Home, self).__init__()
         uic.loadUi('gui/UI/mainWindow.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
-
-        #screen = app.primaryScreen()
-        #print('Screen: %s' % screen.name())
-        #size = screen.size()
-        #print('Size: %d x %d' % (size.width(), size.height()))
-        #rect = screen.availableGeometry()
-        #print('Available: %d x %d' % (rect.width(), rect.height()))
+        self.adjustScreen()
 
         self.openBlur.clicked.connect(self.onOpenBlurClicked)
         self.openInpainting.clicked.connect(self.onOpenInpaintingClicked)
@@ -35,32 +29,44 @@ class Home(QMainWindow):
         self.openAnonymise.clicked.connect(self.onOpenAnonymiseClicked)
     
     def onOpenBlurClicked(self):
-        self.dialog = BlurGUI.Blur()
+        self.dialog = BlurGUI.Blur(app)
         self.dialog.show()
     
     def onOpenInpaintingClicked(self):
-        self.dialog = InpaintingGUI.Inpainting()
+        self.dialog = InpaintingGUI.Inpainting(app)
         self.dialog.show()
 
     def onOpenContrastClicked(self):
-        self.dialog = ContrastEnhancementGUI.ContrastEnhancement()
+        self.dialog = ContrastEnhancementGUI.ContrastEnhancement(app)
         self.dialog.show()
 
     def onOpenDemosaicingClicked(self):
-        self.dialog = DemosaicingGUI.Demosaic()
+        self.dialog = DemosaicingGUI.Demosaic(app)
         self.dialog.show()
 
     def onOpenSeamlessClicked(self):
-        self.dialog = SeamlessGUI.Seamless()
+        self.dialog = SeamlessGUI.Seamless(app)
         self.dialog.show()
     
     def onOpenGrayscaleClicked(self):
-        self.dialog = ConvertGrayscaleGUI.GrayscaleConvert()
+        self.dialog = ConvertGrayscaleGUI.GrayscaleConvert(app)
         self.dialog.show()
 
     def onOpenAnonymiseClicked(self):
-        self.dialog = AnonymiseGUI.AnonymiseFaces()
+        self.dialog = AnonymiseGUI.AnonymiseFaces(app)
         self.dialog.show()
+
+    def adjustScreen(self):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.22222)
+            height = int(screenHeight / 1.95298)
+        self.setGeometry(500, 80, width, height)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

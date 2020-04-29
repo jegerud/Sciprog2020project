@@ -14,12 +14,13 @@ from Source.SeamlessCloning import *
 from GUI.FunctionGUI import ShowCode
 
 class Seamless(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(Seamless, self).__init__()
         uic.loadUi('gui/UI/seamless.ui', self)
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.seamlessImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Balls/Balls_00016.png"
         self.imgTwo = "../hdr-bilder/Tree/Tree_00064.png"
@@ -66,3 +67,15 @@ class Seamless(QMainWindow):
         img.save('pic.png')
         self.seamlessImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.3)
+            height = int(screenHeight / 2.3)
+        self.setGeometry(520, 100, width, height)

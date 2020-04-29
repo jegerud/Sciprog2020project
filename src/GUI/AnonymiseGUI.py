@@ -16,12 +16,13 @@ from GUI.FunctionGUI import ShowCode
 
 
 class AnonymiseFaces(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('gui/UI/anonymise.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Faces/group1.jpg"
         self.anonymiseImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
 
         self.imgCouple = "../hdr-bilder/Faces/couple.jpg"
         self.imgGroup1 = "../hdr-bilder/Faces/group1.jpg"
@@ -53,7 +54,7 @@ class AnonymiseFaces(QMainWindow):
         text = open('gui/codes/anonymisering.txt').read()
         title = "Anonymisering - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 700, 900)
+        self.dialog = ShowCode(text, title, 650, 900)
         self.dialog.show()
 
     def setOriginal(self):
@@ -79,3 +80,15 @@ class AnonymiseFaces(QMainWindow):
 
     def updateCount(self, count):
         self.faceCount.setText(str(count))
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.25)
+            height = int(screenHeight / 2.4)
+        self.setGeometry(520, 100, width, height)

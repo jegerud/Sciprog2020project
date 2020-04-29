@@ -15,12 +15,13 @@ from Source.Eksplisitt import eksplisittKontrast
 from GUI.FunctionGUI import ShowCode
 
 class ContrastEnhancement(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(ContrastEnhancement, self).__init__()
         uic.loadUi('gui/UI/contrastenhancement.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.contrastImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
@@ -54,7 +55,7 @@ class ContrastEnhancement(QMainWindow):
         text = open('gui/codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 600, 750)
+        self.dialog = ShowCode(text, title, 500, 750)
         self.dialog.show()
 
     def setOriginal(self):
@@ -79,3 +80,15 @@ class ContrastEnhancement(QMainWindow):
         img.save('pic.png')
         self.contrastImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.22222)
+            height = int(screenHeight / 2.4)
+        self.setGeometry(520, 100, width, height)

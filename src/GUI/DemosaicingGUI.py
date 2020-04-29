@@ -14,12 +14,13 @@ from Source.Demosaicing import *
 from GUI.FunctionGUI import *
 
 class Demosaic(QMainWindow):
-    def __init__(self):
+    def __init__(self, app):
         super(Demosaic, self).__init__()
         uic.loadUi('gui/UI/demosaicing.ui', self)
         self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
         self.demosaicImg.setPixmap(QtGui.QPixmap(self.path))
+        self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
@@ -55,7 +56,7 @@ class Demosaic(QMainWindow):
         text = open('gui/codes/demosaicing.txt').read()
         title = "Demosaicing - Kode"
         code.setPlainText(text)
-        self.dialog = ShowCode(text, title, 650, 800)
+        self.dialog = ShowCode(text, title, 600, 800)
         self.dialog.show()
 
     def setOriginal(self):
@@ -83,3 +84,15 @@ class Demosaic(QMainWindow):
         img.save('pic.png')
         self.demosaicImg.setPixmap(QtGui.QPixmap('pic.png'))
         os.remove('pic.png')
+
+    def adjustScreen(self, app):
+        screenWidth = app.primaryScreen().size().width()
+        screenHeight = app.primaryScreen().size().height()
+        dimension = screenWidth/screenHeight
+        if dimension == 1.5:
+            width = int(screenWidth / 1.9)
+            height = int(screenHeight / 2)
+        else:
+            width = int(screenWidth / 2.22222)
+            height = int(screenHeight / 2.2)
+        self.setGeometry(520, 100, width, height)
