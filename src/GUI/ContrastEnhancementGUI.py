@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.insert(0, '../')
 from Source.Grayscale import rgb2gray
-from Source.Eksplisitt import eksplisittKontrast
+from Source.ContrastEnhancement import contrastEnhance
 from GUI.FunctionGUI import ShowCode
 
 class ContrastEnhancement(QMainWindow):
@@ -66,14 +66,10 @@ class ContrastEnhancement(QMainWindow):
         self.showContrastImage(rgb2gray(self.path))
 
     def contrastImage(self):
-        orig_im = imageio.imread(self.path).astype(float)/255 
-        im = np.copy(orig_im)
-        self.showContrastImage(eksplisittKontrast(im, orig_im, self.constant.value()))
+        self.showContrastImage(contrastEnhance(self.path, self.constant.value()))
 
     def contrastGrayImage(self):
-        orig_im = rgb2gray(self.path)
-        im = rgb2gray(self.path)
-        self.showContrastImage(eksplisittKontrast(im, orig_im, self.constant.value()))
+        self.showContrastImage(contrastEnhanceBW(self.path, self.constant.value()))
 
     def showContrastImage(self, im):
         rescaled = (255.0 / im.max() * (im - im.min())).astype(np.uint8)
