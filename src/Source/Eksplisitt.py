@@ -126,28 +126,6 @@ def eksplisittGlatting(im, orig_im, k):
         im[im > 1] = 1
     return im
 
-def eksplisittKontrast(im, orig_im, k):
-    image = im
-    for i in range(10):
-        laplace = (image[0:-2, 1:-1] +
-            image[2:, 1:-1] +
-            image[1:-1, 0:-2] +
-            image[1:-1, 2:] -
-            4 * image[1:-1, 1:-1])
-        h = k * (orig_im[0:-2, 1:-1] +
-            orig_im[2:, 1:-1] +
-            orig_im[1:-1, 0:-2] +
-            orig_im[1:-1, 2:] -
-            4 * orig_im[1:-1, 1:-1])
-        image[1:-1, 1:-1] += .25 * (laplace - h)
-        image[:, 0] = image[:, 1]      # Neumann randbetingelse
-        image[:, -1] = image[:, -2]    #
-        image[0, :] = image[1, :]      #
-        image[-1, :] = image[-2 , :]   #
-        image[image < 0] = 0                                 # klipp til lovlige verdier
-        image[image > 1] = 1
-    return image
-
 def eksplisittInpaint(image, mask, alpha=.25, n=100):
     """
     Løser diffusjonslikningen
