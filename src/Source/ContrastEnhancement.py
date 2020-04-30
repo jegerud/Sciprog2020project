@@ -84,6 +84,6 @@ def contrastEnhance(file, k):
         u[:, -1] = u[:, -2]    #
         u[0, :] = u[1, :]      #
         u[-1, :] = u[-2 , :]   #
-        u[u < 0] = 0           # klipp til lovlige verdier
-        u[u > 1] = 1
+    u[u < 0] = 0           # klipp til lovlige verdier
+    u[u > 1] = 1
     return u
