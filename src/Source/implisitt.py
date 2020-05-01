@@ -4,7 +4,7 @@ from scipy.sparse.linalg import spsolve
 
 def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
     """
-    Løser diffusjonslikningen
+    Løser diffusjonslikningen implisitt med sparse-matriser
 
     Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n iterasjoner
 
@@ -37,7 +37,6 @@ def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
     diags = np.array([nupper, upper, center, lower, nlower])
     A = spdiags(diags, [u.shape[1], 1, 0, -1, -u.shape[1]], size, size).tocsc()
 
-
     im=np.copy(u)
     if rgb:
         for iterations in range(n):
@@ -50,11 +49,11 @@ def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
             
     else:
         for iterations in range(n):
-            for i in range (u.shape[2]):
-                im=spsolve(A,im.flatten())
-                im[:, 0,] = im[:, 1]      # Neumann randbetingelser
-                im[:, -1] = im[:, -2]     #
-                im[0, :] = im[1, :]       #
-                im[-1, :] = im[-2 , :]    #
+            im=spsolve(A,im.flatten())
+            im=im.reshape(u.shape)
+            im[:, 0,] = im[:, 1]      # Neumann randbetingelser
+            im[:, -1] = im[:, -2]     #
+            im[0, :] = im[1, :]       #
+            im[-1, :] = im[-2 , :]    #
                 
     return im
