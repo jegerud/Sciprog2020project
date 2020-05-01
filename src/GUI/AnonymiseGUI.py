@@ -80,33 +80,6 @@ class AnonymiseFaces(QMainWindow):
         qImg = QtGui.QImage(image.data, width, height, bytesPerLine, QtGui.QImage.Format_RGB888)
         self.anonymiseImg.setPixmap(QtGui.QPixmap.fromImage(qImg))
 
-    def numpyQImage(self, image):
-        qImg = QtGui.QImage()
-        if image.dtype == np.uint8:
-            if len(image.shape) == 2:
-                channels = 1
-                height, width = image.shape
-                bytesPerLine = channels * width
-                qImg = QtGui.QImage(
-                    image.data, width, height, bytesPerLine, QtGui.QImage.Format_Indexed8
-                )
-                qImg.setColorTable([QtGui.qRgb(i, i, i) for i in range(256)])
-            elif len(image.shape) == 3:
-                if image.shape[2] == 3:
-                    height, width, channels = image.shape
-                    bytesPerLine = channels * width
-                    qImg = QtGui.QImage(
-                        image.data, width, height, bytesPerLine, QtGui.QImage.Format_RGB888
-                    )
-                elif image.shape[2] == 4:
-                    height, width, channels = image.shape
-                    bytesPerLine = channels * width
-                    fmt = QtGui.QImage.Format_ARGB32
-                    qImg = QtGui.QImage(
-                        image.data, width, height, bytesPerLine, QtGui.QImage.Format_ARGB32
-                    )
-        return qImg
-
     def updateCount(self, count):
         self.faceCount.setText(str(count))
 
