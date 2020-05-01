@@ -16,8 +16,8 @@ if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
 class Home(QMainWindow):
     def __init__(self):
         super(Home, self).__init__()
-        uic.loadUi('gui/UI/mainWindow.ui', self)
-        self.setWindowIcon(QtGui.QIcon('gui/Resources/logo.png'))
+        uic.loadUi('GUI/UI/mainWindow.ui', self)
+        self.setWindowIcon(QtGui.QIcon('GUI/Resources/logo.png'))
         self.setWindowTitle('Poisson Bildebehandling')
         self.adjustScreen()
 
