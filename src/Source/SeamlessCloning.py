@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import Eksplisitt as eks
-import ImageView as imv
+import Source.Eksplisitt as eks
+import Source.ImageView as imv
 
-def seamless(fra, til, view=False):
+def seamless(fra, til):
 
     im_from=imageio.imread(fra)
     im_to=imageio.imread(til)
@@ -44,7 +44,4 @@ def seamless(fra, til, view=False):
     im_ed[im_ed>1]=1
     im_to[xy0[0]:xy0[0]+xlen, xy0[1]:xy0[1]+ylen] = im_ed
     
-    if view:
-        imv.singleView(im_to, True)
-    else:
-        return im_to
+    return im_to

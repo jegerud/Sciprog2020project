@@ -7,8 +7,7 @@ import matplotlib.pyplot as plt
 import imageio
 import unittest
 import os
-import Eksplisitt as eks
-import ImageView as imv
+from Source.Eksplisitt import Inpainting_mosaic
 
 
 def getMosaic(file):
@@ -30,7 +29,7 @@ def getMosaicPackage(file):
     return mosaicing_CFA_Bayer(im) 
 
 
-def mosaicToRgb(file, view=False):
+def mosaicToRgb(file):
     im = imageio.imread(file)
     im = im.astype(float) / 255
     mosaic = getMosaic(file)
@@ -51,24 +50,18 @@ def mosaicToRgb(file, view=False):
     mask=mask.astype(bool)#gjør om til bool-array
     
     #inpainter hver av fargekanalene
-    eks.Inpainting_mosaic(im_ed[:,:,0], mask[:,:,0])
-    eks.Inpainting_mosaic(im_ed[:,:,1], mask[:,:,1])
-    eks.Inpainting_mosaic(im_ed[:,:,2], mask[:,:,2])
-    
-    if view:
-        imv.viewDemosaic(im, mosaic, im_ed, "Demosaicing - Algorithm")
-    else:
-        return im_ed
+    Inpainting_mosaic(im_ed[:,:,0], mask[:,:,0])
+    Inpainting_mosaic(im_ed[:,:,1], mask[:,:,1])
+    Inpainting_mosaic(im_ed[:,:,2], mask[:,:,2])
+
+    return im_ed
 
 
-def mosaicToRgbPackage(file, view=False):
+def mosaicToRgbPackage(file):
     original = colour.io.read_image(file)
     mosaic = mosaicing_CFA_Bayer(original)
     new = demosaicing_CFA_Bayer_Menon2007(mosaic)
     new[new < 0] = 0
     new[new > 1] = 1
 
-    if view:
-        imv.viewDemosaic(original, mosaic, new, "Demosaicing - Package")
-    else:
-        return new
+    return new

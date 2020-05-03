@@ -8,7 +8,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Grayscale import rgb2gray, grayscale
+from Source.Grayscale import rgb2gray, grayscale
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 

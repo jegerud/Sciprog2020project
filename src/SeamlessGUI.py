@@ -8,7 +8,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from SeamlessCloning import seamless
+from Source.SeamlessCloning import seamless
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 

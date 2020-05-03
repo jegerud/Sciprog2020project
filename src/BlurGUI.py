@@ -10,8 +10,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
-from Blur import eksplisittGlatting
-from Grayscale import rgb2gray
+from Source.Blur import eksplisittGlatting
+from Source.Grayscale import rgb2gray
 
 class Blur(QMainWindow):
     def __init__(self, app):

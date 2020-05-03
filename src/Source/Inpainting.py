@@ -1,22 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-import Eksplisitt as eks
-import Grayscale as gray
-import ImageView as imv
-
+from Source.Eksplisitt import eksplisittInpaint
+from Source.Grayscale import grayscale
 
 def Inpaint(file, ret=1, alpha=.25, n=100, colour=True):
     im = imageio.imread(file)
     orig_im = np.copy(im)
     if colour:
         im = im.astype(dtype=float) / 255
-        gray_im =np.sum(im.astype(float), 2) / (3 * 255)
+        gray_im = grayscale(file)
         mask = np.zeros(gray_im.shape)
     else:
-        im = np.sum(im.astype(float), 2) / (3 * 255)  #gråtone
+        im = grayscale(file)          #gråtone
         mask = np.zeros(im.shape)     #lag maske
-    im[im < 0] = 0                                 # klipp til lovlige verdier
+    im[im < 0] = 0                    # klipp til lovlige verdier
     im[im > 1] = 1
 
     mask[135:140, 250:380] = 1
@@ -25,11 +23,11 @@ def Inpaint(file, ret=1, alpha=.25, n=100, colour=True):
     mask = mask.astype(bool)
 
     im[mask] = 0
-    im, im0 = eks.eksplisittInpaint(im, mask)
+    im, im0 = eksplisittInpaint(im, mask)
 
     if ret == 1:
         return orig_im, im0, im
     elif ret == 2:
-        return mask
+        return im0
     else:
         return im

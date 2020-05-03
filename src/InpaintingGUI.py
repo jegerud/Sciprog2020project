@@ -8,7 +8,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Inpainting import Inpaint
+from Source.Inpainting import Inpaint
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 

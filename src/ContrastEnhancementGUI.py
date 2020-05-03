@@ -8,8 +8,8 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Grayscale import rgb2gray
-from ContrastEnhancement import *
+from Source.Grayscale import rgb2gray
+from Source.ContrastEnhancement import *
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 
@@ -64,7 +64,7 @@ class ContrastEnhancement(QMainWindow):
         self.imagewidget.showImage(image)
 
     def setGray(self):
-        self.showContrastImage(rgb2gray(self.path))
+        self.showContrastImage(rgb2gray(self.path), False)
 
     def contrastImage(self):
         self.showContrastImage(contrastEnhance(self.path, self.constant.value()))

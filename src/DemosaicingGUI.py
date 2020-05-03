@@ -8,7 +8,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Demosaicing import *
+from Source.Demosaicing import *
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 

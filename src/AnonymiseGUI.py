@@ -8,8 +8,8 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Grayscale import rgb2gray
-from Anonymise import blurFace, detectFace
+from Source.Grayscale import rgb2gray
+from Source.Anonymise import blurFace, detectFace
 from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 

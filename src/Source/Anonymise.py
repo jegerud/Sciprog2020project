@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-import Eksplisitt as eks
+import Source.Eksplisitt as eks
 
 def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     """

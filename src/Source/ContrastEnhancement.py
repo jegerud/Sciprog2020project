@@ -1,8 +1,8 @@
 import numpy as np
 import unittest
 import imageio
-from Eksplisitt import eksplisitt
-from Grayscale import rgb2gray
+from Source.Eksplisitt import eksplisitt
+from Source.Grayscale import rgb2gray
 
 def contrastEnhanceBW(file, k):
     """
