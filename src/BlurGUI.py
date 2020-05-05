@@ -12,6 +12,7 @@ from FunctionGUI import ShowCode
 from imagewidget import imagewidget
 from Source.Blur import eksplisittGlatting
 from Source.Grayscale import rgb2gray
+from Source.implisitt import implisitt
 
 class Blur(QMainWindow):
     def __init__(self, app):
@@ -41,10 +42,14 @@ class Blur(QMainWindow):
         self.stillife.clicked.connect(partial(self.setImage, self.imgSeven))
         self.trees.clicked.connect(partial(self.setImage, self.imgEight))
         self.blurCode.clicked.connect(self.showCode)
-        self.blurGray.clicked.connect(self.blurGrayImage)
         self.blurOriginal.clicked.connect(self.setOriginal)
-        self.blurColour.clicked.connect(self.blurImage)
+        self.blurOriginal2.clicked.connect(self.setOriginal)
         self.blurOrigGray.clicked.connect(self.setGray)
+        self.blurOrigGray2.clicked.connect(self.setGray)
+        self.blurGray.clicked.connect(partial(self.blurImage, False))
+        self.blurColour.clicked.connect(partial(self.blurImage, True))
+        self.blurGrayIm.clicked.connect(partial(self.blurImageImplisitt, False))
+        self.blurColourIm.clicked.connect(partial(self.blurImageImplisitt, True))
 
     def setImage(self, img):
         self.path = img
@@ -66,17 +71,23 @@ class Blur(QMainWindow):
     def setGray(self):
         self.showBlurImage(rgb2gray(self.path), False)
 
-    def blurImage(self):
-        orig_im = imageio.imread(self.path).astype(float)/255 
+    def blurImage(self, colour=True):
+        if colour:
+            orig_im = imageio.imread(self.path).astype(float)/255 
+        else:
+            orig_im = rgb2gray(self.path)
         im = np.copy(orig_im)
         im = im + .05 * np.random.randn(* np.shape(im))
-        self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()))
+        self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()), colour)
 
-    def blurGrayImage(self):
-        orig_im = rgb2gray(self.path)
-        im = rgb2gray(self.path)
-        im = im + .05 * np.random.randn(* np.shape(im))
-        self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()), False)
+    def blurImageImplisitt(self, colour=True):
+        u=imageio.imread(self.path)
+        if not colour:
+            u = np.sum(u.astype(float),2) /(3*255)   # konverter til gråtone
+        u = u.astype(float) / 255
+        u[u<0]=0
+        u[u>1]=1
+        self.showBlurImage(implisitt(u, n=3, alpha=2,rgb=colour), colour)
 
     def showBlurImage(self, im, colour=True):
         if colour:
@@ -90,8 +101,8 @@ class Blur(QMainWindow):
         dimension = screenWidth/screenHeight
         if dimension == 1.5:
             width = int(screenWidth / 1.73)
-            height = int(screenHeight / 2.17)
+            height = int(screenHeight / 1.97)
         else:
             width = int(screenWidth / 2.22222)
-            height = int(screenHeight / 2.4)
+            height = int(screenHeight / 2.25)
         self.setGeometry(520, 100, width, height)
