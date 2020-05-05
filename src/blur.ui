@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>863</width>
-    <height>441</height>
+    <height>474</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -194,7 +194,7 @@
      <x>40</x>
      <y>110</y>
      <width>191</width>
-     <height>241</height>
+     <height>261</height>
     </rect>
    </property>
    <property name="font">
@@ -203,7 +203,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;høyere vil bildet bli mindre&lt;br/&gt;glattere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;i eksplitsitt høyere vil bildet &lt;br/&gt;bli mindre glattere.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Merk: implisitt er en regne-&lt;br/&gt;tung oppgave, og tar lang tid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>false</bool>
@@ -325,6 +325,114 @@
      <width>471</width>
      <height>301</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blurGrayIm">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>430</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Glatt (grå)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blurColourIm">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>430</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Glatt</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blurOrigGray2">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>430</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gråtone</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="blurOriginal2">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>430</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Original</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>400</y>
+     <width>67</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Eksplisitt</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>430</y>
+     <width>67</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Implisitt</string>
    </property>
   </widget>
  </widget>
