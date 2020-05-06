@@ -9,7 +9,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Source.Grayscale import rgb2gray, grayscale
-from FunctionGUI import ShowCode
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 
@@ -20,6 +20,7 @@ class GrayscaleConvert(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Konvertering til gråtone')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -44,11 +45,13 @@ class GrayscaleConvert(QMainWindow):
         self.grayOriginal.clicked.connect(self.setOriginal)
         self.grayEasy.clicked.connect(self.convertGrayEasy)
         self.grayAdvanced.clicked.connect(self.convertGrayAdvanced)
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
 
     def setImage(self, img):
         self.path = img
         image = imageio.imread(img)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -60,16 +63,25 @@ class GrayscaleConvert(QMainWindow):
 
     def setOriginal(self):
         image = imageio.imread(self.path)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
 
     def convertGrayEasy(self):
-        self.convertGray(grayscale(self.path))
+        self.showImage(grayscale(self.path), False)
 
     def convertGrayAdvanced(self):
-        self.convertGray(rgb2gray(self.path))
+        self.showImage(rgb2gray(self.path), False)
 
-    def convertGray(self, im):
-        self.imagewidget.showGray(im, False)
+    def showImage(self, im, colour=True):
+        if not colour:
+            self.image = rgb2gray(self.path)
+        else:
+            self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
+        self.imagewidget.showImage(self.image, colour)
+
+    def saveImage(self, image=0):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

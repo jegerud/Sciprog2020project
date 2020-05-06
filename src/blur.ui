@@ -203,7 +203,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;i eksplitsitt høyere vil bildet &lt;br/&gt;bli mindre glattere.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Merk: implisitt er en regne-&lt;br/&gt;tung oppgave, og tar lang tid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Legger først litt støy på &lt;br/&gt;bildet, og glatter deretter&lt;br/&gt;bildet ved hjelp av poisson-&lt;br/&gt;likningen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom å glatte et &lt;br/&gt;fargebilde eller et gråtone-&lt;br/&gt;bilde. Ved å sette verdien&lt;br/&gt;i eksplitsitt høyere vil bildet &lt;br/&gt;bli mindre glattere. Lagre&lt;br/&gt;bildet ved å klikke på lagre.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Merk: implisitt er en regne-&lt;br/&gt;tung oppgave, og tar lang tid&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>false</bool>
@@ -433,6 +433,24 @@
    </property>
    <property name="text">
     <string>Implisitt</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>400</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lagre</string>
    </property>
   </widget>
  </widget>

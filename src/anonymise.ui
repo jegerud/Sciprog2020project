@@ -81,7 +81,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Finner ansiktene i bildet, og&lt;br/&gt;anonymiserer disse ansiktene&lt;br/&gt;ved å glatte disse områdene.&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Velg mellom utvalg av bilder&lt;br/&gt;med ansikter til høyre. Se &lt;br/&gt;originalversjonen av bildet,&lt;br/&gt;finn ansiktene eller anonymiser&lt;br/&gt;disse ved hjelp av knappene &lt;br/&gt;nederst. Nede til høyre står&lt;br/&gt;det hvor mange ansikter som &lt;br/&gt;er oppdaget.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Finner ansiktene i bildet, og&lt;br/&gt;anonymiserer disse ansiktene&lt;br/&gt;ved å glatte disse områdene.&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Velg mellom utvalg av bilder&lt;br/&gt;med ansikter til høyre. Se &lt;br/&gt;originalversjonen av bildet,&lt;br/&gt;finn ansiktene eller anonymiser&lt;br/&gt;disse ved hjelp av knappene &lt;br/&gt;nederst. Nede til høyre står&lt;br/&gt;det hvor mange ansikter som &lt;br/&gt;er oppdaget.&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Lagre bildet ved å klikke på&lt;br/&gt;lagreknappen nederst til høyre.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="group1">
@@ -290,6 +290,24 @@
      <width>471</width>
      <height>301</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>390</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lagre</string>
    </property>
   </widget>
  </widget>

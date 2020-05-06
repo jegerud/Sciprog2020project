@@ -9,7 +9,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Source.Demosaicing import *
-from FunctionGUI import ShowCode
+from Source.Grayscale import rgb2gray
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 class Demosaic(QMainWindow):
@@ -19,6 +20,7 @@ class Demosaic(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Demosaicing')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -46,11 +48,13 @@ class Demosaic(QMainWindow):
         self.demosaicMosaicPackage.clicked.connect(self.mosaicPackage)
         self.demosaicDemosaic.clicked.connect(self.demosaicImage)
         self.demosaicDemosaicPackage.clicked.connect(self.demosaicImagePackage)
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
 
     def setImage(self, img):
         self.path = img
         image = imageio.imread(img)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -81,7 +85,16 @@ class Demosaic(QMainWindow):
         self.showImage(img)
 
     def showImage(self, im, colour=True):
+        if not colour:
+            self.image = rgb2gray(self.path)
+        else:
+            self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
         self.imagewidget.showImage(im, colour)
+
+    def saveImage(self):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

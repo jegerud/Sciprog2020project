@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Source.Grayscale import rgb2gray
 from Source.ContrastEnhancement import *
-from FunctionGUI import ShowCode
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 class ContrastEnhancement(QMainWindow):
@@ -20,6 +20,7 @@ class ContrastEnhancement(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Kontrastforsterkning')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -45,6 +46,9 @@ class ContrastEnhancement(QMainWindow):
         self.contrastOriginal.clicked.connect(self.setOriginal)
         self.contrastColour.clicked.connect(self.contrastImage)
         self.contrastOrigGray.clicked.connect(self.setGray)
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
+
 
     def setImage(self, img):
         self.path = img
@@ -73,7 +77,16 @@ class ContrastEnhancement(QMainWindow):
         self.showContrastImage(contrastEnhanceBW(self.path, self.constant.value()), False)
 
     def showContrastImage(self, im, colour=True):
+        if not colour:
+            self.image = rgb2gray(self.path)
+        else:
+            self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
         self.imagewidget.showImage(im, colour)
+
+    def saveImage(self):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

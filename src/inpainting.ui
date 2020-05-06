@@ -93,7 +93,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>90</y>
+     <y>110</y>
      <width>271</width>
      <height>221</height>
     </rect>
@@ -104,7 +104,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Det legges på en maske på original-&lt;br/&gt;bildet som består av tre sorte &lt;br/&gt;firkanter. Deretter blir informasjonen&lt;br/&gt;i disse firkantene forsøkt gjenskapt&lt;br/&gt;ved hjelp av inpainting.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom tre eksempelbilder til&lt;br/&gt;høyre. Se masken som legges på, eller&lt;br/&gt;resultatet av inpaintingen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Det legges på en maske på original-&lt;br/&gt;bildet som består av tre sorte &lt;br/&gt;firkanter. Deretter blir informasjonen&lt;br/&gt;i disse firkantene forsøkt gjenskapt&lt;br/&gt;ved hjelp av inpainting.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Velg mellom tre eksempelbilder til&lt;br/&gt;høyre. Se masken som legges på, eller&lt;br/&gt;resultatet av inpaintingen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Lagre bildet ved å klikke på &lt;br/&gt;lagreknappen nede til venstre.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="inpaintingCode">
@@ -112,7 +112,7 @@
     <rect>
      <x>40</x>
      <y>410</y>
-     <width>131</width>
+     <width>111</width>
      <height>25</height>
     </rect>
    </property>
@@ -241,6 +241,24 @@
      <width>431</width>
      <height>371</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>410</y>
+     <width>111</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lagre</string>
    </property>
   </widget>
  </widget>

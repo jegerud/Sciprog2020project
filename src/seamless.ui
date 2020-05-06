@@ -95,7 +95,7 @@
      <x>50</x>
      <y>110</y>
      <width>241</width>
-     <height>221</height>
+     <height>261</height>
     </rect>
    </property>
    <property name="font">
@@ -104,7 +104,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;En bit av bilde 2 limes inn i&lt;br/&gt;bilde 1, og forsøker å gjøre&lt;br/&gt;dette så sømløst som mulig.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Velg mellom tre forhåndsvalgte&lt;br/&gt;bildekombinasjoner til høyre.&lt;br/&gt;Se originalversjonen av bilde 1&lt;br/&gt;og bilde 2. Se den ferdige &lt;br/&gt;versjonen ved å klikke på&lt;br/&gt;&amp;quot;sy sammen&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;En bit av bilde 2 limes inn i&lt;br/&gt;bilde 1, og forsøker å gjøre&lt;br/&gt;dette så sømløst som mulig.&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Velg mellom tre forhåndsvalgte&lt;br/&gt;bildekombinasjoner til høyre.&lt;br/&gt;Se originalversjonen av bilde 1&lt;br/&gt;og bilde 2. Se den ferdige &lt;br/&gt;versjonen ved å klikke på&lt;br/&gt;&amp;quot;sy sammen&amp;quot;.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Lagre bildet ved å klikke på&lt;br/&gt;lagreknappen nede til venstre.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="seamlessCode">
@@ -112,7 +112,7 @@
     <rect>
      <x>50</x>
      <y>410</y>
-     <width>131</width>
+     <width>91</width>
      <height>25</height>
     </rect>
    </property>
@@ -241,6 +241,24 @@
      <width>431</width>
      <height>361</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>410</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lagre</string>
    </property>
   </widget>
  </widget>

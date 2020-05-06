@@ -9,7 +9,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Source.Inpainting import Inpaint
-from FunctionGUI import ShowCode
+from Source.Grayscale import rgb2gray
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 
@@ -20,6 +21,7 @@ class Inpainting(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Inpainting')
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -37,6 +39,8 @@ class Inpainting(QMainWindow):
         self.inpaintOne.clicked.connect(self.inpaint)
         self.inpaintTwo.clicked.connect(self.inpaint)
         self.inpaintThree.clicked.connect(self.inpaint)
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -49,7 +53,7 @@ class Inpainting(QMainWindow):
     def setImage(self, img):
         self.path = img
         image = imageio.imread(img)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
 
     def showMask(self):
         self.showImage(Inpaint(self.path, 2), False)
@@ -58,7 +62,16 @@ class Inpainting(QMainWindow):
         self.showImage(Inpaint(self.path, 3))
 
     def showImage(self, im, colour=True):
+        if not colour:
+            self.image = rgb2gray(self.path)
+        else:
+            self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
         self.imagewidget.showImage(im, colour)
+
+    def saveImage(self):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

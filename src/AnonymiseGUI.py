@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from Source.Grayscale import rgb2gray
 from Source.Anonymise import blurFace, detectFace
-from FunctionGUI import ShowCode
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 class AnonymiseFaces(QMainWindow):
@@ -20,6 +20,7 @@ class AnonymiseFaces(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Anonymisering')
         self.path = "../hdr-bilder/Faces/group1.jpg"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -42,6 +43,8 @@ class AnonymiseFaces(QMainWindow):
         self.anonymousOriginal.clicked.connect(self.setOriginal)
         self.anonymousFindFaces.clicked.connect(self.detectFaces)
         self.anonymousAnonymise.clicked.connect(self.anonymiseFaces)
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
     
     def setImage(self, img):
         self.path = img
@@ -59,24 +62,29 @@ class AnonymiseFaces(QMainWindow):
 
     def setOriginal(self):
         image = imageio.imread(self.path)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
         self.updateCount(0)
 
     def detectFaces(self):
         count, img = detectFace(self.path)
         self.updateCount(count)
-        self.showFaces(img)
+        self.showImage(img)
 
     def anonymiseFaces(self):
         count, img = blurFace(self.path)
         self.updateCount(count)
-        self.showFaces(img)
+        self.showImage(img)
 
-    def showFaces(self, image):
+    def showImage(self, image):
+        np.reshape(self.image, image.shape)
+        self.image = image.copy()
         self.imagewidget.showImage(image)
 
     def updateCount(self, count):
         self.faceCount.setText(str(count))
+
+    def saveImage(self):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

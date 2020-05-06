@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>390</y>
+     <y>400</y>
      <width>151</width>
      <height>25</height>
     </rect>
@@ -89,7 +89,7 @@
    <property name="geometry">
     <rect>
      <x>610</x>
-     <y>390</y>
+     <y>400</y>
      <width>151</width>
      <height>25</height>
     </rect>
@@ -107,7 +107,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>390</y>
+     <y>400</y>
      <width>151</width>
      <height>25</height>
     </rect>
@@ -167,7 +167,7 @@
      <x>40</x>
      <y>110</y>
      <width>241</width>
-     <height>221</height>
+     <height>251</height>
     </rect>
    </property>
    <property name="font">
@@ -176,7 +176,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Konverterer et fargebilde til&lt;br/&gt;gråtonebilde.&lt;br/&gt;&lt;br/&gt;Velg hvilket bilde som skal&lt;br/&gt;konverteres til høyre.&lt;br/&gt;&lt;br/&gt;Benytt deg av enten den enkle&lt;br/&gt;versjonen for gråtonekonvertering&lt;br/&gt;ved å klikke på &amp;quot;enkel&amp;quot;, eller bruk &lt;br/&gt;den litt mer sofistikerte versjonen&lt;br/&gt;ved å klikke på &amp;quot;avansert&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Konverterer et fargebilde til&lt;br/&gt;gråtonebilde.&lt;br/&gt;&lt;br/&gt;Velg hvilket bilde som skal&lt;br/&gt;konverteres til høyre.&lt;br/&gt;&lt;br/&gt;Benytt deg av enten den enkle&lt;br/&gt;versjonen for gråtonekonvertering&lt;br/&gt;ved å klikke på &amp;quot;enkel&amp;quot;, eller bruk &lt;br/&gt;den litt mer sofistikerte versjonen&lt;br/&gt;ved å klikke på &amp;quot;avansert&amp;quot;.&lt;/p&gt;&lt;p&gt;Lagre bildet ved å klikke på &lt;br/&gt;lagreknappen nederst til høyre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="balls">
@@ -219,7 +219,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>390</y>
+     <y>400</y>
      <width>131</width>
      <height>25</height>
     </rect>
@@ -275,8 +275,26 @@
      <x>290</x>
      <y>79</y>
      <width>471</width>
-     <height>301</height>
+     <height>311</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>400</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Lagre</string>
    </property>
   </widget>
  </widget>

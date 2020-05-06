@@ -9,7 +9,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Source.SeamlessCloning import seamless
-from FunctionGUI import ShowCode
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 
@@ -19,6 +19,7 @@ class Seamless(QMainWindow):
         uic.loadUi('seamless.ui', self)
         self.path = "../hdr-bilder/Tree/Tree_00064.png"
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
+        self.image = imageio.imread(self.path)
         self.setWindowTitle('Sømløs kloning')
         self.setImage(self.path)
         self.adjustScreen(app)
@@ -43,7 +44,9 @@ class Seamless(QMainWindow):
         self.seamlessOne.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
         #self.seamlessTwo.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
         #self.seamlessThree.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
-    
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
+
     def showCode(self):
         code = QPlainTextEdit()
         text = open('codes/inpainting.txt').read()
@@ -55,16 +58,22 @@ class Seamless(QMainWindow):
     def setImage(self, img):
         self.path = img
         image = imageio.imread(img)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
 
     def seamlessImage(self, img1, img2):
         if not self.imgOneReady:
             self.seamlessImageOne = seamless(self.imgOne, self.imgTwo)
-            self.imgOneReady = True
+            self.imgOneReady = True 
         self.showImage(self.seamlessImageOne)
 
     def showImage(self, im):
+        self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
         self.imagewidget.showImage(im)
+
+    def saveImage(self):
+        saveImage(self.image)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

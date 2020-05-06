@@ -8,7 +8,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from FunctionGUI import ShowCode
+from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 from Source.Blur import eksplisittGlatting
 from Source.Grayscale import rgb2gray
@@ -21,6 +21,7 @@ class Blur(QMainWindow):
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Glatting')
         self.path = "../hdr-bilder/Balls/Balls_00032.png"
+        self.image = imageio.imread(self.path)
         self.setImage(self.path)
         self.adjustScreen(app)
 
@@ -50,11 +51,13 @@ class Blur(QMainWindow):
         self.blurColour.clicked.connect(partial(self.blurImage, True))
         self.blurGrayIm.clicked.connect(partial(self.blurImageImplisitt, False))
         self.blurColourIm.clicked.connect(partial(self.blurImageImplisitt, True))
+        self.save.clicked.connect(self.saveImage)
+        self.save.setShortcut("Ctrl+S")
 
     def setImage(self, img):
         self.path = img
         image = imageio.imread(img)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -66,10 +69,10 @@ class Blur(QMainWindow):
 
     def setOriginal(self):
         image = imageio.imread(self.path)
-        self.imagewidget.showImage(image)
+        self.showImage(image)
 
     def setGray(self):
-        self.showBlurImage(rgb2gray(self.path), False)
+        self.showImage(rgb2gray(self.path), False)
 
     def blurImage(self, colour=True):
         if colour:
@@ -78,7 +81,7 @@ class Blur(QMainWindow):
             orig_im = rgb2gray(self.path)
         im = np.copy(orig_im)
         im = im + .05 * np.random.randn(* np.shape(im))
-        self.showBlurImage(eksplisittGlatting(im, orig_im, self.constant.value()), colour)
+        self.showImage(eksplisittGlatting(im, orig_im, self.constant.value()), colour)
 
     def blurImageImplisitt(self, colour=True):
         u=imageio.imread(self.path)
@@ -87,11 +90,20 @@ class Blur(QMainWindow):
         u = u.astype(float) / 255
         u[u<0]=0
         u[u>1]=1
-        self.showBlurImage(implisitt(u, n=3, alpha=2,rgb=colour), colour)
+        self.showImage(implisitt(u, n=3, alpha=2,rgb=colour), colour)
 
-    def showBlurImage(self, im, colour=True):
+    def showImage(self, im, colour=True):
+        if not colour:
+            self.image = rgb2gray(self.path)
+        else:
+            self.image = imageio.imread(self.path)
+        np.reshape(self.image, im.shape)
+        self.image = im.copy()
         self.imagewidget.showImage(im, colour)
-        
+
+    def saveImage(self):
+        saveImage(self.image)
+
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
