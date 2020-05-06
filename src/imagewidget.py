@@ -20,6 +20,7 @@ class imagewidget(FigureCanvas):
         self.img = self.figure.add_subplot(111)
         self.img.axis("off")
         self.img.imshow(image, plt.cm.gray)
+        self.figure.subplots_adjust(left=0.001, right=0.999, top=0.999, bottom=0.001)
         self.draw()
 
     def showImage(self, image):
