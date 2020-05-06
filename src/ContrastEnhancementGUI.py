@@ -53,7 +53,7 @@ class ContrastEnhancement(QMainWindow):
 
     def showCode(self):
         code = QPlainTextEdit()
-        text = open('gui/codes/kontrastforsterkning.txt').read()
+        text = open('codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning - Kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 500, 850)
@@ -73,10 +73,7 @@ class ContrastEnhancement(QMainWindow):
         self.showContrastImage(contrastEnhanceBW(self.path, self.constant.value()), False)
 
     def showContrastImage(self, im, colour=True):
-        if colour:
-            self.imagewidget.showImage(im)
-        else:
-            self.imagewidget.showGrayImage(im)
+        self.imagewidget.showImage(im, colour)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

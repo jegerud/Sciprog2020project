@@ -81,10 +81,7 @@ class Demosaic(QMainWindow):
         self.showImage(img)
 
     def showImage(self, im, colour=True):
-        if colour:
-            self.imagewidget.showImage(im)
-        else:
-            self.imagewidget.showGrayImage(im)
+        self.imagewidget.showImage(im, colour)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()

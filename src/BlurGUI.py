@@ -90,11 +90,8 @@ class Blur(QMainWindow):
         self.showBlurImage(implisitt(u, n=3, alpha=2,rgb=colour), colour)
 
     def showBlurImage(self, im, colour=True):
-        if colour:
-            self.imagewidget.showImage(im)
-        else:
-            self.imagewidget.showGrayImage(im)
-
+        self.imagewidget.showImage(im, colour)
+        
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()

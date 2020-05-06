@@ -69,7 +69,7 @@ class GrayscaleConvert(QMainWindow):
         self.convertGray(rgb2gray(self.path))
 
     def convertGray(self, im):
-        self.imagewidget.showGrayImage(im)
+        self.imagewidget.showGray(im, False)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
