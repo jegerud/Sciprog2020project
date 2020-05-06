@@ -11,8 +11,8 @@ import numpy as np
 from PIL import Image
 
 class imagewidget(FigureCanvas):
-    def __init__(self, parent=None, width=10, height=10, dpi=100):
-        self.img = Figure(figsize=(width, height), dpi=dpi)
+    def __init__(self, parent = None, width=10, height=10, dpi=100):
+        self.img = Figure(figsize = (width, height), dpi=dpi)
         FigureCanvas.__init__(self, self.img)
         self.setParent(parent)
 
