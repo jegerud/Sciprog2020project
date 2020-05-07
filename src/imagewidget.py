@@ -4,7 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from matplotlib.backends.backend_qt5agg import FigureCanvas
 from matplotlib.figure import Figure
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import sys
 import os
 import numpy as np
@@ -17,7 +17,8 @@ class imagewidget(FigureCanvas):
         self.setParent(parent)
 
     def showImage(self, image, colour=True):
-        self.img = self.figure.add_subplot(111)
+        if self.img is not None:
+            self.img = self.figure.add_subplot(111)
         self.img.axis("off")
         self.figure.subplots_adjust(left=0.001, right=0.999, top=0.999, bottom=0.001)
         if colour:
