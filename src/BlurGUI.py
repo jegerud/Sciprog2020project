@@ -72,6 +72,7 @@ class Blur(QMainWindow):
         self.showImage(image)
 
     def setGray(self):
+        self.setOriginal()
         self.showImage(rgb2gray(self.path), False)
 
     def blurImage(self, colour=True):
@@ -94,7 +95,7 @@ class Blur(QMainWindow):
 
     def showImage(self, im, colour=True):
         if not colour:
-            self.image = rgb2gray(self.path)
+            self.image = np.sum(self.image.astype(float),2) /(3*255)
         else:
             self.image = imageio.imread(self.path)
         np.reshape(self.image, im.shape)
