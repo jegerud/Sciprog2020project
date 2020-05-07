@@ -5,6 +5,22 @@ import Source.Eksplisitt as eks
 import Source.ImageView as imv
 
 def seamless(fra, til):
+    """
+    Kloner to bilder sømløst 
+
+    Parameters
+    ---------
+    fra : image
+        Bildet det skal hentes fra
+    
+    til : image
+        Bildet det skal klones inn i
+
+    Returns
+        image:
+        Det ferdig bildet bestående av 'til' med en partisjon fra 'fra'.
+    -------
+    """
 
     im_from=imageio.imread(fra)
     im_to=imageio.imread(til)
