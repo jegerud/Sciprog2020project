@@ -34,8 +34,6 @@ def contrastEnhanceBW(file, k):
         u[u > 1] = 1
     return u
 
-
-
 def contrastEnhance(file, k):
     """
     Øker kontrasten i et bilde
