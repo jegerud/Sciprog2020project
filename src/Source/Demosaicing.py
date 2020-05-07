@@ -59,7 +59,7 @@ def mosaicToRgb(file):
     """
     Lager et RGB-bilde av gråtonemosaikk
 
-    Paramters
+    Parameters
     ---------
     file : text
         Path til bildet som det skal gjøres demosaic på
