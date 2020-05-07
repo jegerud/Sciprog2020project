@@ -84,7 +84,7 @@ class AnonymiseFaces(QMainWindow):
         self.faceCount.setText(str(count))
 
     def saveImage(self):
-        saveImage(self.image)
+        saveImage(self.image, True)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
