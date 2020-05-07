@@ -28,9 +28,19 @@ def saveImage(image, convert=False):
             elif ok[:3] == "JPG" and name[-3:] != "jpg":
                 name = name + '.jpg'
             image = np.round(image*255).astype('uint8')
-            if convert:
-                image = (255-image)
-                image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            imageio.imwrite(name, image)
+        except:
+            print("Error, bilde kunne ikke lagres")
+
+def saveAnonymiseImage(image, convert=False):
+    name, ok = QFileDialog.getSaveFileName(None, "Lagre bilde", "", "PNG (*.png);;JPG (*.jpg)")
+    if ok and name:
+        try:
+            if ok[:3] == "PNG" and name[-3:] != "png":
+                name = name + '.png'
+            elif ok[:3] == "JPG" and name[-3:] != "jpg":
+                name = name + '.jpg'
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             cv2.imwrite(name, image)
         except:
             print("Error, bilde kunne ikke lagres")
