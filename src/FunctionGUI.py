@@ -6,6 +6,7 @@ import sys
 import os
 import numpy as np
 import cv2
+import imageio
 from PIL import Image
 
 class ShowCode(QMainWindow):
@@ -18,7 +19,7 @@ class ShowCode(QMainWindow):
         self.code.setText(text)
         self.code.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
-def saveImage(image):
+def saveImage(image, convert=False):
     name, ok = QFileDialog.getSaveFileName(None, "Lagre bilde", "", "PNG (*.png);;JPG (*.jpg)")
     if ok and name:
         try:
@@ -27,6 +28,9 @@ def saveImage(image):
             elif ok[:3] == "JPG" and name[-3:] != "jpg":
                 name = name + '.jpg'
             image = np.round(image*255).astype('uint8')
+            if convert:
+                image = (255-image)
+                image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             cv2.imwrite(name, image)
         except:
             print("Error, bilde kunne ikke lagres")
