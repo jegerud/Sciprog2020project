@@ -7,15 +7,25 @@ import matplotlib.pyplot as plt
 import imageio
 import unittest
 import os
-import sys
-sys.path.insert(0, '../')
-import Source.Eksplisitt as eks
-import Source.ImageView as imv
+from Source.Eksplisitt import Inpainting_mosaic
 
 
 def getMosaic(file):
-    im = imageio.imread(file)
-    im = im.astype(float) / 255
+    """
+    Lager gråtonemosaikk av originalbildet
+
+    Paramters
+    ---------
+    file : text
+        Path til bildet det skal lages gråtonemosaikk av
+    
+    Returns
+    -------
+    im:
+	Gråtonemosaikken
+    """
+    im = imageio.imread(file)       # Leser bilde
+    im = im.astype(float) / 255     # Arrayverdien fra 0 - 1
 
     mosaic = np.zeros(im.shape[:2]) # Alloker plass
     mosaic[ ::2, ::2] = im[ ::2, ::2, 0]   #R
@@ -27,12 +37,38 @@ def getMosaic(file):
 
 
 def getMosaicPackage(file):
-    im = imageio.imread(file)
-    im = im.astype(float) / 255
-    return mosaicing_CFA_Bayer(im) 
+    """
+    Lager gråtonemosaikk med hjelp av bibliotek
+
+    Paramters
+    ---------
+    file : text
+        Path til bildet det skal lages gråtonemosaikk av
+
+    Returns
+    -------
+    im:
+	Gråtonemosaikk
+    """
+    im = imageio.imread(file)       # Leser bilde
+    im = im.astype(float) / 255     # Arrayverdien fra 0 - 1
+    return mosaicing_CFA_Bayer(im)  # Henter gråtonemosaikk
 
 
-def mosaicToRgb(file, view=False):
+def mosaicToRgb(file):
+    """
+    Lager et RGB-bilde av gråtonemosaikk
+
+    Parameters
+    ---------
+    file : text
+        Path til bildet som det skal gjøres demosaic på
+
+    Returns
+    -------
+    im:
+	Demosaiced bilde
+    """
     im = imageio.imread(file)
     im = im.astype(float) / 255
     mosaic = getMosaic(file)
@@ -53,24 +89,18 @@ def mosaicToRgb(file, view=False):
     mask=mask.astype(bool)#gjør om til bool-array
     
     #inpainter hver av fargekanalene
-    eks.Inpainting_mosaic(im_ed[:,:,0], mask[:,:,0])
-    eks.Inpainting_mosaic(im_ed[:,:,1], mask[:,:,1])
-    eks.Inpainting_mosaic(im_ed[:,:,2], mask[:,:,2])
-    
-    if view:
-        imv.viewDemosaic(im, mosaic, im_ed, "Demosaicing - Algorithm")
-    else:
-        return im_ed
+    Inpainting_mosaic(im_ed[:,:,0], mask[:,:,0])
+    Inpainting_mosaic(im_ed[:,:,1], mask[:,:,1])
+    Inpainting_mosaic(im_ed[:,:,2], mask[:,:,2])
+
+    return im_ed
 
 
-def mosaicToRgbPackage(file, view=False):
-    original = colour.io.read_image(file)
-    mosaic = mosaicing_CFA_Bayer(original)
-    new = demosaicing_CFA_Bayer_Menon2007(mosaic)
-    new[new < 0] = 0
-    new[new > 1] = 1
+def mosaicToRgbPackage(file):
+    original = colour.io.read_image(file) # Leser bilde
+    mosaic = mosaicing_CFA_Bayer(original)# Henter gråtonemosaikk
+    new = demosaicing_CFA_Bayer_Menon2007(mosaic)# Gjør demosaicing
+    new[new < 0] = 0                # Klipper til lovlige verdier
+    new[new > 1] = 1                
 
-    if view:
-        imv.viewDemosaic(original, mosaic, new, "Demosaicing - Package")
-    else:
-        return new
+    return new

@@ -1,88 +1,79 @@
 import numpy as np
 import unittest
 import imageio
-import sys
-sys.path.insert(0, '../')
 from Source.Eksplisitt import eksplisitt
 from Source.Grayscale import rgb2gray
 
 def contrastEnhanceBW(file, k):
     """
-    Løser diffusjonslikningen
+    Øker kontrasten i et gråtonebilde
 
-    Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
-
-    Paramters
+    Parameters
     ---------
-    im : bildet
-        Bildet som skal glattes
-    orig_im : originalt bilde
-        Bild som ikke endres på
+    file : Path 
+        Path til bilde som skal kontrastforsterkes
     k : konstant
         Styrer hvor mye bildet skal glattes
     Returns
     -------
     im:
-	Et glattet bilde
+	    Kontrastforsterket bilde i gråtoner
     """
-    u = rgb2gray(file)
-    u0 = u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]
+    u = rgb2gray(file)         # Henter gråtoneversjon av bildet
+    u0 = 0.25 * (u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + # Laplace av u0
+                u[1:-1, 2:] - 4 * u[1:-1, 1:-1])
 
-    for i in range(30):
+    for i in range(30):        # Løser diffusjonslikningen
         u[1:-1, 1:-1] += (0.25 * (u[:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, :-2] + 
                                 u[1:-1, 2:] - 4 * u[1:-1, 1:-1]) - k * u0)
         u[:, 0] = u[:, 1]      # Neumann randbetingelse
-        u[:, -1] = u[:, -2]    #
-        u[0, :] = u[1, :]      #
-        u[-1, :] = u[-2 , :]   #
+        u[:, -1] = u[:, -2]    
+        u[0, :] = u[1, :]      
+        u[-1, :] = u[-2 , :]   
         u[u < 0] = 0           # klipp til lovlige verdier
         u[u > 1] = 1
     return u
 
-
-
 def contrastEnhance(file, k):
     """
-    Løser diffusjonslikningen
+    Øker kontrasten i et bilde
 
-    Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n tider
-
-    Paramters
+    Parameters
     ---------
-    im : bildet
-        Bildet som skal glattes
-    orig_im : originalt bilde
-        Bild som ikke endres på
+    file : Path 
+        Path til bilde som skal kontrastforsterkes
     k : konstant
         Styrer hvor mye bildet skal glattes
     Returns
     -------
     im:
-	Et glattet bilde
+	    Kontrastforsterket bilde
     """
-    u = imageio.imread(file) / 255
-    u0 = np.copy(u[1:-1, 1:-1, :])
-    u0[:,:,0] = (u[:-2, 1:-1, 0] + u[2:, 1:-1, 0] + u[1:-1, :-2, 0] + 
-                    u[1:-1, 2:, 0] - 4 * u[1:-1, 1:-1, 0])  
-    u0[:,:,1] = (u[:-2, 1:-1, 1] + u[2:, 1:-1, 1] + u[1:-1, :-2, 1] + 
-                    u[1:-1, 2:, 1] - 4 * u[1:-1, 1:-1, 1])  
-    u0[:,:,2] = (u[:-2, 1:-1, 2] + u[2:, 1:-1, 2] + u[1:-1, :-2, 2] + 
-                    u[1:-1, 2:, 2] - 4 * u[1:-1, 1:-1, 2])  
+    u = imageio.imread(file) / 255  # np.array verdier mellom 0 og 1
+    u0 = np.copy(u[1:-1, 1:-1, :])  # Kopierer over i u0
 
-    for i in range(30):
+                                    # Laplace av hver fargekanal
+    u0[:,:,0] = 0.25 * (u[:-2, 1:-1, 0] + u[2:, 1:-1, 0] + u[1:-1, :-2, 0] + 
+                    u[1:-1, 2:, 0] - 4 * u[1:-1, 1:-1, 0])  # R
+    u0[:,:,1] = 0.25 * (u[:-2, 1:-1, 1] + u[2:, 1:-1, 1] + u[1:-1, :-2, 1] + 
+                    u[1:-1, 2:, 1] - 4 * u[1:-1, 1:-1, 1])  # G
+    u0[:,:,2] = 0.25 * (u[:-2, 1:-1, 2] + u[2:, 1:-1, 2] + u[1:-1, :-2, 2] + 
+                    u[1:-1, 2:, 2] - 4 * u[1:-1, 1:-1, 2])  # B
+
+    for i in range(30):             # Løser diffusjonslikningen i hver fargekanal
         u[1:-1, 1:-1, 0] += (0.25 * (u[:-2, 1:-1, 0] + u[2:, 1:-1, 0] + 
                             u[1:-1, :-2, 0] + u[1:-1, 2:, 0] - 
-                            4 * u[1:-1, 1:-1, 0]) - k * u0[:,:, 0])
+                            4 * u[1:-1, 1:-1, 0]) - k * u0[:,:, 0]) # R
         u[1:-1, 1:-1, 1] += (0.25 * (u[:-2, 1:-1, 1] + u[2:, 1:-1, 1] + 
                             u[1:-1, :-2, 1] + u[1:-1, 2:, 1] - 
-                            4 * u[1:-1, 1:-1, 1]) - k * u0[:,:, 1])
+                            4 * u[1:-1, 1:-1, 1]) - k * u0[:,:, 1]) # G
         u[1:-1, 1:-1, 2] += (0.25 * (u[:-2, 1:-1, 2] + u[2:, 1:-1, 2] + 
                             u[1:-1, :-2, 2] + u[1:-1, 2:, 2] - 
-                            4 * u[1:-1, 1:-1, 2]) - k * u0[:,:, 2])
+                            4 * u[1:-1, 1:-1, 2]) - k * u0[:,:, 2]) # B
         u[:, 0] = u[:, 1]      # Neumann randbetingelse
-        u[:, -1] = u[:, -2]    #
-        u[0, :] = u[1, :]      #
-        u[-1, :] = u[-2 , :]   #
-        u[u < 0] = 0           # klipp til lovlige verdier
-        u[u > 1] = 1
+        u[:, -1] = u[:, -2]    
+        u[0, :] = u[1, :]      
+        u[-1, :] = u[-2 , :]   
+    u[u < 0] = 0           # klipp til lovlige verdier
+    u[u > 1] = 1
     return u
