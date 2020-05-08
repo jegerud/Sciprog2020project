@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 from Source.Blur import eksplisittGlatting
-from Source.Grayscale import rgb2gray
+from Source.Grayscale import rgb2gray, grayscale
 from Source.implisitt import implisitt
 
 class Blur(QMainWindow):
@@ -85,9 +85,10 @@ class Blur(QMainWindow):
         self.showImage(eksplisittGlatting(im, orig_im, self.constant.value()), colour)
 
     def blurImageImplisitt(self, colour=True):
-        u=imageio.imread(self.path)
-        if not colour:
-            u = np.sum(u.astype(float),2) /(3*255)   # konverter til gråtone
+        if colour:
+            u = imageio.imread(self.path)
+        else:    
+            u = grayscale(self.path)  
         u = u.astype(float) / 255
         u[u<0]=0
         u[u>1]=1
