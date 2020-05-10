@@ -69,12 +69,10 @@ class Demosaic(QMainWindow):
         self.showImage(image)
 
     def mosaic(self):
-        mosaic = getMosaic(self.path)
-        self.showImage(mosaic, False)
+        self.showImage(getMosaic(self.path), False)
 
     def mosaicPackage(self):
-        mosaic = getMosaicPackage(self.path)
-        self.showImage(mosaic, False)
+        self.showImage(getMosaicPackage(self.path), False)
 
     def demosaicImage(self):
         self.showImage(mosaicToRgb(self.path))
