@@ -5,7 +5,7 @@ from PyQt5.QtCore import *
 from PIL import Image
 from functools import partial
 import imageio
-import os
+#import os
 import numpy as np
 import matplotlib.pyplot as plt
 from Source.SeamlessCloning import seamless
@@ -62,7 +62,7 @@ class Seamless(QMainWindow):
 
     def seamlessImage(self, img1, img2):
         if not self.imgOneReady:
-            self.seamlessImageOne = seamless(self.imgOne, self.imgTwo)
+            self.seamlessImageOne = seamless(img1, img2)
             self.imgOneReady = True 
         self.showImage(self.seamlessImageOne)
 
