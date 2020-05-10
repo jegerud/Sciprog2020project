@@ -46,22 +46,22 @@ I hver modul importeres klassen \texttt{showCode(QMainWindow)}, som viser koden 
 \subsubsection{Glatting}
 Et bilde kan glattes ved å bruke en eksplisitt løsning av diffusjonslikningen. Dette gjøres av funksjonen \texttt{blurImage(self, colour)}. Denne henter først et fargebilde hvis colour er True eller gråtonebilde hvis colour er False. Videre lages en kopi av originalbilde som det legges litt støy på, før dette glattes ved å bruke funksjonen \texttt{eksplisittGlatting()} fra \texttt{Eksplisitt.py}. Tilslutt vises bildet ved å bruke modulens showImage-funksjon.
 
-Bildet kan også glattes ved å bruke en eksplisitt løsning av diffusjonslikningen. Dette gjøres at funksjonen \texttt{blurImageImplsitt(self, colour=True)}. Hvis colour er True leses det inn et fargebildet, og hvis colour er False leses det inn et gråtonebilde ved bruk av \texttt{grayscale()} fra \texttt{Grayscale.py}. Disse bildene lagres som en numpyarray \texttt{u} som videre omformes til å inneholde verdier mellom 0 og 1, hvor verdier over 1 og under 0 klippes til lovlige verdier. Deretter glattes bildet \texttt{u} ved å bruke funksjonen \texttt{implisitt()} fra \texttt{implisitt.py}. Tilslutt vises bildet ved å bruke showImage-funksjonen i modulen.
+Bildet kan også glattes ved å bruke en implisitt løsning av diffusjonslikningen. Dette gjøres at funksjonen \texttt{blurImageImplsitt(self, colour=True)}. Hvis colour er True leses det inn et fargebildet, og hvis colour er False leses det inn et gråtonebilde ved bruk av \texttt{grayscale()} fra \texttt{Grayscale.py}. Disse bildene lagres som en numpyarray \texttt{u} som videre omformes til å inneholde verdier mellom 0 og 1, hvor verdier over 1 og under 0 klippes til lovlige verdier. Deretter glattes bildet \texttt{u} ved å bruke funksjonen \texttt{implisitt()} fra \texttt{implisitt.py}. Tilslutt vises bildet ved å bruke showImage-funksjonen i modulen.
 
 \subsubsection{Inpainting}
-I Inpainting sitt GUI er det mulig å få vist bildet med manglende informasjon. Dette gjøres ved å bruke funksjonen \texttt{showMask(self)}, som sender med \texttt{self.path} og tallet \texttt{2} til funksjonen \texttt{Inpaint()} i \texttt{Inpainting.py}. Denne funksjonen returnerer bildet med masken, som vises ved å bruke \texttt{showImage()} i modulen. Informasjonen i bildet fylles inn i funksjonen \texttt{inpaint(self)}, som sender med \texttt{self.path} og tallet \texttt{3} til \texttt{Inpaint()} fra \texttt{Inpainting.py}. Her returneres et bilde hvor informasjonen er fylt inn, som vises av \texttt{showImage()}. 
+I Inpainting sitt GUI er det mulig å få vist bildet med manglende informasjon før det fylles inn. Dette gjøres ved å bruke funksjonen \texttt{showMask(self)}, som sender med \texttt{self.path} og tallet \texttt{2} til funksjonen \texttt{Inpaint()} fra \texttt{Inpainting.py}. Denne funksjonen returnerer bildet med masken, som vises ved å bruke \texttt{showImage()} i modulen. Informasjonen i bildet fylles inn i funksjonen \texttt{inpaint(self)}, som sender med \texttt{self.path} og tallet \texttt{3} til \texttt{Inpaint()} fra \texttt{Inpainting.py}. Her returneres et bilde hvor informasjonen er fylt inn, som vises av \texttt{showImage()}. 
 
 \subsubsection{Kontrastforsterkning}
-
+Når knappen \texttt{contrastColour} trigges starter funksjonen \texttt{contrastImage(self)}. Denne funksjonen kaller på \texttt{contrastEnhance()} fra \texttt{contrastEnhancement.py} og sender med \texttt{self.path} og den aktuelle verdien på \texttt{QDoubleSpinBox}\footnote{\url{https://doc.qt.io/qtforpython/PySide2/QtWidgets/QDoubleSpinBox.html}} som brukeren har satt en verdi på. \texttt{contrastEnhancement()} returnerer et kontrastforsterket bilde som vises i GUI av \texttt{showContrastImage(self, im, colour=True)}. Hvis brukeren trigger knappen \texttt{contrastOrigGray} startes funksjonen \texttt{contrastGrayImage(self)}. Her sendes \texttt{self.path} og verdien på \texttt{QDoubleSpinBox} med til \texttt{contrastEnhanceBW()} i \texttt{contrastEnhancement.py}, og returnerer et kontrastforsterket gråtonebilde. Dette vises av \texttt{showContrastImage()}.
 
 \subsubsection{Demosaicing}
-
+Det er mulig å bruke to forskjellige metoder å gjøre demosaicing på et bilde i denne modulen. Hvis man vil bruke metoden som innebærer at man manuelt fyller inn informasjonen fra gråtonemosaikken inn i hver fargekanal, opprette en maske for fargekanalene og inpainte den manglende informasjonen med bruk av diffusjonslikningen, kan gjøres dette med \texttt{demosaicImage()}. Denne bruker \texttt{mosaicToRGB()} til å utføre demosaicingen, som vises på skjermen ved å bruke \texttt{showImage()}. Hvis man har lyst til å se gråtonemosaikken før informasjonen inpaintes gjøres dette av \texttt{mosaic()}, hvor gråtonemosaikken returneres av \texttt{getMosaic()} og vises av \texttt{showImage()}. Ønsker man heller bruke biblioteket \texttt{Colour-demosaicing}\footnote{\url{https://pypi.org/project/colour-demosaicing/}} til å gjøre demosaicing av bildet gjøres dette ved å bruke \texttt{demosaicImagePackage}. Her brukes \texttt{Colour} først til å lage en gråtonemosaikk, før denne gråtonemosaikken demosaices ved å bruke \texttt{Colour-demosaicing}. Hvis man har lyst til å se gråtonemosaikken som lages med dette biblioteket gjøres dette med \texttt{mosaicPackage()}. Gråtonemosaikken og bildet som det er gjort demosaicing på vises begge med \texttt{showImage()}. 
 
 \subsubsection{Sømløs kloning}
-
+For å sømløst klone en av de tre forhåndsvalgte sammensetningene av bilder brukes \texttt{seamlessImage(self, number, img1, img2)}. \texttt{Number} er verdien på hvilken av kombinasjonene som klones. Deretter sjekkes verdi på den aktuelle av de tre lokale boolvariablene. Disse boolvariable fungerer som status på om noen av de tre forhåndsvalgte kombinasjonene av bilder allerede er regnet ut. Disse settes til False ved oppstart av modulen, og oppdateres til True hvis den aktuelle kombinasjonen av bilder er blitt klonet. Dette er gjort fordi det å sømløst klone et bilde er en regnetung oppgave og tar lang tid, og ved å lagre bildet kan brukeren raskt kan sammenlikne bildet før og etter kloning. Hvis den aktuelle boolverdien er False klones bildet av \texttt{seamless(img1, img2)} og lagres i \texttt{self.seamlessImageOne}, før den aktuelle \texttt{self.imgXReady} settes til True. Er boolverdien ikke False er dette allerede gjort og \texttt{showImage()} kan vise det ferdig klonede bildet. 
 
 \subsubsection{Konvertering av fargetone til gråtone}
-
+Når den enkle metoden for å konvertere et bilde til gråtone skal benyttes brukes \texttt{convertGrayEasy()} til å kalle på funksjonen \texttt{grayscale}. Her returneres gråtonebildet som sendes til \texttt{showImage()} som viser bildet på skjermen. Velges den mer sofistikerte metoden for å konverte et gråtonebilde brukes \texttt{convertGrayAdvanced()}. Her returneres det et gråtonebilde fra \texttt{rgb2gray()} som vises på skjermen av \texttt{showImage()}.
 
 \subsection{Anonymisering}
 
@@ -92,3 +92,10 @@ Ta med til konklusjon:
 - droppet bruk av .ui-filer som hadde gjort det mye enklere å organisere prosjektet på en bedre måte
 - En del cowboyløsninger når man bygger på og bygger på, spesielt lagring av bilder ble ganske rotete og unødvendig komplisert til slutt
 - Mange steder som man kanskje burde laget GUI annerledes
+- Lagring av bilder har hatt verdier mellom 0 og 1 har lavere kvalitet
+
+Hva som trengs:
+- Colour
+- Colour-demosaicing
+- PIL
+- cv2
