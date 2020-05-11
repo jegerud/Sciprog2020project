@@ -127,8 +127,8 @@ def eksplisittGlatting(im, orig_im, k):
         image[:, -1] = image[:, -2]    
         image[0, :] = image[1, :]      
         image[-1, :] = image[-2 , :]   
-        image[image < 0] = 0           # klipp til lovlige verdier
-        image[image > 1] = 1
+    image[image < 0] = 0           # klipp til lovlige verdier
+    image[image > 1] = 1
     return image
 
 def eksplisittInpaint(image, mask, alpha=.25, n=100):
