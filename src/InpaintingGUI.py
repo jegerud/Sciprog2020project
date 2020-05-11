@@ -26,7 +26,7 @@ class Inpainting(QMainWindow):
         self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"
-        self.imgTwo = "../hdr-bilder/Fog/Fog_00512.png"
+        self.imgTwo = "../hdr-bilder/Faces/lena.png"
         self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
 
         self.inpaintingCode.clicked.connect(self.showCode)
