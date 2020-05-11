@@ -8,8 +8,8 @@
 \newcommand{\addappendix}{   % Self-created command to insert appendix with defined settings
     \newpage
     \appendix
-    \section*{Appendix}   % Name of appendix
-    \addcontentsline{toc}{section}{Appendix}  % Add appendix name to table of contents
+    \section*{Appendiks}   % Name of appendix
+    \addcontentsline{toc}{section}{Appendiks}  % Add appendix name to table of contents
     \renewcommand{\thesubsection}{\Alph{subsection}}    % Change numbering of section to upper-case letters.
 }
 
@@ -26,6 +26,7 @@
 \def\tableautorefname{Table}    % Autoref-name for tables
 \def\subsectionautorefname{\sectionautorefname} % Autoref-name for subsections
 \def\subsubsectionautorefname{\sectionautorefname} % Autoref-name for subsubsections
+
 
 % --- Code ---
 \usepackage{listings}
@@ -105,6 +106,8 @@
 \usepackage[a4paper, total={150mm, 245mm,footskip = 14mm}]{geometry}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.8em}
+\setcounter{secnumdepth}{2} % only chapter and sections will be numbered
+\setcounter{tocdepth}{1}    % entries down to \subsubsections in the TOC
 
 % Customized header and footer
 \usepackage{fancyhdr}

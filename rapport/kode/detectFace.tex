@@ -1,0 +1,14 @@
+\begin{lstlisting}[language=Python]
+def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
+    image = cv2.imread(file)            # Leser inn bilde
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Konverterer til RGB
+    
+    # importerer haarscade biblioteket
+    face_cascade = cv2.CascadeClassifier('Resources/haarcascade_frontalface_default.xml')
+    faces = face_cascade.detectMultiScale(image,scaleFactor,
+                                          minNeighbors, minSize = (30,30))
+    # Antall ansikter                                      
+    faces_rects = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors)        
+    for (x,y,w,h) in faces_rects:    # For hvert oppdagede ansikt tegner rektangel rundt
+        cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)    
+\end{lstlisting}

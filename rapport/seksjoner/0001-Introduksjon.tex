@@ -1,0 +1,52 @@
+\section{Introduksjon}
+
+
+\subsection{Rapportens oppbygging}
+Vi har valgt å følge rapportmalen til Jon Arnt Kårstad fra institutt for marin teknikk ved NTNU. Denne malen ligger klar til bruk som mal i den nettbaserte LaTeX-editoren Overleaf. Når vi i rapporten skal vise til andre kapitler og seksjoner vil det bli brukt kapittelets og seksjonens nummer. For listformer som f.eks. punktlister vil vi bruke terminologien punkt. Vedlegg blir lagt bakerst i rapporten og vil bli referert til med vedleggets bokstav og navn. Rapporten har følgende oppbygning:
+\begin{itemize}
+  \item[-] Introduksjon - beskriver raskt omstendighetene rundt prosjektet. Gir også en kort beskrivelse av gruppen og rapporten.
+  \item[-] Oppgaven - beskriver oppgaven som er gitt, hva som er forventet og hvordan det kan løses.
+  \item[-] Løste oppgaver - viser hvordan vi har løst oppgavene, hvordan vi har tenkt og hvilke forutsetninger som er gjort
+  \item[-] Avslutning - refleksjoner rundt prosjektet blir gjort. Det blir også presentert diskusjoner og evaluering som gjort underveis.
+  \item[-] Konklusjon - inneholder avsluttende tanker, hva som fungerte og hva som kunne vært gjort annerledes.
+  \item[-] Bibliografi - inneholder alle kilder vi har benyttet i løpet av prosjektets periode.
+  \item[-] Vedlegg - inneholder kode som vi ønsket å forklare nærmere.
+\end{itemize}
+
+\subsection{Oppgaven}
+En rekke problemer i bildebehandling kan løses med en teknikk som kalles «Poisson Image Editing». Metoden går i korthet ut på at man representerer bildet man ønsker å komme frem til som en funksjon $u : \Omega \to C$, der $\Omega \subset \mathbb{R}^2$ er det rektangulære området hvor bildet er definert, og $C$ er fargerommet, vanligvis $C = [0, 1]$ for gråtonebilder og $C = [0, 1]^3$ for fargebilder. Bildet $u(x, y)$ fremkommer som en løsning av Poisson-ligningen
+\begin{equation}
+  \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \equiv \nabla^2 u = h,
+  \label{eq:poisson}
+\end{equation}
+der randverdier på $\partial\Omega$ og funksjonen $h : \Omega \to \mathbb{R}^{\dim(C)}$ spesifiseres avhengig av hvilket problem som skal løses. Randverdiene er av Dirichlet- eller Neumann-typen.
+
+En måte å løse Poisson-ligningen på er å iterere seg frem til løsningen vha. såkalt gradientnedstigning («gradient descent»). I praksis gjøres dette ved å innføre en kunstig tidsparameter og la løsningen utvikle seg mot konvergens:
+\begin{equation}
+\frac{\partial u}{\partial t} = \nabla^2 u - h.
+\label{eq:diffusjon}
+\end{equation}
+Når man velger denne fremgangsmåten, må man også velge en initialverdi for bildet, $u(x, y, 0) = u_0(x, y)$.
+
+To diskrete numeriske skjemaer for~(\ref{eq:diffusjon}) kan finnes ved henholdsvis eksplisitt og implisitt tidsintegrasjon og sentrerte differanser for de partielle deriverte:
+\begin{align}
+  \frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t} &= \frac{1}{\Delta x^2}
+                                               (u^n_{i+1,j} +
+                                               u^n_{i-1,j} +
+                                               u^n_{i,j+1} +
+                                               u^n_{i,j-1} -4 
+                                               u^n_{i,j}) - h_{i,j},
+                                               \label{eq:eksplisitt}  \\
+  \frac{u^{n+1}_{i,j} - u^n_{i,j}}{\Delta t} &= \frac{1}{\Delta x^2}
+                                               (u^{n+1}_{i+1,j} +
+                                               u^{n+1}_{i-1,j} +
+                                               u^{n+1}_{i,j+1} +
+                                               u^{n+1}_{i,j-1} -4 
+                                               u^{n+1}_{i,j}) - h_{i,j}.
+                                               \label{eq:implisitt}
+\end{align}
+
+Fra dette skulle vi implementere en rekke anvendelser på bilder som for hver anvendelse blir forklart nøyere i denne rapporten. Oppgaveteksten inneholdt noen eksempler og generelle forklaringer på hvordan man kan implementere anvendelsene, men vi fikk også frihet til å inkludere egne anvendelser.
+
+Det ble definert en minimumsløsning som skulle inneholde implementasjon av det eksplisitte skjemaet~(\ref{eq:eksplisitt}) og anvendelsene glatting (avsnitt~\ref{sec:Glatting}), inpainting (avsnitt~\ref{sec:Inpainting}), kontrastforsterkning for gråtonebilder (avsnitt~\ref{sec:Kontrastforsterkning}) og sømløs kloning (avsnitt~\ref{sec:kloning}). Utover dette har vi også implementert demosaicing (avsnitt \ref{sec:Demosaicing}), en mer avansert konvertering av fargebilder til gråtone (avsnitt \ref{sec:gråtone}) og anonymisering av ansikter i bilder (avsnitt \ref{sec:Anonymisering}). I tillegg har vi implementert det implisitte numeriske skjemaet og laget et grafisk brukergrensesnitt (avsnitt \ref{sec:Gui}). Disse blir diskutert i detalj senere i rapporten. Alle bilder hvor det er avbildet mennesker er hentet fra \url{https://unsplash.com/}.
+
