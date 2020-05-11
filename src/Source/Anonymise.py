@@ -39,7 +39,7 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     return len(faces), image
 
 
-def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
+def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
     """
     Oppdager et ansikt vendt mot kamera
    
@@ -65,8 +65,8 @@ def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Konverterer til RGB
     
     face_cascade = cv2.CascadeClassifier('Resources/haarcascade_frontalface_default.xml')# importerer haarscade biblioteket
-    faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors, minSize = (30,30))# Gjenkjenner ansikter
-    faces_rects = face_cascade.detectMultiScale(image, scaleFactor, minNeighbors)        # Antall ansikter og markere
+    faces = face_cascade.detectMultiScale(image, scaleFactor, minNeighbours, minSize = (30,30))# Gjenkjenner ansikter
+    faces_rects = face_cascade.detectMultiScale(image, scaleFactor, minNeighbours)        # Antall ansikter og markere
 
     for (x,y,w,h) in faces_rects:                                   # For hvert oppdagede ansikt
         cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)    # Lager rektangel rundt ansikt
