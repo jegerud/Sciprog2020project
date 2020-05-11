@@ -10,6 +10,8 @@ import SeamlessGUI
 import ConvertGrayscaleGUI
 import AnonymiseGUI
 import sys
+import imageio
+import matplotlib as plt
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -66,11 +68,11 @@ class Home(QMainWindow):
         dimension = screenWidth/screenHeight
         if dimension == 1.5:
             width = int(screenWidth / 1.8)
-            height = int(screenHeight / 2)
+            height = int(screenHeight / 2.55)
         else:
             width = int(screenWidth / 2.22222)
-            height = int(screenHeight / 1.95298)
-        self.setGeometry(500, 80, width, height)
+            height = int(screenHeight / 2.4)
+        self.setGeometry(500, 100, width, height)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
