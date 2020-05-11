@@ -26,8 +26,8 @@ class Demosaic(QMainWindow):
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgThree = "../hdr-bilder/Faces/group1.jpg"
+        self.imgFour = "../hdr-bilder/Faces/business.jpg"
         self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
         self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
         self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
@@ -35,8 +35,8 @@ class Demosaic(QMainWindow):
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
-        self.fog.clicked.connect(partial(self.setImage, self.imgThree))
-        self.garden.clicked.connect(partial(self.setImage, self.imgFour))
+        self.group.clicked.connect(partial(self.setImage, self.imgThree))
+        self.business.clicked.connect(partial(self.setImage, self.imgFour))
         self.mountains.clicked.connect(partial(self.setImage, self.imgFive))
         self.ocean.clicked.connect(partial(self.setImage, self.imgSix))
         self.stillife.clicked.connect(partial(self.setImage, self.imgSeven))
