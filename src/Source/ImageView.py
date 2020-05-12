@@ -1,5 +1,41 @@
 import matplotlib.pyplot as plt
 
+def figsize():
+    """
+    Setter størrelsen på bildene til en fast størrelse
+    """
+    return plt.figure(figsize=(30,20))
+
+def subplotAdjust():
+    """
+    Setter rammene på bildene nærmere hverandre
+    """
+    return plt.subplots_adjust(wspace=0.02, hspace=0.02, #Setter rammene på bildene nærmere hverandre
+                                 top=0.9,   bottom=0,
+                                 left=0,     right=1)
+
+def imageSetup(image, subplot, title):
+    """
+    Setter opp et standard bildeoppsett
+    
+    Parameters
+    ----------
+    image :  Bildefil
+             Bildet som skal displayes
+    subplot: Int
+             Definerer det som subplot
+    title:   Text
+             En eventuell tittel over bildet
+    """
+    return (
+        figsize(),
+        plt.subplot(subplot),
+        plt.imshow(image, plt.cm.gray),
+        plt.title(title),
+        plt.axis('off'),
+        plt.show(block=True)
+        )
+         
 def view(original, ny1, BW, ny2, text):
     """
     Viser bildene ved siden av hverandre.
@@ -19,7 +55,7 @@ def view(original, ny1, BW, ny2, text):
     text     : text
                Tittelen på bildet som er anvendt
     """
-    plt.figure(figsize=(16, 8))         # Setter størrelse på bildene
+    figsize()                           # Setter størrelse på bildene
     plt.subplot(131)                    # Legger til subplot for bilde
     plt.imshow(original, plt.cm.gray)   # Viser bildet
     plt.title('Originalbilde')          # Legger til tittel
@@ -30,9 +66,9 @@ def view(original, ny1, BW, ny2, text):
     plt.title(text)                     # Legger til tittel
     plt.axis('off')                     # Fjerner aksene i figuren
                                         # Gjør margene mindre
-    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    subplotAdjust()
     
-    plt.figure(figsize=(16, 8))         # Setter størrelse på bildene
+    figsize()                           # Setter størrelse på bildene
     plt.subplot(131)                    # Legger til subplot for bilde
     plt.imshow(BW, plt.cm.gray)         # Viser gråtonebildet
     plt.title('Gråskala')               # Legger til tittel
@@ -43,7 +79,7 @@ def view(original, ny1, BW, ny2, text):
     plt.title(text)                     # Legger til tittel
     plt.axis('off')                     # Fjerner aksene i figuren
                                         # Gjør margene mindre
-    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    subplotAdjust()
 
 def viewInpaint(original, mask, ny, text, rgb):
     """
@@ -90,7 +126,7 @@ def viewInpaint(original, mask, ny, text, rgb):
     plt.title(text)                         # Setter tittel
     plt.axis('off')                         # Fjerner aksene
                                             # Gjør margene mindre
-    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    subplotAdjust()
 
 def singleView(image, gray=False):
     """
@@ -142,4 +178,22 @@ def viewDemosaic(original, mosaic, ny, text):
     plt.title(text)                         # Tilhørende tittel
     plt.axis('off')                         # Fjerner aksene
                                             # Gjør margene mindre
-    plt.subplots_adjust(wspace=0.02, hspace=0.02, top=0.9, bottom=0, left=0,right=1)
+    subplotAdjust()
+    
+def viewCompare(image1, image2):
+    """
+    Sammenligner bilder ved siden av hverandre
+    
+    Parameters
+    ----------
+    image1 : Bildefil
+             Pathen til filen der det første bildet befinner seg
+    image2 : Bildefil
+             Pathen til filen der det andre bildet befinner seg
+    
+    Returnerer plt.imshow av bildene satt opp ved siden av hverandre
+    """
+    
+    imageSetup(image1,131,"Detection")
+    imageSetup(image2,132,"Anonymous")
+    subplotAdjust()
