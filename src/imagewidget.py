@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import sys
 import os
 import numpy as np
-from PIL import Image
 
 class imagewidget(FigureCanvas):
     def __init__(self, parent = None, width=10, height=10, dpi=100):
