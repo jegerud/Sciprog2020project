@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>487</height>
+    <width>738</width>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>140</y>
+      <y>120</y>
       <width>321</width>
       <height>31</height>
      </rect>
@@ -38,9 +38,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>741</width>
+      <x>160</x>
+      <y>30</y>
+      <width>391</width>
       <height>61</height>
      </rect>
     </property>
@@ -62,7 +62,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>140</y>
+      <y>120</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -80,7 +80,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>220</y>
+      <y>200</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -98,7 +98,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>220</y>
+      <y>200</y>
       <width>271</width>
       <height>31</height>
      </rect>
@@ -116,7 +116,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>180</y>
+      <y>160</y>
       <width>481</width>
       <height>31</height>
      </rect>
@@ -134,7 +134,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>180</y>
+      <y>160</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -152,7 +152,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>260</y>
+      <y>240</y>
       <width>361</width>
       <height>31</height>
      </rect>
@@ -170,7 +170,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>260</y>
+      <y>240</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -188,7 +188,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>300</y>
+      <y>280</y>
       <width>301</width>
       <height>31</height>
      </rect>
@@ -206,7 +206,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>300</y>
+      <y>280</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -224,7 +224,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>340</y>
+      <y>320</y>
       <width>301</width>
       <height>31</height>
      </rect>
@@ -242,7 +242,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>340</y>
+      <y>320</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -260,7 +260,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>380</y>
+      <y>360</y>
       <width>331</width>
       <height>31</height>
      </rect>
@@ -278,7 +278,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>380</y>
+      <y>360</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -290,6 +290,44 @@
     </property>
     <property name="text">
      <string>Anonymisering</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="about">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>420</y>
+      <width>121</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Om oss</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_8">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>440</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>true</italic>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>#Gulbrandsen, Kjelsrud og Jegerud @2020</string>
     </property>
    </widget>
   </widget>
