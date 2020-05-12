@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import Source.Eksplisitt as eks
+from Source.ImageView import singleView
 
 def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     """
@@ -72,3 +73,10 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
         cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)    # Lager rektangel rundt ansikt
 
     return len(faces), image
+
+def detect_anonymise(path):
+    antall, image = detectFace(path)
+    antall, blur = blurFace(path)
+    print(antall, "ansikt er registrert")
+    singleView(image)
+    singleView(blur)
