@@ -2,16 +2,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PIL import Image
 from functools import partial
-import imageio
-#import os
-import numpy as np
-import matplotlib.pyplot as plt
 from Source.SeamlessCloning import seamless
 from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
-
+import imageio
+import numpy as np
+import matplotlib.pyplot as plt
 
 class Seamless(QMainWindow):
     def __init__(self, app):

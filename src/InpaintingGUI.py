@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from functools import partial
-from PIL import Image
 import imageio
 import os
 import numpy as np

@@ -7,7 +7,6 @@ import os
 import numpy as np
 import cv2
 import imageio
-from PIL import Image
 
 class ShowCode(QMainWindow):
     def __init__(self, text, title, width, height, parent=None):
