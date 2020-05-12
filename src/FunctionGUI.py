@@ -18,6 +18,20 @@ class ShowCode(QMainWindow):
         self.code.setText(text)
         self.code.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
+class ShowAbout(QMainWindow):
+    def __init__(self, width, height, parent=None):
+        super(ShowAbout, self).__init__(parent)
+        uic.loadUi('about.ui', self)
+        self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
+        self.setWindowTitle("Om oss")
+        self.setGeometry(500, 80, width, height)
+        text = open('codes/about.txt').read()
+        self.about.setText(text)
+        self.about.setTextInteractionFlags(Qt.TextSelectableByMouse)
+        self.gif = QtGui.QMovie('Resources/wave.gif')
+        self.labelGif.setMovie(self.gif)
+        self.gif.start()
+
 def saveImage(image, convert=False):
     name, ok = QFileDialog.getSaveFileName(None, "Lagre bilde", "", "PNG (*.png);;JPG (*.jpg)")
     if ok and name:
