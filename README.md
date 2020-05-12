@@ -3,7 +3,7 @@
 ## GUI
 
 <p align="center">
-<img src="guiexample.png" alt="GUI Preview"/>
+<img src="guipreview.png" alt="GUI Preview"/>
 </p>
 
 ## Installering og start av GUI
