@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import Source.Eksplisitt as eks
-from Source.ImageView import singleView
+from Source.ImageView import viewCompare
 
 def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     """
@@ -78,5 +78,6 @@ def detect_anonymise(path):
     antall, image = detectFace(path)
     antall, blur = blurFace(path)
     print(antall, "ansikt er registrert")
-    singleView(image)
-    singleView(blur)
+    #singleView(image)
+    #singleView(blur)
+    viewCompare(image,blur)
