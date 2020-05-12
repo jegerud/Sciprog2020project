@@ -68,7 +68,7 @@ For å skrive dette på matriseform må en altså bruke glisne matriser. Her bli
     A = spdiags(diags, [u.shape[1], 1, 0, -1, -u.shape[1]], size, size).tocsc()
 \end{lstlisting}
 \texttt{nupper} og \texttt{nlower} posisjoneres riktig utfra bildets dimensjoner, mens de tre midterste diagonalene plasseres i midten. Deretter lages en array \texttt{diags} av alle diagonalene. Til slutt settes de sammen til en glissen matrise ved hjelp av \texttt{spdiags()}. I tillegg gjøres de kolonnesentrert med \texttt{tocsc()}.
-Denne glissne koeffisientmatrisen brukes videre i spsolve\footnote{\url{https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.sparse.linalg.spsolve.html}} som dersom \texttt{u} er et fargebilde, løser det lineære likningssystemet for hver fargekanal.
+Denne glissne koeffisientmatrisen \texttt{A} brukes videre i spsolve\footnote{\url{https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.sparse.linalg.spsolve.html}} som dersom \texttt{u} og \texttt{im} er fargebilder, løser det lineære likningssystemet for hver fargekanal.
 \begin{lstlisting}[language=Python]
     for i in range (u.shape[2]):
         im[:,:,i]=spsolve(A,im[:,:,i].flatten()).reshape(u[:,:,i].shape)
