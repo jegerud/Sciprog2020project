@@ -33,3 +33,5 @@ stort prosjekt med mange ulike filtyper. Ingen av gruppens
 medlemmer har tidligere erfaring med å utvikle stort annet 
 enn applikasjoner som kjører i kommandolinje. Dette har 
 ført til en bratt læringskurve og mye nyttig læring.
+
+Repo: https://git.gvk.idi.ntnu.no/casperfg/imt3881-2020-prosjekt
