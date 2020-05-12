@@ -49,7 +49,7 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
                   Pathen til filen der original bildet befinner seg uten andvending
     scaleFactor : int
                   Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
-    ny          : int
+    minNeighbors : int
                   spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
     title       : text
                   Tittelen på bildet som er anvendt
