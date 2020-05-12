@@ -75,7 +75,7 @@ class Home(QMainWindow):
             width = int(screenWidth / 2.5)
             height = int(screenHeight / 2.25)
         else:
-            width = int(screenWidth / 2.8)
+            width = int(screenWidth / 2.75)
             height = int(screenHeight / 2.1)
         self.setGeometry(500, 100, width, height)
 
