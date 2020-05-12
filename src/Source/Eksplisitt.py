@@ -164,3 +164,20 @@ def eksplisittInpaint(image, mask, alpha=.25, n=100):
                                   4 * im[1:-1, 1:-1])
         im[mask == False] = im0[mask == False]      # Diriclet randbetingelse
     return im, im0
+
+def finnLaplace(u):
+    """
+    Finner laplacen til en matrise
+
+    Parameters
+    ---------
+    u : image
+        bildet laplacen skal hentes fra
+
+    Returns
+    -------
+    numpy.ndarray:
+        Divergensen til gradienten til u (laplacen)
+    """
+    laplace=u[0:-2, 1:-1] + u[2:, 1:-1] + u[1:-1, 0:-2] + u[1:-1, 2:] - 4 * u[1:-1, 1:-1]
+    return laplace
