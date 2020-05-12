@@ -64,7 +64,7 @@ class Home(QMainWindow):
         self.dialog.show()
 
     def onAboutClicked(self):
-        self.dialog = FunctionGUI.ShowAbout(650, 900)
+        self.dialog = FunctionGUI.ShowAbout(500, 900)
         self.dialog.show()
 
     def adjustScreen(self):
