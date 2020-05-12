@@ -15,6 +15,8 @@
 ## GUI
 Kjør følgende kommandoer under for å installere nødvendig biblioteker og kjøre GUI.
 
-* pip install -r requirements.txt
-* cd kode
-* python app.py
+```bashh
+pip install -r requirements.txt
+cd src
+python Main.py
+```
