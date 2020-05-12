@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>553</height>
+    <width>738</width>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
    <widget class="QLabel" name="glattingTekst">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>160</y>
-      <width>321</width>
+      <x>250</x>
+      <y>120</y>
+      <width>411</width>
       <height>31</height>
      </rect>
     </property>
@@ -38,30 +38,31 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>50</y>
-      <width>741</width>
+      <x>160</x>
+      <y>30</y>
+      <width>391</width>
       <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>DejaVu Serif</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
-      <italic>true</italic>
+      <italic>false</italic>
       <bold>true</bold>
       <underline>true</underline>
      </font>
     </property>
     <property name="text">
-     <string>Vitenskapelig Programmering, Prosjekt 2020</string>
+     <string>Poisson Bildebehandling</string>
     </property>
    </widget>
    <widget class="QPushButton" name="openBlur">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>160</y>
+      <x>70</x>
+      <y>120</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -78,8 +79,8 @@
    <widget class="QPushButton" name="openContrast">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>240</y>
+      <x>70</x>
+      <y>200</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -96,8 +97,8 @@
    <widget class="QLabel" name="glattingTekst_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>240</y>
+      <x>250</x>
+      <y>200</y>
       <width>271</width>
       <height>31</height>
      </rect>
@@ -114,8 +115,8 @@
    <widget class="QLabel" name="glattingTekst_3">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>200</y>
+      <x>250</x>
+      <y>160</y>
       <width>481</width>
       <height>31</height>
      </rect>
@@ -132,8 +133,8 @@
    <widget class="QPushButton" name="openInpainting">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>200</y>
+      <x>70</x>
+      <y>160</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -150,9 +151,9 @@
    <widget class="QLabel" name="glattingTekst_4">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>280</y>
-      <width>361</width>
+      <x>250</x>
+      <y>240</y>
+      <width>411</width>
       <height>31</height>
      </rect>
     </property>
@@ -168,8 +169,8 @@
    <widget class="QPushButton" name="openDemosaicing">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>280</y>
+      <x>70</x>
+      <y>240</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -186,9 +187,9 @@
    <widget class="QLabel" name="glattingTekst_5">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>320</y>
-      <width>301</width>
+      <x>250</x>
+      <y>280</y>
+      <width>401</width>
       <height>31</height>
      </rect>
     </property>
@@ -204,8 +205,8 @@
    <widget class="QPushButton" name="openSeamless">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>320</y>
+      <x>70</x>
+      <y>280</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -222,9 +223,9 @@
    <widget class="QLabel" name="glattingTekst_6">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>360</y>
-      <width>301</width>
+      <x>250</x>
+      <y>320</y>
+      <width>411</width>
       <height>31</height>
      </rect>
     </property>
@@ -240,8 +241,8 @@
    <widget class="QPushButton" name="openGrayConvert">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>360</y>
+      <x>70</x>
+      <y>320</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -258,9 +259,9 @@
    <widget class="QLabel" name="glattingTekst_7">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>400</y>
-      <width>331</width>
+      <x>250</x>
+      <y>360</y>
+      <width>421</width>
       <height>31</height>
      </rect>
     </property>
@@ -276,8 +277,8 @@
    <widget class="QPushButton" name="openAnonymise">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>400</y>
+      <x>70</x>
+      <y>360</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -291,30 +292,12 @@
      <string>Anonymisering</string>
     </property>
    </widget>
-   <widget class="QLabel" name="glattingTekst_8">
+   <widget class="QPushButton" name="about">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>440</y>
-      <width>301</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Gjør deler av et bilde om til gråtone</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="openBWEffect">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>440</y>
-      <width>161</width>
+      <x>260</x>
+      <y>420</y>
+      <width>121</width>
       <height>25</height>
      </rect>
     </property>
@@ -324,7 +307,27 @@
      </font>
     </property>
     <property name="text">
-     <string>Delvis svart/hvitt</string>
+     <string>Om oss</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glattingTekst_8">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>440</y>
+      <width>331</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <italic>true</italic>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>#Gulbrandsen, Kjelsrud og Jegerud @2020</string>
     </property>
    </widget>
   </widget>

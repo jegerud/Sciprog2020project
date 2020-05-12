@@ -9,7 +9,9 @@ import DemosaicingGUI
 import SeamlessGUI
 import ConvertGrayscaleGUI
 import AnonymiseGUI
+import FunctionGUI
 import sys
+import matplotlib as plt
 
 if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
@@ -31,6 +33,7 @@ class Home(QMainWindow):
         self.openSeamless.clicked.connect(self.onOpenSeamlessClicked)
         self.openGrayConvert.clicked.connect(self.onOpenGrayscaleClicked)
         self.openAnonymise.clicked.connect(self.onOpenAnonymiseClicked)
+        self.about.clicked.connect(self.onAboutClicked)
 
     def onOpenBlurClicked(self):
         self.dialog = BlurGUI.Blur(app)
@@ -60,17 +63,21 @@ class Home(QMainWindow):
         self.dialog = AnonymiseGUI.AnonymiseFaces(app)
         self.dialog.show()
 
+    def onAboutClicked(self):
+        self.dialog = FunctionGUI.ShowAbout(500, 900)
+        self.dialog.show()
+
     def adjustScreen(self):
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
         if dimension == 1.5:
-            width = int(screenWidth / 1.8)
-            height = int(screenHeight / 2)
+            width = int(screenWidth / 2.5)
+            height = int(screenHeight / 2.25)
         else:
-            width = int(screenWidth / 2.22222)
-            height = int(screenHeight / 1.95298)
-        self.setGeometry(500, 80, width, height)
+            width = int(screenWidth / 2.75)
+            height = int(screenHeight / 2.1)
+        self.setGeometry(500, 100, width, height)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

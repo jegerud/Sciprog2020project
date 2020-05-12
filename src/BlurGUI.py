@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PIL import Image
 from functools import partial
 import imageio
 import os
@@ -92,7 +91,7 @@ class Blur(QMainWindow):
         u = u.astype(float) / 255
         u[u<0]=0
         u[u>1]=1
-        self.showImage(implisitt(u, n=3, alpha=2,rgb=colour), colour)
+        self.showImage(implisitt(u, n=2, alpha=2.5,rgb=colour), colour)
 
     def showImage(self, im, colour=True):
         if not colour:

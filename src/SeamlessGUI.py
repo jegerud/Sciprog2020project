@@ -2,16 +2,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PIL import Image
 from functools import partial
-import imageio
-import os
-import numpy as np
-import matplotlib.pyplot as plt
 from Source.SeamlessCloning import seamless
 from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
-
+import imageio
+import numpy as np
+import matplotlib.pyplot as plt
 
 class Seamless(QMainWindow):
     def __init__(self, app):
@@ -41,9 +38,9 @@ class Seamless(QMainWindow):
         self.imageTwoTwo.clicked.connect(partial(self.setImage, self.imgFour))
         self.imageThreeOne.clicked.connect(partial(self.setImage, self.imgOne))
         self.imageThreeTwo.clicked.connect(partial(self.setImage, self.imgSix))
-        self.seamlessOne.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
-        #self.seamlessTwo.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
-        #self.seamlessThree.clicked.connect(partial(self.seamlessImage, self.imgOne, self.imgTwo))
+        self.seamlessOne.clicked.connect(partial(self.seamlessImage, 1, self.imgOne, self.imgTwo))
+        #self.seamlessTwo.clicked.connect(partial(self.seamlessImage, 2, self.imgOne, self.imgTwo))
+        #self.seamlessThree.clicked.connect(partial(self.seamlessImage, 3, self.imgOne, self.imgTwo))
         self.save.clicked.connect(self.saveImage)
         self.save.setShortcut("Ctrl+S")
 
@@ -60,11 +57,22 @@ class Seamless(QMainWindow):
         image = imageio.imread(img)
         self.showImage(image)
 
-    def seamlessImage(self, img1, img2):
-        if not self.imgOneReady:
-            self.seamlessImageOne = seamless(self.imgOne, self.imgTwo)
-            self.imgOneReady = True 
-        self.showImage(self.seamlessImageOne)
+    def seamlessImage(self, number, img1, img2):
+        if number == 1:
+            if not self.imgOneReady:
+                self.seamlessImageOne = seamless(img1, img2)
+                self.imgOneReady = True 
+            self.showImage(self.seamlessImageOne)
+        elif number == 2:
+            if not self.imgTwoReady:
+                self.seamlessImageTwo = seamless(img1, img2)
+                self.imgTwoReady = True 
+            self.showImage(self.seamlessImageTwo)
+        elif number == 3:
+            if not self.imgThreeReady:
+                self.seamlessImageThree = seamless(img1, img2)
+                self.imgThreeReady = True 
+            self.showImage(self.seamlessImageThree)    
 
     def showImage(self, im):
         self.image = imageio.imread(self.path)

@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PIL import Image
 from functools import partial
 import imageio
 import os
@@ -26,8 +25,8 @@ class ContrastEnhancement(QMainWindow):
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgThree = "../hdr-bilder/Faces/group1.jpg"
+        self.imgFour = "../hdr-bilder/Faces/couple.jpg"
         self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
         self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
         self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
@@ -35,8 +34,8 @@ class ContrastEnhancement(QMainWindow):
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
-        self.fog.clicked.connect(partial(self.setImage, self.imgThree))
-        self.garden.clicked.connect(partial(self.setImage, self.imgFour))
+        self.group.clicked.connect(partial(self.setImage, self.imgThree))
+        self.couple.clicked.connect(partial(self.setImage, self.imgFour))
         self.mountains.clicked.connect(partial(self.setImage, self.imgFive))
         self.ocean.clicked.connect(partial(self.setImage, self.imgSix))
         self.stillife.clicked.connect(partial(self.setImage, self.imgSeven))
@@ -64,8 +63,7 @@ class ContrastEnhancement(QMainWindow):
         self.dialog.show()
 
     def setOriginal(self):
-        image = imageio.imread(self.path)
-        self.imagewidget.showImage(image)
+        self.showContrastImage(imageio.imread(self.path))
 
     def setGray(self):
         self.showContrastImage(rgb2gray(self.path), False)

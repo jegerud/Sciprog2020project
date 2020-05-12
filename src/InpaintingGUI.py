@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from functools import partial
-from PIL import Image
 import imageio
 import os
 import numpy as np
@@ -26,7 +25,7 @@ class Inpainting(QMainWindow):
         self.adjustScreen(app)
 
         self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"
-        self.imgTwo = "../hdr-bilder/Fog/Fog_00512.png"
+        self.imgTwo = "../hdr-bilder/Faces/lena.png"
         self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
 
         self.inpaintingCode.clicked.connect(self.showCode)

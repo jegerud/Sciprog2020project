@@ -14,10 +14,13 @@ Algoritmen trenger å trenes med flere positive bilder av ansikter og negative b
 
 De to første elementene (figur \ref{fig:haarfeat}) kalles for edge-features som benyttes til å detektere kanter i objekter. Den tredje er en line-feature, mens den fjerde heter four rectangle-feature som oftest benyttes til å gjengkjenne en skrå linje.
 
-Haar-Features er veldig god til å gjenkjenne linjer og kanter på objekter, og spesielt i ansikter. Som man ser i (figur \ref{fig:haarface}) klarer en edge-feature å gjengkjenne essensielle deler ved et ansikt, som f.eks et øye. Grunnen til dette er at i bildet blir det en kontrast mellom øyet og kinnet, som kan minne om objekt 2 fra figur (\ref{fig:haarfeat}), altså en mørk overdel med lys bunn.
+Haar-Features er veldig god til å gjenkjenne linjer og kanter på objekter, og spesielt i ansikter. Som man ser i (figur \ref{fig:haarface}) klarer en edge-feature å gjengkjenne essensielle deler ved et ansikt, som f.eks et øye. Grunnen til dette er at i bildet blir det en kontrast mellom øyet og kinnet, som kan minne om objekt 2 fra figur (\ref{fig:haarfeat}), altså en mørk overdel med lys bunn. Algoritmen går så gjennom hele bildet helt til det oppdager en samling av slike "features" og ved nok positive treff markerer den det område over ansiktet.
+
+Algoritmen trenger to paramtere som heter scale factor og minimum neighbor
 
 \subsection{Implementasjon}
-
+Det mest krevende var nettopp å få programmet til å gjenkjenne ansikter. Viktigste var å importere xml-filen\footnote{haarcascade\_frontalface\_default.xml\cite{xml:haar}} som inneholdt en ferdig trent algoritme for gjenkjenning av ansikter som er vendt direkte mot kamera. Valg av paramterene måtte tas basert på bildet.
+\import{./kode/}{detectFace}
 
 \begin{figure}
 \begin{center}

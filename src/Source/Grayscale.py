@@ -1,5 +1,6 @@
 import numpy as np
 import imageio
+from Source.Eksplisitt import finnLaplace
 
 def grayscale(file):
     """
@@ -38,24 +39,15 @@ def rgb2gray(file):
     gray_im = grayscale(file)           # Henter enkel gråtoneversjon av bildet
     u0 = np.copy(gray_im)               # Kopierer gråtonebilde over i u0
     orig_im = orig_im.astype(float)/255 # np.array verdier mellom 0 og 1
-
-    dudx = np.zeros(gray_im.shape)      
-    dudy = np.zeros(gray_im.shape)
-    dudx[1:-1, 1:-1] = u0[2:, 1:-1]-u0[1:-1, 1:-1]
-    dudy[1:-1, 1:-1] = u0[1:-1, 2:]-u0[1:-1, 1:-1]
-    gradient = dudx+dudy
-    g = abs(gradient)/np.sqrt(3)
-    retning = gradient*(orig_im[:,:,0] + orig_im[:,:,1] + orig_im[:,:,2])
+    
+    gradient = abs(finnLaplace(u0))/np.sqrt(3)
+    retning = finnLaplace(orig_im[:,:,0] + orig_im[:,:,1] + orig_im[:,:,2])
 
     alpha = .25
     for i in range(2):                  # Løser diffusjonslikning
-        laplace = (u0[0:-2, 1:-1] +     # Laplace for u0
-                   u0[2:, 1:-1] +
-                   u0[1:-1, 0:-2] +
-                   u0[1:-1, 2:] -
-                   4 * u0[1:-1, 1:-1])  
+        laplace = finnLaplace(u0)
                                         # Løser diffusjonsliknig
-        u0[1:-1, 1:-1] += alpha * laplace - retning[1:-1, 1:-1]*g[1:-1, 1:-1]
+        u0[1:-1, 1:-1] += alpha * laplace - retning*gradient
         u0[:, 0] = u0[:, 1]             # Neumann randbetingelser
         u0[:, -1] = u0[:, -2]    
         u0[0, :] = u0[1, :]      

@@ -1,32 +1,29 @@
 \documentclass{article}
 \usepackage{setup}
+\usepackage{enumitem}
 
 \begin{document}
 \import{./}{forside}
 \frontmatter
-\import{./seksjoner/}{0-Forord}
+\import{./seksjoner/}{0000-Forord}
 \newpage
 \tableofcontents
-
-%\listoftables
-\newpage
-\mainmatter
-\import{./seksjoner/}{1-Introduksjon}
-\import{./seksjoner/}{2-Glatting}
-\import{./seksjoner/}{3-Inpainting}
-\import{./seksjoner/}{4-Kontrastforsterkning}
-\import{./seksjoner/}{5-Demosaicing}
-\import{./seksjoner/}{6-Sømløs kloning}
-\import{./seksjoner/}{7-Konvertering av fargebilder til gråtone}
-\import{./seksjoner/}{8-Anonymisering}
-\import{./seksjoner/}{9-Gui}
-
 \newpage
 \listoffigures
+
+\newpage
+\mainmatter
+\import{./seksjoner/}{0001-Introduksjon}
+\import{./seksjoner/}{0002-Glatting}
+\import{./seksjoner/}{0003-Inpainting}
+\import{./seksjoner/}{0004-Kontrastforsterkning}
+\import{./seksjoner/}{0005-Demosaicing}
+\import{./seksjoner/}{0006-Sømløs kloning}
+\import{./seksjoner/}{0007-Konvertering av fargebilder til gråtone}
+\import{./seksjoner/}{0008-Anonymisering}
+\import{./seksjoner/}{0009-Gui}
+\import{./seksjoner/}{000A-Konklusjon}
 \newpage
 \bibliography{referanser}
-<<<<<<< HEAD
-=======
-\nocite{PCP}
->>>>>>> develop
+\import{./appendiks/}{000A-Arbeidsflyt}
 \end{document}

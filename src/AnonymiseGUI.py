@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PIL import Image
 from functools import partial
 import imageio
 import os
@@ -63,12 +62,16 @@ class AnonymiseFaces(QMainWindow):
         self.updateCount(0)
 
     def detectFaces(self):
-        count, img = detectFace(self.getPath(self.number))
+        minNeighbours = self.minNeighbours.value()
+        scaleFactor = self.scaleFactor.value()
+        count, img = detectFace(self.getPath(self.number), scaleFactor, minNeighbours)
         self.updateCount(count)
         self.showImage(img)
 
     def anonymiseFaces(self):
-        count, img = blurFace(self.getPath(self.number))
+        minNeighbours = self.minNeighbours.value()
+        scaleFactor = self.scaleFactor.value()
+        count, img = blurFace(self.getPath(self.number), scaleFactor, minNeighbours)
         self.updateCount(count)
         self.showImage(img)
 
