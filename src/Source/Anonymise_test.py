@@ -13,9 +13,14 @@ class Anonymise_test(unittest.TestCase):
         """
         test for face detection
         """
-        antall, lena_image = detectFace(lena)
-        expectedNumber = 1
-        self.assertEqual(antall, expectedNumber)
+        lena_antall, lena_image = detectFace(lena)
+        team_antall, team_image = detectFace(team)
+        
+        lena_expectedNumber = 1
+        team_expectedNumber = 8
+        
+        self.assertEqual(lena_antall, lena_expectedNumber)
+        self.assertEqual(team_antall, team_expectedNumber)
     
     
     
