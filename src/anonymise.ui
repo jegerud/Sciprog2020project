@@ -264,7 +264,7 @@
     <string>Business</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="team">
+  <widget class="QPushButton" name="music">
    <property name="geometry">
     <rect>
      <x>730</x>
@@ -279,7 +279,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Team</string>
+    <string>Music</string>
    </property>
   </widget>
   <widget class="imagewidget" name="imagewidget" native="true">
@@ -322,11 +322,14 @@
    <property name="statusTip">
     <string extracomment="ScaleFactor"/>
    </property>
+   <property name="decimals">
+    <number>3</number>
+   </property>
    <property name="maximum">
     <double>4.000000000000000</double>
    </property>
    <property name="singleStep">
-    <double>0.050000000000000</double>
+    <double>0.025000000000000</double>
    </property>
    <property name="value">
     <double>1.200000000000000</double>
