@@ -12,6 +12,9 @@
 * Levér inn rapport som PDF i Inspera. PDF-en må inneholde URL-en
   til repoet.
 
-## Oppgave
+## GUI
+Kjør følgende kommandoer under for å installere nødvendig biblioteker og kjøre GUI.
 
-Se oppgavebeskrivelse i katalogen _oppgave_.
+* pip install -r requirements.txt
+* cd kode
+* python app.py
