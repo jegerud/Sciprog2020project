@@ -24,7 +24,7 @@ class AnonymiseFaces(QMainWindow):
         self.imgGroup1 = imageio.imread(self.getPath(2))
         self.imgGroup2 = imageio.imread(self.getPath(3))
         self.imgGroup3 = imageio.imread(self.getPath(4))
-        self.imgTeam = imageio.imread(self.getPath(5))
+        self.imgMusic = imageio.imread(self.getPath(5))
         self.imgFamily = imageio.imread(self.getPath(6))
         self.imgBusiness = imageio.imread(self.getPath(7))
         self.setImage(1)
@@ -32,20 +32,21 @@ class AnonymiseFaces(QMainWindow):
         self.group1.clicked.connect(partial(self.setImage, 2))
         self.group2.clicked.connect(partial(self.setImage, 3))
         self.group3.clicked.connect(partial(self.setImage, 4))
-        self.team.clicked.connect(partial(self.setImage, 5))
+        self.music.clicked.connect(partial(self.setImage, 5))
         self.family.clicked.connect(partial(self.setImage, 6))
         self.business.clicked.connect(partial(self.setImage, 7))
         self.anonymousCode.clicked.connect(self.showCode)
         self.anonymousOriginal.clicked.connect(self.setOriginal)
         self.anonymousFindFaces.clicked.connect(self.detectFaces)
         self.anonymousAnonymise.clicked.connect(self.anonymiseFaces)
-        self.save.clicked.connect(partial(self.saveImage, self.number))
+        self.save.clicked.connect(partial(self.saveImage))
         self.save.setShortcut("Ctrl+S")
     
     def setImage(self, nr):
         image = imageio.imread(self.getPath(nr))
         self.showImage(image)
         self.number = nr
+        self.setSpinboxValues()
         self.updateCount(0)
     
     def showCode(self):
@@ -59,6 +60,7 @@ class AnonymiseFaces(QMainWindow):
     def setOriginal(self):
         image = imageio.imread(self.getPath(self.number))
         self.showImage(image)
+        self.setSpinboxValues()
         self.updateCount(0)
 
     def detectFaces(self):
@@ -80,7 +82,7 @@ class AnonymiseFaces(QMainWindow):
         elif self.number == 2: self.imgGroup1 = image.copy()
         elif self.number == 3: self.imgGroup2 = image.copy()
         elif self.number == 4: self.imgGroup3 = image.copy()
-        elif self.number == 5: self.imgTeam = image.copy()
+        elif self.number == 5: self.imgMusic = image.copy()
         elif self.number == 6: self.imgFamily = image.copy()
         elif self.number == 7: self.imgBusiness = image.copy()
         self.imagewidget.showImage(image)
@@ -88,12 +90,12 @@ class AnonymiseFaces(QMainWindow):
     def updateCount(self, count):
         self.faceCount.setText(str(count))
 
-    def saveImage(self, number):
+    def saveImage(self):
         if self.number == 1: saveAnonymiseImage(self.imgCouple)
         elif self.number == 2: saveAnonymiseImage(self.imgGroup1)
         elif self.number == 3: saveAnonymiseImage(self.imgGroup2)
         elif self.number == 4: saveAnonymiseImage(self.imgGroup3)
-        elif self.number == 5: saveAnonymiseImage(self.imgTeam)
+        elif self.number == 5: saveAnonymiseImage(self.imgMusic)
         elif self.number == 6: saveAnonymiseImage(self.imgFamily)
         elif self.number == 7: saveAnonymiseImage(self.imgBusiness)
 
@@ -102,9 +104,20 @@ class AnonymiseFaces(QMainWindow):
         elif nr == 2: return "../hdr-bilder/Faces/group1.jpg"
         elif nr == 3: return "../hdr-bilder/Faces/group2.jpg"
         elif nr == 4: return "../hdr-bilder/Faces/group3.jpg"
-        elif nr == 5: return "../hdr-bilder/Faces/team.jpg"
+        elif nr == 5: return "../hdr-bilder/Faces/music.jpg"
         elif nr == 6: return "../hdr-bilder/Faces/family.jpg"
         elif nr == 7: return "../hdr-bilder/Faces/business.jpg"
+    
+    def setSpinboxValues(self):
+        if self.number == 1: neigh, scale = 5, 1.200
+        elif self.number == 2: neigh, scale = 5, 1.200
+        elif self.number == 3: neigh, scale = 8, 1.100
+        elif self.number == 4: neigh, scale = 9, 1.200
+        elif self.number == 5: neigh, scale = 5, 1.200
+        elif self.number == 6: neigh, scale = 5, 1.200
+        elif self.number == 7: neigh, scale = 7, 1.225
+        self.minNeighbours.setValue(neigh)
+        self.scaleFactor.setValue(scale)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
