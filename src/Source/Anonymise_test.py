@@ -14,7 +14,7 @@ class Anonymise_test(unittest.TestCase):
         test for face detection
         """
         lena_antall, lena_image = detectFace(lena)
-        team_antall, team_image = detectFace(team)
+        team_antall, team_image = detectFace(team, 1.25037, 3)
         
         lena_expectedNumber = 1
         team_expectedNumber = 8
