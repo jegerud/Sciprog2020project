@@ -1,15 +1,11 @@
 import numpy as np
 import Source.ImageView as im
-from scipy.sparse import spdiags
-from scipy.sparse.linalg import spsolve
-
-import numpy as np
 import matplotlib.pyplot as plt
 import imageio
-from scipy.sparse import spdiags
-from scipy.sparse.linalg import spsolve
 import Source.ImageView as im
 import Source.Eksplisitt as eks
+from scipy.sparse import spdiags
+from scipy.sparse.linalg import spsolve
 
 def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
     """
