@@ -19,7 +19,13 @@ if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
     QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 class Home(QMainWindow):
+    """
+    QMainWindow som representerer hjemskjermen til applikasjonen
+    """
     def __init__(self):
+        """
+        Initialiserer UI
+        """
         super(Home, self).__init__()
         uic.loadUi('Main.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
@@ -36,38 +42,65 @@ class Home(QMainWindow):
         self.about.clicked.connect(self.onAboutClicked)
 
     def onOpenBlurClicked(self):
+        """
+        Åpner vinduet til glatting
+        """
         self.dialog = BlurGUI.Blur(app)
         self.dialog.show()
 
     def onOpenInpaintingClicked(self):
+        """
+        Åpner vinduet til inpainting
+        """
         self.dialog = InpaintingGUI.Inpainting(app)
         self.dialog.show()
 
     def onOpenContrastClicked(self):
+        """
+        Åpner vinduet til kontrastforsterkning
+        """
         self.dialog = ContrastEnhancementGUI.ContrastEnhancement(app)
         self.dialog.show()
 
     def onOpenDemosaicingClicked(self):
+        """
+        Åpner vinduet til demosaicing
+        """
         self.dialog = DemosaicingGUI.Demosaic(app)
         self.dialog.show()
 
     def onOpenSeamlessClicked(self):
+        """
+        Åpner vinduet til sømløs kloning
+        """
         self.dialog = SeamlessGUI.Seamless(app)
         self.dialog.show()
     
     def onOpenGrayscaleClicked(self):
+        """
+        Åpner vinduet til konvertering til gråtone
+        """
         self.dialog = ConvertGrayscaleGUI.GrayscaleConvert(app)
         self.dialog.show()
 
     def onOpenAnonymiseClicked(self):
+        """
+        Åpner vinduet til anonymisering
+        """
         self.dialog = AnonymiseGUI.AnonymiseFaces(app)
         self.dialog.show()
 
     def onAboutClicked(self):
+        """
+        Åpner vinduet til Om oss
+        """
         self.dialog = FunctionGUI.ShowAbout(500, 900)
         self.dialog.show()
 
     def adjustScreen(self):
+        """
+        Justerer vinduet basert på skjermens dimensjon
+        """
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
