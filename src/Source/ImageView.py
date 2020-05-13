@@ -7,7 +7,7 @@ def subplotAdjust():
     return plt.subplots_adjust(wspace=0.02, hspace=0.02,
                                  top=0.9,   bottom=0,
                                  left=0,     right=1)
-def twoImageSetup(im1, im2, title1="", title2==""):
+def twoImageSetup(im1, im2, title1="", title2=""):
     """
     Setter opp et standard bildeoppsett for 2 bilder for å displaye bildene i subplots
     
@@ -104,28 +104,6 @@ def view(original, ny1, BW, ny2, text):
     twoImageSetup(original, ny1,"Originalbilde", text)
     twoImageSetup(BW, ny2, "Gråskala", text)
     
-def viewInpaint(original, mask, ny, text, rgb):
-    """
-    Viser bildene ved siden av hverandre.
-    
-    Original, masken og inpainted
-
-    Parameters
-    ---------
-    original : Bildefil
-               Pathen til filen der original bildet befinner seg uten andvending
-    mask       : Bildefil
-               Masken til bildet
-    ny       : Bildefil
-               Bildet som har blitt anvendt
-    text     : text
-               Tittelen på bildet som er anvendt
-    rgb      : bool
-               Fargebilde/gråtone
-    
-    """
-    threeImageSetup(original, mask, ny,'Originalbilde','Mask',text)
-       
 def singleView(image, gray=False):
     """
     Viser bildet

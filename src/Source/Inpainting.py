@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import imageio
+from Source.ImageView import threeImageSetup
 from Source.Eksplisitt import eksplisittInpaint
 from Source.Grayscale import grayscale
 
@@ -52,3 +53,25 @@ def Inpaint(file, ret=1, colour=True):
         return im0
     else:
         return im
+    
+def viewInpaint(original, mask, ny, text, rgb):
+    """
+    Viser bildene ved siden av hverandre.
+    
+    Original, masken og inpainted
+
+    Parameters
+    ---------
+    original : Bildefil
+               Pathen til filen der original bildet befinner seg uten andvending
+    mask       : Bildefil
+               Masken til bildet
+    ny       : Bildefil
+               Bildet som har blitt anvendt
+    text     : text
+               Tittelen på bildet som er anvendt
+    rgb      : bool
+               Fargebilde/gråtone
+    
+    """
+    threeImageSetup(original, mask, ny,'Originalbilde','Mask',text)
