@@ -4,21 +4,27 @@ def subplotAdjust():
     """
     Setter rammene på bildene nærmere hverandre
     """
-    return plt.subplots_adjust(wspace=0.02, hspace=0.02, #Setter rammene på bildene nærmere hverandre
+    return plt.subplots_adjust(wspace=0.02, hspace=0.02,
                                  top=0.9,   bottom=0,
                                  left=0,     right=1)
-def twoImageSetup(im1, im2, title1, title2):
+def twoImageSetup(im1, im2, title1="", title2==""):
     """
-    Setter opp et standard bildeoppsett
+    Setter opp et standard bildeoppsett for 2 bilder for å displaye bildene i subplots
     
     Parameters
     ----------
-    ima :  Bildefil
-             Bildet som skal displayes
-       s:  Int
-             Definerer det som subplot
-    title: Text
-             En eventuell tittel over bildet
+    im1 :   Bildefil
+             Bilde 1 som skal displayes
+    im2 :   Bildefil
+             Bilde 2 som skal displayes
+    title1: Text
+             En eventuell tittel over bilde 1
+    title2: Text
+             En eventuell tittel over bilde 2
+    Returns
+    -------
+    plt.imshow -> Displayer 2 bilder ved siden av hverandre
+    med en eventuell tittel
     """
     return (
         plt.figure(figsize=(20,10)),
@@ -33,7 +39,29 @@ def twoImageSetup(im1, im2, title1, title2):
         plt.axis('off'),
         subplotAdjust()
         )
-def threeImageSetup(im1, im2, im3, title1, title2, title3):
+def threeImageSetup(im1, im2, im3, title1="", title2="", title3=""):
+    """
+    Setter opp et standard bildeoppsett for 2 bilder for å displaye bildene i subplots
+    
+    Parameters
+    ----------
+    im1 :   Bildefil
+             Bilde 1 som skal displayes
+    im2 :   Bildefil
+             Bilde 2 som skal displayes
+    im3 :   Bildefil
+             Bilde 3 som skal displayes
+    title1: Text
+             En eventuell tittel over bilde 1
+    title2: Text
+             En eventuell tittel over bilde 2
+    title3: Text
+             En eventuell tittel over bilde 3
+    Returns
+    -------
+    plt.imshow -> Displayer 3 bilder ved siden av hverandre
+    med en eventuell tittel
+    """
     return (
         plt.figure(figsize=(20,10)),
         plt.subplot(131),
