@@ -1,4 +1,5 @@
 import numpy as np
+import Source.ImageView as im
 from scipy.sparse import spdiags
 from scipy.sparse.linalg import spsolve
 
@@ -57,3 +58,15 @@ def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
             im[-1, :] = im[-2 , :]    #
                 
     return im
+
+def viewImplisitt(eksp, imp):
+    """
+    Viser bildene ved siden av hverandre.
+    Parameters
+    ---------
+    eksp :     Bildefil
+               Eksplisitt anvendt bilde
+    imp      : Bildefil
+               Implisitt anvendt bilde
+    """
+    im.twoImageSetup(eksp, imp,'Eksplisitt','Implisitt')

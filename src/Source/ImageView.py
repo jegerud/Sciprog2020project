@@ -37,7 +37,8 @@ def twoImageSetup(im1, im2, title1="", title2=""):
         plt.imshow(im2, plt.cm.gray),
         plt.title(title2),
         plt.axis('off'),
-        subplotAdjust()
+        subplotAdjust(),
+        plt.show(block=True)
         )
 def threeImageSetup(im1, im2, im3, title1="", title2="", title3=""):
     """
@@ -79,7 +80,7 @@ def threeImageSetup(im1, im2, im3, title1="", title2="", title3=""):
         plt.imshow(im3, plt.cm.gray),
         plt.title(title3),
         plt.axis('off'),
-        plt.show(block=True)
+        plt.show(block=True),
         )
 
 def view(original, ny1, BW, ny2, text):
@@ -119,6 +120,7 @@ def singleView(image, gray=False):
     else:                                   # Fargebilde
         plt.imshow(image)                   # Viser fargebilde
     plt.axis('off')                         # Fjerner aksene
+    
 
 def viewDemosaic(original, mosaic, ny, text):
     """
