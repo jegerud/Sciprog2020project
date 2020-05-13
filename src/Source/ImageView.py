@@ -104,7 +104,8 @@ def view(original, ny1, BW, ny2, text):
     """ 
     twoImageSetup(original, ny1,"Originalbilde", text)
     twoImageSetup(BW, ny2, "Gråskala", text)
-    
+   
+ 
 def singleView(image, gray=False):
     """
     Viser bildet

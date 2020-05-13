@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import imageio
 import Source.Eksplisitt as eks
-import Source.ImageView as imv
+from Source.ImageView import threeImageSetup
 
 def seamless(fra, til):
     """
