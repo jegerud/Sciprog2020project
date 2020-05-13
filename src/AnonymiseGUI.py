@@ -13,7 +13,13 @@ from FunctionGUI import ShowCode, saveAnonymiseImage
 from imagewidget import imagewidget
 
 class AnonymiseFaces(QMainWindow):
+    """
+    QMainWindow som representerer anonymiseringsvindu
+    """
     def __init__(self, app):
+        """
+        Initialiserer UI
+        """
         super(AnonymiseFaces, self).__init__()
         uic.loadUi('anonymise.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
@@ -43,6 +49,16 @@ class AnonymiseFaces(QMainWindow):
         self.save.setShortcut("Ctrl+S")
     
     def setImage(self, nr, colour=True):
+        """
+        Setter nytt bilde og oppdaterer nødvendige variabler
+
+        Parametre:
+        ---------
+        nr  : int
+            Hvilket nummer bildet tilhører
+        colour: bool
+            Fargebilde eller ikke
+        """
         image = imageio.imread(self.getPath(nr))
         self.showImage(image, colour)
         self.number = nr
@@ -50,6 +66,9 @@ class AnonymiseFaces(QMainWindow):
         self.updateCount(0)
     
     def showCode(self):
+        """
+        Viser nytt vindu med aktuell kode
+        """
         code = QPlainTextEdit()
         text = open('codes/anonymisering.txt').read()
         title = "Anonymisering - Kode"
@@ -58,12 +77,19 @@ class AnonymiseFaces(QMainWindow):
         self.dialog.show()
 
     def setOriginal(self):
+        """
+        Fjerner alle endringer på bilde og viser originalversjonen
+        """
         image = imageio.imread(self.getPath(self.number))
         self.showImage(image)
         self.setSpinboxValues()
         self.updateCount(0)
 
     def detectFaces(self):
+        """
+        Markerer ansiktene på bildet
+        Oppdaterer antall ansikter på bildet
+        """
         minNeighbours = self.minNeighbours.value()
         scaleFactor = self.scaleFactor.value()
         count, img = detectFace(self.getPath(self.number), scaleFactor, minNeighbours)
@@ -71,6 +97,10 @@ class AnonymiseFaces(QMainWindow):
         self.showImage(img)
 
     def anonymiseFaces(self):
+        """
+        Anonymiserer ansiktene på bildet
+        Oppdaterer antall ansikter på bildet
+        """
         minNeighbours = self.minNeighbours.value()
         scaleFactor = self.scaleFactor.value()
         count, img = blurFace(self.getPath(self.number), scaleFactor, minNeighbours)
@@ -78,6 +108,16 @@ class AnonymiseFaces(QMainWindow):
         self.showImage(img)
 
     def showImage(self, image, colour=True):
+        """
+        Oppdaterer aktuelt bilde og viser dette
+
+        Parametre:
+        ---------
+        image: np.array
+            Bildet som skal vises
+        colour: bool
+            Fargebilde eller ikke
+        """
         if self.number == 1: self.imgCouple = image.copy()
         elif self.number == 2: self.imgGroup1 = image.copy()
         elif self.number == 3: self.imgGroup2 = image.copy()
@@ -93,9 +133,20 @@ class AnonymiseFaces(QMainWindow):
             self.imagewidget.showImage(image, False)
 
     def updateCount(self, count):
+        """
+        Oppdaterer antallet facecount med antall ansikter
+
+        Parametre:
+        ---------
+        count:
+            Antall ansikter
+        """
         self.faceCount.setText(str(count))
 
     def saveImage(self):
+        """
+        Lagrer det bildet som vises i bilderammen
+        """
         if self.number == 1: saveAnonymiseImage(self.imgCouple)
         elif self.number == 2: saveAnonymiseImage(self.imgGroup1)
         elif self.number == 3: saveAnonymiseImage(self.imgGroup2)
@@ -105,6 +156,14 @@ class AnonymiseFaces(QMainWindow):
         elif self.number == 7: saveAnonymiseImage(self.imgBusiness)
 
     def getPath(self, nr):
+        """
+        Returnerer filsti til bildet som vises i bilderammen
+
+        Parametre:
+        ----------
+        nr  : int
+            Nummeret til bildet som vises
+        """
         if nr == 1: return "../hdr-bilder/Faces/couple.jpg"
         elif nr == 2: return "../hdr-bilder/Faces/group1.jpg"
         elif nr == 3: return "../hdr-bilder/Faces/group2.jpg"
@@ -114,6 +173,9 @@ class AnonymiseFaces(QMainWindow):
         elif nr == 7: return "../hdr-bilder/Faces/business.jpg"
     
     def setSpinboxValues(self):
+        """
+        Oppdaterer valueBoxene etter hvilket bilde som skal vises
+        """
         if self.number == 1: neigh, scale = 5, 1.200
         elif self.number == 2: neigh, scale = 5, 1.200
         elif self.number == 3: neigh, scale = 8, 1.100
@@ -125,6 +187,14 @@ class AnonymiseFaces(QMainWindow):
         self.scaleFactor.setValue(scale)
 
     def adjustScreen(self, app):
+        """
+        Justerer appvinduet basert på skjermens dimensjon
+
+        Parametre:
+        ---------
+        app : QApplication
+            Gir tilgang til skjermens dimensjoner
+        """
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
