@@ -63,6 +63,7 @@ class Seamless(QMainWindow):
 
     def seamlessImage(self, number):
         if number == 1:
+            self.setImage(self.imgTwo, number)
             if not self.imgOneReady:
                 xy0 = (700,50)
                 xy1 = (350,500)
@@ -72,6 +73,7 @@ class Seamless(QMainWindow):
                 self.imgOneReady = True 
             self.showImage(self.imageOne)
         elif number == 2:
+            self.setImage(self.imgFour, number)
             if not self.imgTwoReady:
                 xy0 = (400,265)
                 xy1 = (0,0)    
@@ -81,6 +83,7 @@ class Seamless(QMainWindow):
                 self.imgTwoReady = True 
             self.showImage(self.imageTwo)
         elif number == 3:
+            self.setImage(self.imgSix, number)
             if not self.imgThreeReady:
                 xy0 = (340,820)
                 xy1 = (240,590)    
