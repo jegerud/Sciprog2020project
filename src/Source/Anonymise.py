@@ -74,8 +74,8 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
 
     return len(faces), image
 
-def detect_anonymise(path):
-    antall, image = detectFace(path)
-    antall, blur = blurFace(path)
+def detect_anonymise(path, scaleFactor = 1.2, minNeigbours = 5):
+    antall, image = detectFace(path, scaleFactor, minNeigbours)
+    antall, blur = blurFace(path,scaleFactor, minNeigbours)
     print(antall, "ansikt er registrert")
     twoImageSetup(image,blur, "Detection","Anonymous")
