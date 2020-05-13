@@ -13,9 +13,9 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     file         : Bildefil
                     Pathen til filen der original bildet befinner seg uten andvending
     scaleFactor  : int
-                    Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
+                    Parameter spesifiserer hvor mye bildets størrelse skal reduseres på hver skala 
     minNeighbors : int
-                    spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
+                   Definerer antall nærliggende ansiktstrekk som er nødvendig for at programmet skal akseptere det som et ansikt
     title        : text
                     Tittelen på bildet som er anvendt
 
