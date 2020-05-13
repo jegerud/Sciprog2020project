@@ -7,7 +7,7 @@ import imageio
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from Source.Inpainting import Inpaint
+from Source.Inpainting import maskImage, Inpaint
 from Source.Grayscale import rgb2gray
 from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
@@ -19,27 +19,25 @@ class Inpainting(QMainWindow):
         uic.loadUi('inpainting.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
         self.setWindowTitle('Inpainting')
-        self.path = "../hdr-bilder/Tree/Tree_00064.png"
-        self.image = imageio.imread(self.path)
-        self.setImage(self.path)
+        self.number = 0
         self.adjustScreen(app)
-
-        self.imgOne = "../hdr-bilder/Tree/Tree_00064.png"
-        self.imgTwo = "../hdr-bilder/Faces/lena.png"
-        self.imgThree = "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
+        self.imgOne = imageio.imread(self.getPath(1))
+        self.imgTwo = imageio.imread(self.getPath(2))
+        self.imgThree = imageio.imread(self.getPath(3))
 
         self.inpaintingCode.clicked.connect(self.showCode)
-        self.imageOne.clicked.connect(partial(self.setImage, self.imgOne))
-        self.imageTwo.clicked.connect(partial(self.setImage, self.imgTwo))
-        self.imageThree.clicked.connect(partial(self.setImage, self.imgThree))
-        self.maskOne.clicked.connect(self.showMask)
-        self.maskTwo.clicked.connect(self.showMask)
-        self.maskThree.clicked.connect(self.showMask)
-        self.inpaintOne.clicked.connect(self.inpaint)
-        self.inpaintTwo.clicked.connect(self.inpaint)
-        self.inpaintThree.clicked.connect(self.inpaint)
+        self.imageOne.clicked.connect(partial(self.setImage, 1))
+        self.imageTwo.clicked.connect(partial(self.setImage, 2))
+        self.imageThree.clicked.connect(partial(self.setImage, 3))
+        self.maskOne.clicked.connect(partial(self.showMask, 1))
+        self.maskTwo.clicked.connect(partial(self.showMask, 2))
+        self.maskThree.clicked.connect(partial(self.showMask, 3))
+        self.inpaintOne.clicked.connect(partial(self.inpaint, 1))
+        self.inpaintTwo.clicked.connect(partial(self.inpaint, 2))
+        self.inpaintThree.clicked.connect(partial(self.inpaint, 3))
         self.save.clicked.connect(self.saveImage)
         self.save.setShortcut("Ctrl+S")
+        self.setImage(1)
     
     def showCode(self):
         code = QPlainTextEdit()
@@ -49,28 +47,34 @@ class Inpainting(QMainWindow):
         self.dialog = ShowCode(text, title, 570, 720)
         self.dialog.show()
 
-    def setImage(self, img):
-        self.path = img
-        image = imageio.imread(img)
+    def setImage(self, number):
+        self.number = number
+        image = imageio.imread(self.getPath(number))
         self.showImage(image)
 
-    def showMask(self):
-        self.showImage(Inpaint(self.path, 2), False)
+    def showMask(self, number):
+        self.number = number
+        self.showImage(maskImage(self.getPath(number)), False)
 
-    def inpaint(self):
-        self.showImage(Inpaint(self.path, 3))
+    def inpaint(self, number):
+        self.number = number
+        self.showImage(Inpaint(self.getPath(number)))
 
     def showImage(self, im, colour=True):
-        if not colour:
-            self.image = rgb2gray(self.path)
-        else:
-            self.image = imageio.imread(self.path)
-        np.reshape(self.image, im.shape)
-        self.image = im.copy()
+        if self.number == 1: self.imgOne = im.copy() 
+        elif self.number == 2: self.imgTwo = im.copy()
+        elif self.number == 3: self.imgThree = im.copy()
         self.imagewidget.showImage(im, colour)
 
+    def getPath(self, nr):
+        if nr == 1: return "../hdr-bilder/Tree/Tree_00064.png"
+        elif nr == 2: return "../hdr-bilder/Faces/group3.jpg"
+        elif nr == 3: return "../hdr-bilder/MtTamNorth/MtTamNorth_00008.png"
+
     def saveImage(self):
-        saveImage(self.image)
+        if self.number == 1: saveImage(self.imgOne)
+        elif self.number == 2: saveImage(self.imgTwo)
+        elif self.number == 3: saveImage(self.imgThree)
 
     def adjustScreen(self, app):
         screenWidth = app.primaryScreen().size().width()
