@@ -3,6 +3,7 @@ import unittest
 import imageio
 from Source.Eksplisitt import eksplisitt
 from Source.Grayscale import rgb2gray
+from Source.ImageView import view
 
 def contrastEnhanceBW(file, k):
     """
@@ -77,3 +78,23 @@ def contrastEnhance(file, k):
     u[u < 0] = 0           # klipp til lovlige verdier
     u[u > 1] = 1
     return u
+
+def viewContrast(filepath, k=1.3):
+    """
+    Tar et bilde og øker kontrasten. Displayer det såi farger og i gråskala
+    Paramters
+    ---------
+    filepath : bildet
+             Bildet som skal kontrastforsterkes
+    k    : int
+           Styrer hvor mye bildet skal kontrastforsterkes
+    Returns
+    -------
+    im:
+	Et kontrastforsterket bilde
+    """
+    original = imageio.imread(filepath)
+    originalGray = rgb2gray(filepath)
+    grayImage = contrastEnhanceBW(filepath, k)
+    image = contrastEnhance(filepath, k)
+    view(original, image, originalGray, grayImage, "Kontrastforsterkning")
