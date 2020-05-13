@@ -42,9 +42,9 @@ class AnonymiseFaces(QMainWindow):
         self.save.clicked.connect(partial(self.saveImage))
         self.save.setShortcut("Ctrl+S")
     
-    def setImage(self, nr):
+    def setImage(self, nr, colour=True):
         image = imageio.imread(self.getPath(nr))
-        self.showImage(image)
+        self.showImage(image, colour)
         self.number = nr
         self.setSpinboxValues()
         self.updateCount(0)
@@ -77,15 +77,20 @@ class AnonymiseFaces(QMainWindow):
         self.updateCount(count)
         self.showImage(img)
 
-    def showImage(self, image):
+    def showImage(self, image, colour=True):
         if self.number == 1: self.imgCouple = image.copy()
         elif self.number == 2: self.imgGroup1 = image.copy()
         elif self.number == 3: self.imgGroup2 = image.copy()
-        elif self.number == 4: self.imgGroup3 = image.copy()
+        elif self.number == 4: 
+            self.imgGroup3 = image.copy()
+            colour=False
         elif self.number == 5: self.imgMusic = image.copy()
         elif self.number == 6: self.imgFamily = image.copy()
         elif self.number == 7: self.imgBusiness = image.copy()
-        self.imagewidget.showImage(image)
+        if colour:
+            self.imagewidget.showImage(image)
+        else:
+            self.imagewidget.showImage(image, False)
 
     def updateCount(self, count):
         self.faceCount.setText(str(count))
@@ -103,7 +108,7 @@ class AnonymiseFaces(QMainWindow):
         if nr == 1: return "../hdr-bilder/Faces/couple.jpg"
         elif nr == 2: return "../hdr-bilder/Faces/group1.jpg"
         elif nr == 3: return "../hdr-bilder/Faces/group2.jpg"
-        elif nr == 4: return "../hdr-bilder/Faces/group3.jpg"
+        elif nr == 4: return "../hdr-bilder/Faces/science.jpg"
         elif nr == 5: return "../hdr-bilder/Faces/music.jpg"
         elif nr == 6: return "../hdr-bilder/Faces/family.jpg"
         elif nr == 7: return "../hdr-bilder/Faces/business.jpg"
@@ -112,7 +117,7 @@ class AnonymiseFaces(QMainWindow):
         if self.number == 1: neigh, scale = 5, 1.200
         elif self.number == 2: neigh, scale = 5, 1.200
         elif self.number == 3: neigh, scale = 8, 1.100
-        elif self.number == 4: neigh, scale = 9, 1.200
+        elif self.number == 4: neigh, scale = 3, 1.194
         elif self.number == 5: neigh, scale = 5, 1.200
         elif self.number == 6: neigh, scale = 5, 1.200
         elif self.number == 7: neigh, scale = 7, 1.225
