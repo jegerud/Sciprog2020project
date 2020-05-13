@@ -3,6 +3,14 @@ import Source.ImageView as im
 from scipy.sparse import spdiags
 from scipy.sparse.linalg import spsolve
 
+import numpy as np
+import matplotlib.pyplot as plt
+import imageio
+from scipy.sparse import spdiags
+from scipy.sparse.linalg import spsolve
+import Source.ImageView as im
+import Source.Eksplisitt as eks
+
 def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
     """
     Løser diffusjonslikningen implisitt med sparse-matriser
@@ -59,14 +67,23 @@ def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
                 
     return im
 
-def viewImplisitt(eksp, imp):
+
+def viewImplisitt(file):
     """
+    Tar et bilde og glatter det med implisitt skjema
     Viser bildene ved siden av hverandre.
-    Parameters
+    Sammenligner et eksplisitt glattet bilde
+    Parameter
     ---------
-    eksp :     Bildefil
-               Eksplisitt anvendt bilde
-    imp      : Bildefil
-               Implisitt anvendt bilde
+    file :     Bildefil
+               Bilde som skal bli anvendt
     """
-    im.twoImageSetup(eksp, imp,'Eksplisitt','Implisitt')
+    u=imageio.imread(file)
+    u = u.astype(float) / 255
+    u[u<0]=0
+    u[u>1]=1
+    copy=np.copy(u)
+    eksIm=eks.eksplisittGlatting(u,copy, 3)
+    impIm = implisitt(u,n=5, alpha=1,rgb=True)
+    
+    im.twoImageSetup(eksIm, impIm,'Eksplisitt','Implisitt')
