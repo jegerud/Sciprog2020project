@@ -4,7 +4,7 @@ import imageio
 import Source.Eksplisitt as eks
 from Source.ImageView import threeImageSetup
 
-def seamless(fra, til):
+def seamless(fra, til, xy0, xy1, xlen, ylen):
     """
     Kloner to bilder sømløst 
 
@@ -12,9 +12,16 @@ def seamless(fra, til):
     ---------
     fra : image
         Bildet det skal hentes fra
-    
     til : image
         Bildet det skal klones inn i
+    xy0 : int
+        Hvor det skal klones inn
+    xy1 : int
+        Området hvor det hentes fra
+    xlen: int
+        Størrelsen på klonen i x retning
+    ylen: int
+        Størrelsen på klonen i y retning
 
     Returns
         image:
@@ -24,13 +31,8 @@ def seamless(fra, til):
 
     im_from=imageio.imread(fra)         # Leser inn bilde som det skal hentes fra
     im_to=imageio.imread(til)           # Leser inn bildet som det klones inn i
-
     im_from=im_from.astype(float)/255   # np.array verdier fra 0 til 1
     im_to=im_to.astype(float)/255
-    xy0=(700,50)                        # hvor det skal klones inn 
-    xy1=(350,500)                       # området hvor det hentes fra
-    xlen=200                            # størrelsen på klonen
-    ylen=500                            # 
 
     im_ed=np.zeros((xlen, ylen))
     im_ed=im_from[xy1[0]:xy1[0]+xlen, xy1[1]:xy1[1]+ylen] #henter ut delen av bildet
