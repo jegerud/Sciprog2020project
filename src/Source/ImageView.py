@@ -120,24 +120,3 @@ def singleView(image, gray=False):
     else:                                   # Fargebilde
         plt.imshow(image)                   # Viser fargebilde
     plt.axis('off')                         # Fjerner aksene
-    
-
-def viewDemosaic(original, mosaic, ny, text):
-    """
-    Viser bildene ved siden av hverandre.
-    
-    Original, masken og inpainted
-
-    Parameters
-    ---------
-    original : Bildefil
-               Pathen til filen der original bildet befinner seg uten andvending
-    mosaic   : Bildefil
-               Mosaicen til bildet
-    ny       : Bildefil
-               Bildet som har blitt demosaicet
-    text     : text
-               Tittelen på bildet som er anvendt
-
-    """
-    threeImageSetup(original, mosaic,ny, "Originalbilde","Mosaic",text)
