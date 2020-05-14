@@ -1,5 +1,10 @@
-Prosjektgruppen bestaar av:
+Prosjektgruppen består av:
 
-Casper "feldschlosschen" Fabian Gulbrandsen	                -509242
-Kristian "treningsnarkoman" Jegerud		                -509249
-Anders "hadde vaert fotballproff hvis jeg ikke ble skadet" Kjelsrud   -509238
+509242 - Casper "feldschlosschen" Fabian Gulbrandsen
+509249 - Kristian "treningsnarkoman" Jegerud
+509238 - Anders "hadde vært fotballproff hvis jeg ikke ble skadet" Kjelsrud 
+
+Prosjektgruppen vår består av tre studenter fra dataingeniørstudiet ved 
+NTNU Gjøvik. Applikasjonen er utviklet i forbindelse med prosjektet i emnet 
+Vitenskapelig Programmering. Oppgaven som ble gitt hadde som hensikt at vi 
+skulle benytte oss av alt vi har lært i emnet i løpet av dette semesteret. 
