@@ -31,7 +31,7 @@
     <string>Gråtone</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="garden">
+  <widget class="QPushButton" name="group">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -46,7 +46,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Garden</string>
+    <string>Group</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ocean">
@@ -263,7 +263,7 @@
     <string>Vis kode</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="fog">
+  <widget class="QPushButton" name="business">
    <property name="geometry">
     <rect>
      <x>750</x>
@@ -278,7 +278,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Fog</string>
+    <string>Business</string>
    </property>
   </widget>
   <widget class="QPushButton" name="trees">

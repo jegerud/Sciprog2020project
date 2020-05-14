@@ -1,5 +1,5 @@
 from __future__ import division
-from colour.plotting import *
+#from colour.plotting import *
 from colour_demosaicing import (demosaicing_CFA_Bayer_Menon2007, mosaicing_CFA_Bayer)
 import colour
 import numpy as np
@@ -97,6 +97,19 @@ def mosaicToRgb(file):
 
 
 def mosaicToRgbPackage(file):
+    """
+    Lager RGB-bilde med hjelp av bibliotek
+
+    Paramters
+    ---------
+    file : file
+        Path til bildet det skal lages gråtonemosaikk av
+
+    Returns
+    -------
+    im:
+	RGB bildet
+    """
     original = colour.io.read_image(file) # Leser bilde
     mosaic = mosaicing_CFA_Bayer(original)# Henter gråtonemosaikk
     new = demosaicing_CFA_Bayer_Menon2007(mosaic)# Gjør demosaicing
@@ -104,3 +117,23 @@ def mosaicToRgbPackage(file):
     new[new > 1] = 1                
 
     return new
+
+def viewDemosaic(original, mosaic, ny, text):
+    """
+    Viser bildene ved siden av hverandre.
+    
+    Original, masken og inpainted
+
+    Parameters
+    ---------
+    original : Bildefil
+               Pathen til filen der original bildet befinner seg uten andvending
+    mosaic   : Bildefil
+               Mosaicen til bildet
+    ny       : Bildefil
+               Bildet som har blitt demosaicet
+    text     : text
+               Tittelen på bildet som er anvendt
+
+    """
+    threeImageSetup(original, mosaic,ny, "Originalbilde","Mosaic",text)

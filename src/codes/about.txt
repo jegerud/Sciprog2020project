@@ -1,37 +1,10 @@
-Prosjektgruppen vår består av tre studenter fra 
-dataingeniørstudiet ved NTNU Gjøvik. I løpet av 
-semesteret har vi blitt introdusert for matematiske 
-teknikker for numeriske løsninger av bestemte 
-integral, ordinære og partielle differensiallikninger, 
-og systemer av disse, samt ikkelineære algebraiske 
-likninger. Vi har også fått lære om høynivå 
-programmering for lineæralgebra, optimalisering, 
-bildebehandling og maskinlæring. Oppgaven som ble gitt 
-hadde som hensikt at vi skulle benytte oss av alt vi 
-har lært i løpet av dette semesteret. Tross mange 
-utfordringer har vi fått et enormt læringsutbytte i 
-form av teoretisk kunnskap og praktiske ferdigheter.
+Prosjektgruppen består av:
 
-De to første årene av dataingeniørstudiet består 
-utelukkende av obligatoriske fag. Derfor har 
-gruppens medlemmer stort sett de samme forkunnskapene 
-og forutsetningene før prosjektets start. En fordel med 
-at vi er en gruppe på er 3 at vi møter utfordringer med 
-ulike tilnærminger, og nettopp dette har vært essensielt 
-for å løse problemstillingene som er blitt gitt på en best 
-mulig måte.
+509242 - Casper "feldschlosschen" Fabian Gulbrandsen
+509249 - Kristian "treningsnarkoman" Jegerud
+509238 - Anders "hadde vært fotballproff hvis jeg ikke ble skadet" Kjelsrud 
 
-Vitenskapelig Programmering er det første emnet vi deltar 
-i hvor Python benyttes som programmeringsspråk, og vi på 
-gruppa hadde derfor liten erfaring med Python før dette 
-semesteret. Før prosjektets start har vi benyttet det i 
-alle arbeidskrav som er blitt gitt i emnet. Dette har gitt 
-oss en viss kjennskap til hvordan Python fungerer og hvilke 
-fordeler og ulemper dette medfører. Vår største utfordring 
-med Python har vært hvordan vi skal strukturere et såpass 
-stort prosjekt med mange ulike filtyper. Ingen av gruppens 
-medlemmer har tidligere erfaring med å utvikle stort annet 
-enn applikasjoner som kjører i kommandolinje. Dette har 
-ført til en bratt læringskurve og mye nyttig læring.
-
-Repo: https://git.gvk.idi.ntnu.no/casperfg/imt3881-2020-prosjekt
+Prosjektgruppen vår består av tre studenter fra dataingeniørstudiet ved 
+NTNU Gjøvik. Applikasjonen er utviklet i forbindelse med prosjektet i emnet 
+Vitenskapelig Programmering. Oppgaven som ble gitt hadde som hensikt at vi 
+skulle benytte oss av alt vi har lært i emnet i løpet av dette semesteret. 

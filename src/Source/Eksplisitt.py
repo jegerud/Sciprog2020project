@@ -163,7 +163,7 @@ def eksplisittInpaint(image, mask, alpha=.25, n=100):
                                   im[1:-1, 2:] -
                                   4 * im[1:-1, 1:-1])
         im[mask == False] = im0[mask == False]      # Diriclet randbetingelse
-    return im, im0
+    return im
 
 def finnLaplace(u):
     """

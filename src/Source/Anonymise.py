@@ -13,9 +13,9 @@ def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
     file         : Bildefil
                     Pathen til filen der original bildet befinner seg uten andvending
     scaleFactor  : int
-                    Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
+                    Parameter spesifiserer hvor mye bildets størrelse skal reduseres på hver skala 
     minNeighbors : int
-                    spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
+                   Definerer antall nærliggende ansiktstrekk som er nødvendig for at programmet skal akseptere det som et ansikt
     title        : text
                     Tittelen på bildet som er anvendt
 
@@ -49,9 +49,9 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
     file        : Bildefil
                   Pathen til filen der original bildet befinner seg uten andvending
     scaleFactor : int
-                  Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
+                  Parameter spesifiserer hvor mye bildets størrelse skal reduseres på hver skala 
     minNeighbors : int
-                  spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
+                  Definerer antall nærliggende ansiktstrekk som er nødvendig for at programmet skal akseptere det som et ansikt
     title       : text
                   Tittelen på bildet som er anvendt
 
@@ -74,8 +74,8 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
 
     return len(faces), image
 
-def detect_anonymise(path):
-    antall, image = detectFace(path)
-    antall, blur = blurFace(path)
+def detect_anonymise(path, scaleFactor = 1.2, minNeigbours = 5):
+    antall, image = detectFace(path, scaleFactor, minNeigbours)
+    antall, blur = blurFace(path,scaleFactor, minNeigbours)
     print(antall, "ansikt er registrert")
     twoImageSetup(image,blur, "Detection","Anonymous")

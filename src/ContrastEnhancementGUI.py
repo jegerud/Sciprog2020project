@@ -13,7 +13,13 @@ from FunctionGUI import ShowCode, saveImage
 from imagewidget import imagewidget
 
 class ContrastEnhancement(QMainWindow):
+    """
+    QMainWindow som representerer kontrastforsterkning
+    """
     def __init__(self, app):
+        """
+        Initialiserer ui
+        """
         super(ContrastEnhancement, self).__init__()
         uic.loadUi('contrastenhancement.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
@@ -50,11 +56,22 @@ class ContrastEnhancement(QMainWindow):
 
 
     def setImage(self, img):
+        """
+        Oppdaterer bildet
+
+        Parametre:
+        ----------
+        img : np.array
+            Bildet som skal vises
+        """
         self.path = img
         image = imageio.imread(img)
         self.imagewidget.showImage(image)
 
     def showCode(self):
+        """
+        Viser koden bak implementasjonen i nytt vindu
+        """
         code = QPlainTextEdit()
         text = open('codes/kontrastforsterkning.txt').read()
         title = "Kontrastforsterkning - Kode"
@@ -63,18 +80,40 @@ class ContrastEnhancement(QMainWindow):
         self.dialog.show()
 
     def setOriginal(self):
+        """
+        Viser originalbildet
+        """
         self.showContrastImage(imageio.imread(self.path))
 
     def setGray(self):
+        """
+        Viser gråtoneversjon av originalbildet
+        """
         self.showContrastImage(rgb2gray(self.path), False)
 
     def contrastImage(self):
+        """
+        Kontrastforsterker fargeversjonen av bildet
+        """
         self.showContrastImage(contrastEnhance(self.path, self.constant.value()))
 
     def contrastGrayImage(self):
+        """
+        Kontrastforsterker gråtoneversjonen av bildet
+        """
         self.showContrastImage(contrastEnhanceBW(self.path, self.constant.value()), False)
 
     def showContrastImage(self, im, colour=True):
+        """
+        Viser bildet i bilderammet
+
+        Parametre:
+        ---------
+        im  : np.array
+            Bildet som skal vises
+        colour: bool
+            Fargebilde eller ikke
+        """
         if not colour:
             self.image = rgb2gray(self.path)
         else:
@@ -84,9 +123,20 @@ class ContrastEnhancement(QMainWindow):
         self.imagewidget.showImage(im, colour)
 
     def saveImage(self):
+        """
+        Lagrer bildet
+        """
         saveImage(self.image)
 
     def adjustScreen(self, app):
+        """
+        Justerer appvinduet basert på skjermens dimensjon
+
+        Parametre:
+        ---------
+        app : QApplication
+            Gir tilgang til skjermens dimensjoner
+        """
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight

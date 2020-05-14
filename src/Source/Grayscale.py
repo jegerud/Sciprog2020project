@@ -1,6 +1,7 @@
 import numpy as np
 import imageio
 from Source.Eksplisitt import finnLaplace
+from Source.ImageView import twoImageSetup
 
 def grayscale(file):
     """
@@ -55,3 +56,20 @@ def rgb2gray(file):
         u0[u0 < 0] = 0                  # Klipper til lovlige verdier
         u0[u0 > 1] = 1
     return u0
+
+def viewGrayImage(image1, image2):
+    """
+    Viser bildene ved siden av hverandre
+
+    Parameters
+    ---------
+    image1 : path
+             Bildet som skal vises
+    image2 : path
+             Bildet som skal vises
+    Returns
+    --------
+    Picture:
+        Bildene displayet ved siden av hverandre
+    """
+    twoImageSetup(image1, image2, "Enkel", "Avansert")

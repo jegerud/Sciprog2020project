@@ -1,4 +1,9 @@
 import numpy as np
+import Source.ImageView as im
+import matplotlib.pyplot as plt
+import imageio
+import Source.ImageView as im
+import Source.Eksplisitt as eks
 from scipy.sparse import spdiags
 from scipy.sparse.linalg import spsolve
 
@@ -57,3 +62,24 @@ def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
             im[-1, :] = im[-2 , :]    #
                 
     return im
+
+
+def viewImplisitt(file):
+    """
+    Tar et bilde og glatter det med implisitt skjema
+    Viser bildene ved siden av hverandre.
+    Sammenligner et eksplisitt glattet bilde
+    Parameter
+    ---------
+    file :     Bildefil
+               Bilde som skal bli anvendt
+    """
+    u=imageio.imread(file)
+    u = u.astype(float) / 255
+    u[u<0]=0
+    u[u>1]=1
+    copy=np.copy(u)
+    eksIm=eks.eksplisittGlatting(u,copy, 3)
+    impIm = implisitt(u,n=5, alpha=1,rgb=True)
+    
+    im.twoImageSetup(eksIm, impIm,'Eksplisitt','Implisitt')
