@@ -21,30 +21,6 @@ def eksplisittGlatting(im, orig_im, k):
 
 
 def implisitt(u, alpha=0.25, h=0, n=1, rgb=True):
-    """
-    Løser diffusjonslikningen implisitt med sparse-matriser
-
-    Løser du/dt= d**2u/dx**2 +d**2u/dy**2 med n iterasjoner
-
-    Parameters
-    ---------
-    u : array
-        bildet som skal behandles
-    n : int
-        Antall interasjoner
-    h : funksjon
-        Spesifiseres ut fra problemet
-    alpha : float
-        dt/dx**2
-    rgb : bool
-        er bildet et fargebilde?
-
-    Returns
-    -------
-    numpy.ndarray:
-        Beregnede verdier for u
-    """
-    #lager diagonalmatrise
     size=u.shape[0]*u.shape[1]
 
     nupper = np.concatenate((np.zeros(u.shape[1]), -alpha * np.ones(size - u.shape[1])))

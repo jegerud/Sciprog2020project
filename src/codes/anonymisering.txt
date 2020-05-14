@@ -1,23 +1,4 @@
 def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
-    """
-    Oppdager et ansikt vendt mot kamera
-   
-    Parameters
-    ---------
-    file        : Bildefil
-                  Pathen til filen der original bildet befinner seg uten andvending
-    scaleFactor : int
-                  Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
-    ny          : int
-                  spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
-
-    Returns
-    -------
-    im:         : Bildefil
-                  Bilde med markerte ansikter
-    len(faces)  : int
-                  Antall ansikter
-    """
     image = cv2.imread(file)
     
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -31,25 +12,6 @@ def detectFace(file, scaleFactor = 1.2, minNeighbors = 5):
 
 
 def blurFace(file, scaleFactor = 1.2, minNeighbors = 5):
-    """
-    Oppdager et ansikt vendt mot kamera
-   
-    Parameters
-    ---------
-    file         : Bildefil
-                    Pathen til filen der original bildet befinner seg uten andvending
-    scaleFactor  : int
-                    Kompenserer i tilfelle noen ansikter er nærmere kamera enn andre
-    minNeighbors : int
-                    spesifiserer antall naboer en rektangel bør ha for å bli kalt et "ansikt"
-    
-    Returns
-    -------
-    im:         : Bildefil
-                  Bilde med anonymiserte ansikter ansikter
-    len(faces)  : int
-                  Antall ansikter
-    """
     image = cv2.imread(file) #leser inn bildet
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
