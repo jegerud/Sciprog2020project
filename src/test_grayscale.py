@@ -1,6 +1,5 @@
 import unittest
 import imageio
-import cv2
 import Source.Grayscale as gray
 
 file = '../hdr-bilder/Balls/Balls_00016.png'
