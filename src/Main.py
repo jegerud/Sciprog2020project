@@ -94,7 +94,7 @@ class Home(QMainWindow):
         """
         Åpner vinduet til Om oss
         """
-        self.dialog = FunctionGUI.ShowAbout(500, 900)
+        self.dialog = FunctionGUI.ShowAbout(500, 550)
         self.dialog.show()
 
     def adjustScreen(self):
