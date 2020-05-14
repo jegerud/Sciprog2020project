@@ -1,3 +1,4 @@
+\newpage
 \section{Konvertering av fargebilder til gråtone}
 \label{sec:gråtone}
 \subsection{Bakgrunn}
@@ -20,7 +21,7 @@ Deretter gjenstår bare å løse (\ref{eq:diffusjon}) med modifisert \texttt{h}:
     u0[1:-1, 1:-1] += alpha * laplace - retning*gradient
 \end{lstlisting}
 Figur \ref{fig:graytone} viser de to ulike teknikkene.
-\begin{figure}
+\begin{figure}[H]
 \begin{center}
     \includegraphics[width=1\columnwidth]{bilder/konvert.png}
     \caption{Konvertering til gråtone

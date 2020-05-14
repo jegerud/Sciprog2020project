@@ -14,24 +14,19 @@ mask = np.zeros(im.shape)    #lag maske
 mask[135:140, 250:380] = 1
 mask[250:470, 300:305] = 1
 mask[740:755, 550:700] = 1
-mask = mask.astype(bool)    #lag bool-array
+mask = mask.astype(bool)     #lag bool-array
 \end{lstlisting}
  
 Deretter bruker man denne arrayen som en "view" \footnote{\url{https://docs.scipy.org/doc/numpy/user/basics.indexing.html}} på array-representasjonen av bildet for å løse diffusjonslikningen~(\ref{eq:eksplisitt}) innenfor området $\Omega_i$, før man sender med array-representasjonen og masken til funksjonen som løser diffusjonslikningen eksplisitt med dirichlet randbetingelser. For hver iterering blir området innenfor målområdet satt til å være likt tilsvarende område i originalbildet.
 \begin{lstlisting}[language=Python]
     im[~mask] = im0[~mask]
 \end{lstlisting}
-Tilslutt returneres originalbildet og det ferdig inpaintede bildet fra funksjonen som løste diffusjonslikningene. Figur \ref{fig:inpaint} viser resultatet av vår inpaintingalgoritme, her med \texttt{n=100} iterasjoner. Her ble masken definert som 3 rette svarte klosser. Etter inpainting er fullført er de tilsynelatende borte. 
+Tilslutt returneres originalbildet og det ferdig inpaintede bildet fra funksjonen som løste diffusjonslikningene. Figur \ref{fig:inpaint} viser resultatet av vår inpaintingalgoritme, her med \texttt{n=100} iterasjoner. Her ble masken definert som 3 rette svarte klosser. Etter inpainting er fullført er de tilsynelatende borte.
 \begin{figure}
 \begin{center}
-    \includegraphics[width=0.6\columnwidth]{bilder/nvidia-image-inpainting-demo.jpg}
+    \includegraphics[width=0.4\columnwidth]{bilder/nvidia-image-inpainting-demo.jpg}
     \caption{NVIDIAs inpaintingalgoritme~ \label{fig:nvidia}}
     \source{NVIDIA~\cite{NVIDIADe38:online}}
-\end{center}
-\end{figure}
-
-\begin{figure}
-\begin{center}
     \includegraphics[width=1\columnwidth]{bilder/tree_inpaint.png}
     \caption{Inpainting av tre~ \label{fig:inpaint}}
 \end{center}

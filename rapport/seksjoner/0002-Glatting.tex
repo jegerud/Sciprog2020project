@@ -21,7 +21,7 @@ For å ha mer kontroll over hvor mye bildet glattes benyttes ``data attachement'
 \begin{lstlisting}[language=Python]
     h = k * delta_t * (image[1:-1, 1:-1] - orig_im[1:-1, 1:-1])
 \end{lstlisting}
-Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksimalt kan bli selv om det iteres i det uendelige. Som randverdier brukes Neumann med $\frac{\partial u} {\partial} = 0$ på $\partial \Omega$. Når en itererer likning (\ref{eq:diffusjon}) vil noen verdier kunne gå ut av lovlig intervall, det vil si over 1 eller under 0. Derfor er siste ledd i før-løkka å klippe verdiene i \texttt{image} til et lovlig intervall.
+Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksimalt kan bli selv om det iteres i det uendelige. Som randverdier brukes Neumann med $\frac{\partial u} {\partial} = 0$ på $\partial \Omega$. Når en itererer likning (\ref{eq:diffusjon}) vil noen verdier kunne gå ut av lovlig intervall, det vil si over 1 eller under 0. Derfor er siste ledd i for-løkka å klippe verdiene i \texttt{image} til et lovlig intervall.
 \begin{lstlisting}[language=Python]
     image[image < 0] = 0
     image[image > 1] = 1
@@ -29,18 +29,13 @@ Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksima
 Tilslutt returnes det glattede bildet som vist i Figur \ref{fig:glattingEks}
 \begin{figure}
 \begin{center}
-    \includegraphics[width=1\columnwidth]{bilder/glattingEksplisitt.jpg}
+    \includegraphics[width=0.9\columnwidth]{bilder/glattingEksplisitt.jpg}
     \caption{Glatting~ \label{fig:glattingEks}}
 \end{center}
 \end{figure}
 
 \subsubsection{Implisitt}
-\begin{figure}
-\begin{center}
-    \includegraphics[width=1\columnwidth]{bilder/impGlatt.png}
-    \caption{Implisitt glatting med $\alpha=2, n=3$~ \label{fig:glattingImp}}
-\end{center}
-\end{figure}
+
 For å implementere det implisitte skjemaet gitt ved (\ref{eq:implisitt}) brukes ``sparse matrices''\footnote{\url{https://docs.scipy.org/doc/scipy/reference/sparse.html}}. Her er de aller fleste elementene i matrisa \texttt{0}, bortsett fra noen utvalgte diagonaler. I dette tilfellet får vi en tridiagonal matrise, pluss to ekstra diagonaler. Dersom \texttt{u} er bildet som leses inn, befinner de siste to diagonalene seg henholdsvis \texttt{u.shape[1]} til høyre og venstre for senterdiagonalen. Ved å omskrive (\ref{eq:implisitt}) og sette $\frac{\Delta t}{\Delta x^2} = \alpha$ får vi med \texttt{h=0}:
 \begin{align}
     -\alpha u^{n+1}_{i+1,j} 
@@ -68,9 +63,16 @@ For å skrive dette på matriseform må en altså bruke glisne matriser. Her bli
     A = spdiags(diags, [u.shape[1], 1, 0, -1, -u.shape[1]], size, size).tocsc()
 \end{lstlisting}
 \texttt{nupper} og \texttt{nlower} posisjoneres riktig utfra bildets dimensjoner, mens de tre midterste diagonalene plasseres i midten. Deretter lages en array \texttt{diags} av alle diagonalene. Til slutt settes de sammen til en glissen matrise ved hjelp av \texttt{spdiags()}. I tillegg gjøres de kolonnesentrert med \texttt{tocsc()}.
-Denne glissne koeffisientmatrisen \texttt{A} brukes videre i spsolve\footnote{\url{https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.sparse.linalg.spsolve.html}} som dersom \texttt{u} og \texttt{im} er fargebilder, løser det lineære likningssystemet for hver fargekanal.
+Denne glissne koeffisientmatrisen \texttt{A} brukes videre i spsolve\footnote{\url{https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.sparse.linalg.spsolve.html}} som dersom \texttt{im} er et fargebilde, løser det lineære likningssystemet for hver fargekanal.
 \begin{lstlisting}[language=Python]
     for i in range (u.shape[2]):
         im[:,:,i]=spsolve(A,im[:,:,i].flatten()).reshape(u[:,:,i].shape)
 \end{lstlisting}
-\texttt{flatten()} brukes her for å lage en [1, m $\times$ n] - vektor, der størrelsen på bildet \texttt{u} er m $\times$ n. Ved å bruke et implisitt skjema kontra et eksplisitt, vil en være mindre utsatt for numerisk ustabilitet. Man kan dermed benytte seg av færre iterasjoner og større tidsskritt. I vår implementasjon derimot, opplevde vi at kjøretiden ble langt lenger med implisitt skjema, og de fleste anvendelser benytter derfor det eksplisitte. Figur \ref{fig:glattingImp} viser glatting med implisitt skjema. Her er det brukt 3 iterasjoner, $\alpha$=2 og \texttt{h=0}
+\texttt{flatten()} brukes her for å lage en [1, m $\times$ n] - vektor, der størrelsen på bildet \texttt{im} er m $\times$ n. Ved å bruke et implisitt skjema kontra et eksplisitt, vil en være mindre utsatt for numerisk ustabilitet. Man kan dermed benytte seg av færre iterasjoner og større tidsskritt. I vår implementasjon derimot, opplevde vi at kjøretiden ble langt lenger med implisitt skjema, og de fleste anvendelser benytter derfor det eksplisitte. Figur \ref{fig:glattingImp} viser glatting med implisitt skjema. Her er det brukt 3 iterasjoner, $\alpha$=2 og \texttt{h=0}.
+
+\begin{figure}[H]
+\begin{center}
+    \includegraphics[width=1\columnwidth]{bilder/impGlatt.png}
+    \caption{Implisitt glatting med $\alpha=2, n=3$~ \label{fig:glattingImp}}
+\end{center}
+\end{figure}

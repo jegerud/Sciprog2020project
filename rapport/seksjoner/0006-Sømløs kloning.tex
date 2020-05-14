@@ -17,8 +17,8 @@ for i in range(1000):
                 4 * im_ed[1:-1, 1:-1])
     im_ed[1:-1, 1:-1]+=alpha*(laplace2-laplace1) # Los diffusjonslikningen
 \end{lstlisting}
-
-\begin{figure}
+Resultatet ved å velge et område på $u_0$ som samsvarer noenlunde med fargene og objektene fra $u_1$ vises i Figur \ref{fig:seamless}. Her fører de sømløse overgangene mellom de to bildene til at det er vanskelig å se hvor skillet går med det blotte øyet. 
+\begin{figure}[H]
 \begin{center}
     \includegraphics[width=1\columnwidth]{bilder/kloning.png}
     \caption{Sømløs kloning
@@ -26,4 +26,3 @@ for i in range(1000):
 \end{center}
 \end{figure}
 
-Resultatet ved å velge et område på $u_0$ som samsvarer noenlunde med fargene og objektene fra $u_1$ vises i Figur \ref{fig:seamless}. Her fører de sømløse overgangene mellom de to bildene til at det er vanskelig å se hvor skillet går med det blotte øyet. 
