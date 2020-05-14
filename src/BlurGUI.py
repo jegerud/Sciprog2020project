@@ -14,7 +14,13 @@ from Source.Grayscale import rgb2gray, grayscale
 from Source.implisitt import implisitt
 
 class Blur(QMainWindow):
+    """
+    QMainWindow som representerer glattingvindu
+    """
     def __init__(self, app):
+        """
+        Initialiserer UI
+        """
         super(Blur, self).__init__()
         uic.loadUi('blur.ui', self)
         self.setWindowIcon(QtGui.QIcon('Resources/logo.png'))
@@ -26,8 +32,8 @@ class Blur(QMainWindow):
 
         self.imgOne = "../hdr-bilder/Adjuster/Adjuster_00032.png"
         self.imgTwo = "../hdr-bilder/Balls/Balls_00032.png"
-        self.imgThree = "../hdr-bilder/Fog/Fog_00128.png"
-        self.imgFour = "../hdr-bilder/Garden/Garden_00004.png"
+        self.imgThree = "../hdr-bilder/Faces/business.jpg"
+        self.imgFour = "../hdr-bilder/Faces/group2.jpg"
         self.imgFive = "../hdr-bilder/MtTamNorth/MtTamNorth_00004.png"
         self.imgSix = "../hdr-bilder/Ocean/Ocean_00256.png"
         self.imgSeven = "../hdr-bilder/StillLife/StillLife_01024.png"
@@ -35,8 +41,8 @@ class Blur(QMainWindow):
 
         self.adjuster.clicked.connect(partial(self.setImage, self.imgOne))
         self.balls.clicked.connect(partial(self.setImage, self.imgTwo))
-        self.fog.clicked.connect(partial(self.setImage, self.imgThree))
-        self.garden.clicked.connect(partial(self.setImage, self.imgFour))
+        self.business.clicked.connect(partial(self.setImage, self.imgThree))
+        self.group.clicked.connect(partial(self.setImage, self.imgFour))
         self.mountains.clicked.connect(partial(self.setImage, self.imgFive))
         self.ocean.clicked.connect(partial(self.setImage, self.imgSix))
         self.stillife.clicked.connect(partial(self.setImage, self.imgSeven))
@@ -54,11 +60,23 @@ class Blur(QMainWindow):
         self.save.setShortcut("Ctrl+S")
 
     def setImage(self, img):
+        """
+        Oppdaterer nåværende filsti
+        Viser aktuelt bilde
+
+        Parametre
+        ---------
+        img : np.array
+            Aktuelt bilde
+        """
         self.path = img
         image = imageio.imread(img)
         self.showImage(image)
     
     def showCode(self):
+        """
+        Viser koden i nytt vindu
+        """
         code = QPlainTextEdit()
         text = open('codes/glatting.txt').read()
         title = "Glatting - kode"
@@ -67,14 +85,28 @@ class Blur(QMainWindow):
         self.dialog.show()
 
     def setOriginal(self):
+        """
+        Viser originalbildet av aktuelt bilde
+        """
         image = imageio.imread(self.path)
         self.showImage(image)
 
     def setGray(self):
+        """
+        Viser gråtoneversjn av originalbildet
+        """
         self.setOriginal()
         self.showImage(rgb2gray(self.path), False)
 
     def blurImage(self, colour=True):
+        """
+        Glatter bilde med eksplisitt løsning
+
+        Parametre
+        ---------
+        colour: bool
+            Fargebilde eller ikke
+        """
         if colour:
             orig_im = imageio.imread(self.path).astype(float)/255 
         else:
@@ -84,6 +116,14 @@ class Blur(QMainWindow):
         self.showImage(eksplisittGlatting(im, orig_im, self.constant.value()), colour)
 
     def blurImageImplisitt(self, colour=True):
+        """
+        Glatter bilde med implisitt løsning
+
+        Parametre
+        ---------
+        colour: bool
+            Fargebilde eller ikke
+        """
         if colour:
             u = imageio.imread(self.path)
         else:    
@@ -94,6 +134,16 @@ class Blur(QMainWindow):
         self.showImage(implisitt(u, n=2, alpha=2.5,rgb=colour), colour)
 
     def showImage(self, im, colour=True):
+        """
+        Viser bilde
+
+        Parametre
+        ---------
+        im  : np.array
+            Bildet som skal vises
+        colour: bool
+            Fargebilde eller ikke
+        """
         if not colour:
             self.image = np.sum(self.image.astype(float),2) /(3*255)
         else:
@@ -103,9 +153,20 @@ class Blur(QMainWindow):
         self.imagewidget.showImage(im, colour)
 
     def saveImage(self):
+        """
+        Lagrer bildet som vises i bilderammen
+        """
         saveImage(self.image)
 
     def adjustScreen(self, app):
+        """
+        Justerer appvinduet basert på skjermens dimensjon
+
+        Parametre:
+        ---------
+        app : QApplication
+            Gir tilgang til skjermens dimensjoner
+        """
         screenWidth = app.primaryScreen().size().width()
         screenHeight = app.primaryScreen().size().height()
         dimension = screenWidth/screenHeight
