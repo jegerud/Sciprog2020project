@@ -5,7 +5,7 @@
 En både økonomisk og praktisk måte å fange opp primærfarger på er å plassere et fargefilter over fargesensorene i et kamera. Det finnes ulike filtre, men det mest populære er Bayer-filteret \cite{Demosaic38:online}, illustrert ved Figur \ref{Figur 2}. Ved å se på sensoren som en matrise og legge på ulike fargefiltre på de individuelle elementene kan en samle informasjon ved å la de respektive pikslene fange lysstyrken i sitt område. Denne informasjonen er tilstrekkelig til å gjøre veldig nøyaktige gjett om den ekte fargen i dette området. Nettopp denne metoden som ser på omkringliggende piksler for å estimere verdier, kalles interpolasjon \footnote{\url{https://en.wikipedia.org/w/index.php?title=Interpolation&oldid=949792579}}.
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=0.3\columnwidth]{bilder/Bayer_pattern.png}
+    \includegraphics[width=0.3\columnwidth]{bilder/Demosaicing/Bayer_pattern.png}
     \caption{Bayer filter \label{Figur 4}} \source{Wikipedia~\cite{wiki:color}}
 \end{center}
 \end{figure}
@@ -20,7 +20,7 @@ mosaic[ ::2, 1::2] = im[ ::2, 1::2, 1] #G
 mosaic[1::2, 1::2] = im[1::2, 1::2, 2] #B
 \end{lstlisting}
 \newpage
-Videre kan en flytte informasjonen fra mosaikken inn i det ønskede fargebildet. Dette gjøres enkelt ved og for hver dimensjon i det nye bildet, fylle inn med informasjon fra hver av dimensjonene R, G og B fra mosaikken. Også her må man ta høyde for at grønne piksler forekommer dobbelt så ofte som de andre \cite{Demosaic38:online}. Videre kan en bruke inpainting beskrevet i (\ref{sec:Inpainting}) for å fylle inn den manglende informasjonen. Dette gjøres ved å definere en maske $\Omega_i$ for hver av fargekanalene. Deretter gjøres et funksjonskall til inpainting-algoritmen for hver dimensjon, der \texttt{im\_ed} er det resulterende fargebildet:
+Videre kan en flytte informasjonen fra mosaikken inn i det ønskede fargebildet. Dette gjøres enkelt ved for hver dimensjon i det nye bildet, fylle inn med informasjon fra hver av dimensjonene R, G og B fra mosaikken. Også her må man ta høyde for at grønne piksler forekommer dobbelt så ofte som de andre \cite{Demosaic38:online}. Videre kan en bruke inpainting beskrevet i (\ref{sec:Inpainting}) for å fylle inn den manglende informasjonen. Dette gjøres ved å definere en maske $\Omega_i$ for hver av fargekanalene. Deretter gjøres et funksjonskall til inpainting-algoritmen for hver dimensjon, der \texttt{im\_ed} er det resulterende fargebildet:
 \begin{lstlisting}[language=Python]
 eks.Inpainting_mosaic(im_ed[:,:,0], mask[:,:,0])
 eks.Inpainting_mosaic(im_ed[:,:,1], mask[:,:,1])
@@ -30,8 +30,8 @@ Resultatet av vår implementasjon vises i figur \ref{Figur 5}. Først presentere
 \\[1cm]
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=1\columnwidth]{bilder/tree_mosaic.png} 
-    \includegraphics[width=1\columnwidth]{bilder/stillLife_mosaic.png}
+    \includegraphics[width=1\columnwidth]{bilder/Demosaicing/tree_mosaic.png} 
+    \includegraphics[width=1\columnwidth]{bilder/Demosaicing/stillLife_mosaic.png}
     \caption{Demosaicing \label{Figur 5}}
 \end{center}
 \end{figure}

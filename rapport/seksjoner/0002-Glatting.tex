@@ -21,7 +21,7 @@ For å ha mer kontroll over hvor mye bildet glattes benyttes ``data attachement'
 \begin{lstlisting}[language=Python]
     h = k * delta_t * (image[1:-1, 1:-1] - orig_im[1:-1, 1:-1])
 \end{lstlisting}
-Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksimalt kan bli selv om det iteres i det uendelige. Som randverdier brukes Neumann med $\frac{\partial u} {\partial} = 0$ på $\partial \Omega$. Når en itererer likning (\ref{eq:diffusjon}) vil noen verdier kunne gå ut av lovlig intervall, det vil si over 1 eller under 0. Derfor er siste ledd i for-løkka å klippe verdiene i \texttt{image} til et lovlig intervall.
+Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksimalt kan bli selv om det iteres i det uendelige. Som randverdier brukes Neumann med $\frac{\partial u} {\partial n} = 0$ på $\partial \Omega$. Når en itererer likning (\ref{eq:diffusjon}) vil noen verdier kunne gå ut av lovlig intervall, det vil si over 1 eller under 0. Derfor er siste ledd i for-løkka å klippe verdiene i \texttt{image} til et lovlig intervall.
 \begin{lstlisting}[language=Python]
     image[image < 0] = 0
     image[image > 1] = 1
@@ -29,7 +29,7 @@ Da kan det ved å justere parameteren $\lambda$ styres hvor glatt bildet maksima
 Tilslutt returnes det glattede bildet som vist i Figur \ref{fig:glattingEks}
 \begin{figure}
 \begin{center}
-    \includegraphics[width=0.9\columnwidth]{bilder/glattingEksplisitt.jpg}
+    \includegraphics[width=0.9\columnwidth]{bilder/Glatting/glattingEksplisitt.jpg}
     \caption{Glatting~ \label{fig:glattingEks}}
 \end{center}
 \end{figure}
@@ -72,7 +72,7 @@ Denne glissne koeffisientmatrisen \texttt{A} brukes videre i spsolve\footnote{\u
 
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=1\columnwidth]{bilder/impGlatt.png}
+    \includegraphics[width=1\columnwidth]{bilder/Glatting/impGlatt.png}
     \caption{Implisitt glatting med $\alpha=2, n=3$~ \label{fig:glattingImp}}
 \end{center}
 \end{figure}

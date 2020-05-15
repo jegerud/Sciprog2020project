@@ -2,13 +2,13 @@
 \section{Kontrastforsterkning}
 \label{sec:Kontrastforsterkning}
 \subsection{Bakgrunn}
-I et bilde er det kontrasten som gjør at vi kan skille et objekt fra bakgrunnen og eventuelle andre objekter.\cite{wiki:kontrast} Et godt eksempel på dette er svart tekst på hvit bakgrunn, hvor kontrasten mellom bokstavene og bakgrunnen er veldig stor. Dette gjør teksten lett å se og lese. I et bilde er det altså fargekontrasten som gjør at vi kan se objekter. Et med bilde med høy motivkonstrast\footnote{\url{https://en.wikipedia.org/w/index.php?title=Contrast_(vision)&oldid=941218450}} viser de lyse delene av bildet enda lysere og de mørke delene av bildet enda mørkere. Dette gjør at bildet ser mindre flatt ut for seeren, men gjør i realiteten at det blir mindre detaljer i bildet. Spesielt i de mørkeste og lyseste områdene blir bildene udetaljerte og støyete. Når man skal behandle et bilde vil det være veldig lett å øke kontrastene, mens muligheten for å redusere kontrasten vil være veldig begrenset. 
+I et bilde er det kontrasten som gjør at vi kan skille et objekt fra bakgrunnen og eventuelle andre objekter.\cite{wiki:kontrast} Et godt eksempel på dette er svart tekst på hvit bakgrunn, hvor kontrasten mellom bokstavene og bakgrunnen er veldig stor. Dette gjør teksten lett å se og lese. I et bilde er det altså fargekontrasten som gjør at vi kan se objekter. Et bilde med høy motivkonstrast\footnote{\url{https://en.wikipedia.org/w/index.php?title=Contrast_(vision)&oldid=941218450}} viser de lyse delene av bildet enda lysere og de mørke delene av bildet enda mørkere. Dette gjør at bildet ser mindre flatt ut for seeren, men gjør i realiteten at det blir mindre detaljer i bildet. Spesielt i de mørkeste og lyseste områdene blir bildene udetaljerte og støyete. Når man skal behandle et bilde vil det være veldig lett å øke kontrastene, mens muligheten for å redusere kontrasten vil være veldig begrenset. 
 
-De fleste metodene for å gjøre en kontrastforsterkning benytter seg av et gråtonehistogram med verdier fra 0 til 255. Dette gråtonehistogrammet beskriver ikke hvor de ulike verdiene finnes på bildet, men beskriver heller fordelingen av grånivåene i bildet. Et slikt diagram opprettes ved å telle antall ganger hver en grånivåverdi i bildet oppstår. Deretter deler man med det totale antall piksler i bildet slik at man får en prosentvis andel av hver grånivåverdi. En måte å omdanne et lavkontrastbilde til et høykontrastbilde er ved å gjøre en dynamic range adjustment(DRA)\cite{Contrast:Human}. Dette gjøres ved å strekke grånivåverdiene i bildet slik at histogrammet dekker alle grånivåene mellom 0 og 255, som vist i figur (\ref{Figur 2}).
+De fleste metodene for å gjøre en kontrastforsterkning benytter seg av et gråtonehistogram med verdier fra 0 til 255. Dette gråtonehistogrammet beskriver ikke hvor de ulike verdiene finnes på bildet, men beskriver heller fordelingen av grånivåene. Et slikt diagram opprettes ved å telle antall ganger hver en grånivåverdi i bildet oppstår. Deretter deler man med det totale antall piksler i bildet slik at man får en prosentvis andel av hver grånivåverdi. En måte å omdanne et lavkontrastbilde til et høykontrastbilde er ved å gjøre en dynamic range adjustment(DRA)\cite{Contrast:Human}. Dette gjøres ved å strekke grånivåverdiene i bildet slik at histogrammet dekker alle grånivåene mellom 0 og 255, som vist i figur (\ref{Figur 2}).
 
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=0.7\columnwidth]{bilder/graylevelhistogram.png}
+    \includegraphics[width=0.7\columnwidth]{bilder/Kontrastforsterkning/graylevelhistogram.png}
     \caption{Graylevel Histogram \label{Figur 2}} \source{MathWorks~\cite{Contrast:histogram}}
 \end{center}
 \end{figure}
@@ -39,11 +39,11 @@ For randbetingelser har vi valgt Neumann, $\frac{\partial u}{\partial n}=\frac{\
 u[u < 0] = 0  
 u[u > 1] = 1
 \end{lstlisting}
-Resultatet av vår implementasjon vises i figur \ref{fig:contrast1}, her med \texttt{k=1.7}. Til venstre vises originalbildet slik det blir lastet inn ved hjelp av \texttt{imageio.imread}\footnote{\url{https://pypi.org/project/imageio/}}. Til høyre vises bildet som er kontrastforsterket med $k = 1.9$.
+Resultatet av vår implementasjon vises i figur \ref{fig:contrast1}, her med \texttt{k=1.7}. Til venstre vises originalbildet slik det blir lastet inn ved hjelp av \texttt{imageio.imread}\footnote{\url{https://pypi.org/project/imageio/}}. Til høyre vises bildet som er kontrastforsterket.
 \begin{figure}[H]
 \begin{center}
-    \includegraphics[width=0.72\columnwidth]{bilder/kontrast1.png}
-     \includegraphics[width=0.72\columnwidth]{bilder/kontrast2.png}
+    \includegraphics[width=0.72\columnwidth]{bilder/Kontrastforsterkning/kontrast1.png}
+     \includegraphics[width=0.72\columnwidth]{bilder/Kontrastforsterkning/kontrast2.png}
     \caption{Kontrastforsterkning \label{fig:contrast1}}
 \end{center}
 \end{figure}
