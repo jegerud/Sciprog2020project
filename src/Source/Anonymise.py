@@ -75,6 +75,18 @@ def detectFace(file, scaleFactor = 1.2, minNeighbours = 5):
     return len(faces), image
 
 def detect_anonymise(path, scaleFactor = 1.2, minNeigbours = 5):
+    """
+    Tar et bilde, gjenkjenner ansikter og anonymiserer dem
+    
+    Paramters
+    ------------
+    path         : Bildefil
+                   Pathen til bildet som skal anonymiseres
+    scaleFactor  : int
+                   Parameter spesifiserer hvor mye bildets størrelse skal reduseres på hver skala 
+    minNeighbors : int
+                   Definerer antall nærliggende ansiktstrekk som er nødvendig for at programmet skal akseptere det som et ansikt 
+    """
     antall, image = detectFace(path, scaleFactor, minNeigbours)
     antall, blur = blurFace(path,scaleFactor, minNeigbours)
     print(antall, "ansikt er registrert")
