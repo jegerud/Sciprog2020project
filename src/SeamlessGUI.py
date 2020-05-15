@@ -49,8 +49,8 @@ class Seamless(QMainWindow):
 
     def showCode(self, nr):
         code = QPlainTextEdit()
-        text = open('codes/inpainting.txt').read()
-        title = "Inpainting - kode"
+        text = open('codes/seamless.txt').read()
+        title = "Seamless cloning - kode"
         code.setPlainText(text)
         self.dialog = ShowCode(text, title, 600, 720)
         self.dialog.show()
